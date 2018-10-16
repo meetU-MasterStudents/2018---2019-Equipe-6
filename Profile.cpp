@@ -13,7 +13,7 @@ Profile::Profile(char* querySequence, int blusomNumber)
 	}
 	_profileName = "profile1";
 	
-	//choose a appropriate BLOSUM matrix based on the given number!
+	//choose an appropriate BLOSUM matrix based on the given number!
 }
 
 Profile::~Profile()
