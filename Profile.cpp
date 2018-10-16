@@ -1,10 +1,9 @@
 #include<iostream>
-
-#include "TrainManager.h"
+#include "Profile.h"
 
 using namespace std;
 
-TrainManager::TrainManager(char* querySequence)
+Profile::Profile(char* querySequence, int blusomNumber)
 {
 	_querySequence = querySequence;
 	_PSSM = new float*[_nRows];
@@ -12,10 +11,12 @@ TrainManager::TrainManager(char* querySequence)
 	{
     		_PSSM[i] = new float[_nCols];
 	}
-	_name = "seq1";
+	_profileName = "profile1";
+	
+	//choose a appropriate BLOSUM matrix based on the given number!
 }
 
-TrainManager::~TrainManager()
+Profile::~Profile()
 {
 	//dont delete query sequence here because it is initialized somewhere else
 	for (int i = 0; i < _nRows; i++)
@@ -25,7 +26,7 @@ TrainManager::~TrainManager()
 	delete[] _PSSM;
 }
 
-void TrainManager::PSSMCalculator(char* querySequence)
+int Profile::PSSMCalculator()
 {
 	for(int i = 0; i < _nRows; i++)
 	{
@@ -34,9 +35,15 @@ void TrainManager::PSSMCalculator(char* querySequence)
 			_PSSM[i][j] = 0;
 		}
 	}
+	return 0;
 }
 
-void TrainManager::printname()
+int Profile::CallBLAST()
 {
-	cout<<_name<<"\n";
+	return 0;
+}
+
+void Profile::printname()
+{
+	cout<<_profileName<<"\n";
 }
