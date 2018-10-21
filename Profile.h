@@ -1,4 +1,6 @@
 #include<iostream>
+#include <stdlib.h>
+#include <cstdio>
 #include <cstring>
 #include <string>
 #include <map>

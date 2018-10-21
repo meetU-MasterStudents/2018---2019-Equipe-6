@@ -81,13 +81,15 @@ Profile::~Profile()
   		delete[] _frequencyMatrix[AmAc[i]];
   	}
 	
-	
 	//Memory deallocation for the multi-aligned sequences (output of PSI-Blast)
 	for (int i = 0; i < _mAlignedSequences->familySize; i++)
   	{
   		delete[] _mAlignedSequences->maSequences[i];
   	}
 	delete[] _mAlignedSequences->maSequences;
+	
+	//Delete the MSA structure
+	delete _mAlignedSequences;
 }
 
 //Calculates the frequency matrix
@@ -135,6 +137,28 @@ int Profile::PSSMCalculator()
 
 int Profile::CallBLAST()
 {
+	cout<<"Executing PSI-Blast ...";
+	if (system(NULL))
+	{
+		puts ("Ok");
+	}
+	else
+	{
+		exit (EXIT_FAILURE);
+	}
+	//Nucleotide sequence
+	system ("blastdbcmd -db refseq_rna.00 -entry nm_000122 -out test_query.fa");
+	system("blastn -query test_query.fa -db refseq_rna.00 -task blastn -dust no -outfmt \"7 qseqid sseqid evalue bitscore\" -max_target_seqs 2");
+	
+	//Amino acide sequence (protein)
+	//number of sequences:
+	system("grep -c '^>' ..//blastdb//cow.1.protein.faa");
+	system("head -6 ..//blastdb//cow.1.protein.faa > ..//blastdb//cow.small.faa");
+	system("makeblastdb -in ..//blastdb//human.1.protein.faa -dbtype prot");
+	//system("blastp -query cow.small.faa -db human.1.protein.faa");
+	system("blastp -query ..//blastdb//cow.small.faa -db human.1.protein.faa -out cow_vs_human_blast_results.txt");
+	//system("less cow_vs_human_blast_results.txt");
+	
 	return 0;
 }
 
