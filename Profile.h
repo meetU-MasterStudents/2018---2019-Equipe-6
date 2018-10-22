@@ -4,6 +4,8 @@
 #include <cstring>
 #include <string>
 #include <map>
+#include <math.h>
+#include <tuple>
 
 using namespace std; 
 
@@ -20,25 +22,31 @@ struct MultiAlignedSequences
   char** maSequences; 
 };
 
+typedef map<char,int*> frequencyMatrix;
+typedef tuple<char, char> residuesPair;
+typedef map<residuesPair,int*> pairFrequencyMatrix;
 
 class Profile
 {
 //Function Members
 public:
   //Constructor
-  Profile(char*, int);
+  Profile(char*);
   //Destructor
   ~Profile();
   //Calculate PSSM
   int PSSMCalculator();
   int CallBLAST();
   void printname();
+  int DisplayFrequencyMatrix();
 
 //Private function members
 private:
-//some private functions to help building PSSM
+unsigned long long CalculateFactorial(int);
+float CalculatePermutation(bool,int,int);
+float CalculateCombination(bool,int,int);
 int CalculateFrequencyMatrix();
-int DisplayFrequencyMatrix();
+int CalculatePairFrequencyMatrix();
   
 //Data members
 private:
@@ -51,7 +59,13 @@ private:
   MultiAlignedSequences* _mAlignedSequences;  //given by Psi-BLAST!
   
   //Frequency matrix (first step to create substitution matrix)
-  map<char,int*> _frequencyMatrix;
+  frequencyMatrix _frequencyMatrix;
+  
+  //Pair frequency matrix (second step to create substitution matrix)
+  pairFrequencyMatrix _pairFrequencyMatrix;
+  
+  //Pair residues
+  int _numPairResidues;
 };
 
 //Operator overloading for matrix operations!

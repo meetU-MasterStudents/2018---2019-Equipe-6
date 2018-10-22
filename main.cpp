@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	Profile* _profile = new Profile("abcd", 61);
+	Profile* _profile = new Profile("abcd");
 	_profile->CallBLAST();
 	_profile->PSSMCalculator();
 	_profile->printname();

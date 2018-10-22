@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Profile::Profile(char* querySequence, int blusomNumber)
+Profile::Profile(char* querySequence)
 {
 	_querySequence = querySequence;
 	
@@ -57,15 +57,34 @@ Profile::Profile(char* querySequence, int blusomNumber)
     		_frequencyMatrix[AmAc[i]] = new int[_mAlignedSequences->seqLength]();
 	}
 	
+	//Memory allocation for the pair residues
+	_numPairResidues = CalculatePermutation(false,_nAmAc,2);
+	
+	//Memory allocation for the pair frequency matrix (and zero initializing)
+	int count = 0;
+	residuesPair pair1,pair2;
+	for(int i = 0; i < _nAmAc; i++)
+	{
+		for(int j = 0; j < _nAmAc; j++)
+		{
+			get<0>(pair1) = AmAc[i]; get<1>(pair1) = AmAc[j];
+			get<0>(pair2) = AmAc[j]; get<1>(pair2) = AmAc[i];
+			if(_pairFrequencyMatrix.count(pair1) == 0 && _pairFrequencyMatrix.count(pair2) == 0)
+			{	
+				_pairFrequencyMatrix[pair1] = new int[_mAlignedSequences->seqLength]();
+				count++;
+			}
+		}
+	}
+	
+	
 	
 	_profileName = "profile1";
-	//choose an appropriate BLOSUM matrix based on the given number!
 }
 
 Profile::~Profile()
 {
 	//dont delete query sequence here because it is initialized somewhere else
-		
 	
 	//Memory deallocation for the substitution matrix
 	for (int i = 0; i < _nAmAc; i++)
@@ -80,6 +99,12 @@ Profile::~Profile()
   	{
   		delete[] _frequencyMatrix[AmAc[i]];
   	}
+		
+	//Memory deallocation for the pair frequency matrix
+	for (pairFrequencyMatrix::iterator it = _pairFrequencyMatrix.begin(); it!=_pairFrequencyMatrix.end(); ++it)
+	{
+		delete[] _pairFrequencyMatrix[it->first];
+	}
 	
 	//Memory deallocation for the multi-aligned sequences (output of PSI-Blast)
 	for (int i = 0; i < _mAlignedSequences->familySize; i++)
@@ -92,7 +117,46 @@ Profile::~Profile()
 	delete _mAlignedSequences;
 }
 
-//Calculates the frequency matrix
+//Calculate factorial
+unsigned long long Profile::CalculateFactorial(int n)
+{
+	if(n > 1)
+	{
+		return n * CalculateFactorial(n - 1);
+	}
+    else
+	{
+        return 1;
+	}
+}
+
+//Calculate permutations with or without repetition
+float Profile::CalculatePermutation(bool repetition, int n, int k)
+{
+	if(repetition == true)
+	{
+		return pow (n, k);
+	}
+    else
+	{
+        return CalculateFactorial(n) / CalculateFactorial(n-k);
+	}
+}
+
+//Calculate combinations with or without repetition
+float Profile::CalculateCombination(bool repetition, int n, int k)
+{
+	if(repetition == true)
+	{
+		return CalculateFactorial(n+k-1) / (CalculateFactorial(k) * CalculateFactorial(n-1));
+	}
+    else
+	{
+        return CalculateFactorial(n) / (CalculateFactorial(k) * CalculateFactorial(n-k));
+	}
+}
+
+//Calculate the frequency matrix
 int Profile::CalculateFrequencyMatrix()
 {
 	for(int i=0; i < _mAlignedSequences->familySize; i++)
@@ -102,6 +166,31 @@ int Profile::CalculateFrequencyMatrix()
 			_frequencyMatrix[_mAlignedSequences->maSequences[i][j]][j]++;
 		}
 	}
+	return 0;
+}
+
+//Calculate the pair frequency matrix
+int Profile::CalculatePairFrequencyMatrix()
+{
+	residuesPair pair;
+	char r1,r2;
+	for (pairFrequencyMatrix::iterator it = _pairFrequencyMatrix.begin(); it!=_pairFrequencyMatrix.end(); ++it)
+	{
+		r1 = get<0>(it->first);
+		r2 = get<1>(it->first);
+		for(int j=0; j < _mAlignedSequences->seqLength; j++)
+		{
+			if(r1 != r2)
+			{
+				_pairFrequencyMatrix[it->first][j] = _frequencyMatrix[r1][j] * _frequencyMatrix[r2][j];
+			}
+			else
+			{
+				_pairFrequencyMatrix[it->first][j] = CalculateCombination(false,_frequencyMatrix[r1][j],2);
+			}
+		}
+	}
+	
 	return 0;
 }
 
@@ -116,6 +205,17 @@ int Profile::DisplayFrequencyMatrix()
 		}
 		cout<<endl;
 	}
+	
+	for (pairFrequencyMatrix::iterator it = _pairFrequencyMatrix.begin(); it!=_pairFrequencyMatrix.end(); ++it)
+	{
+		std::cout << get<0>(it->first) << " " << get<1>(it->first) <<": ";
+		for(int j=0; j < _mAlignedSequences->seqLength; j++)
+		{
+			cout<<it->second[j]<<"\t";
+		}
+		cout<<endl;
+	}
+	
 	return 0;
 }
 
@@ -123,6 +223,7 @@ int Profile::DisplayFrequencyMatrix()
 int Profile::PSSMCalculator()
 {
 	CalculateFrequencyMatrix();
+	CalculatePairFrequencyMatrix();
 	DisplayFrequencyMatrix();
 	
 	for(int i = 0; i < _nAmAc; i++)
