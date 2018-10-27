@@ -236,30 +236,186 @@ int Profile::PSSMCalculator()
 	return 0;
 }
 
+
+//This version is not final and needs modifications!
 int Profile::CallBLAST()
 {
 	cout<<"Executing PSI-Blast ...";
 	if (system(NULL))
 	{
 		puts ("Ok");
+		cout<<"Computer is thinking very hard ..."<<endl;
+		cout<<"Do you want to hear a joke meanwhile???"<<endl;
+		cout<<"No!!??"<<endl;
+		cout<<"What did one bioinformatician say to another after a get together?"<<endl;
+		cout<<"Dude, that party was a BLAST!"<<endl;
 	}
 	else
 	{
 		exit (EXIT_FAILURE);
 	}
-	//Nucleotide sequence
-	system ("blastdbcmd -db refseq_rna.00 -entry nm_000122 -out test_query.fa");
-	system("blastn -query test_query.fa -db refseq_rna.00 -task blastn -dust no -outfmt \"7 qseqid sseqid evalue bitscore\" -max_target_seqs 2");
 	
 	//Amino acide sequence (protein)
 	//number of sequences:
 	system("grep -c '^>' ..//blastdb//cow.1.protein.faa");
 	system("head -6 ..//blastdb//cow.1.protein.faa > ..//blastdb//cow.small.faa");
-	system("makeblastdb -in ..//blastdb//human.1.protein.faa -dbtype prot");
-	//system("blastp -query cow.small.faa -db human.1.protein.faa");
-	system("blastp -query ..//blastdb//cow.small.faa -db human.1.protein.faa -out cow_vs_human_blast_results.txt");
-	//system("less cow_vs_human_blast_results.txt");
 	
+	system("psiblast -query ..//blastdb//cow.small.faa -db pdb -out cow_blast_results.txt -evalue 1e-5 -outfmt 6 -remote "); //Please check this website: https://blast.ncbi.nlm.nih.gov/Blast.cgi
+	
+	vector<string> hits;
+	//Extracting best hits (protein pdb name!)
+	ReadHits("cow_blast_results.txt",&hits);
+	
+	string command;
+	for(int i=0; i <hits.size(); i++)
+	{		
+		//curl
+		command = "curl -s -o ";
+		command += hits[i].substr (0,4); //XXXXXXX fix it!!
+		command += " 'https://www.rcsb.org/pdb/download/viewFastaFiles.do?structureIdList=";
+		command += hits[i].substr (0,4);  //XXXXXXX fix it!! 
+		command += "&compressionType=uncompressed' > curlLog";
+		
+		//Execute command
+		system (command.c_str());
+		
+		DisplayFasta(hits[i].substr (0,4));
+	}
+		
+	WriteHits(BlastOutputName,"..//blastdb//cow.small.faa",hits);
+	
+	hits.clear();
+	return 0;
+}
+
+//Execute MUSCLE algorithm to get multiple sequence alignement
+int Profile::CallMUSCLE()
+{
+	string command;
+	command = "muscle -in ";
+	command += BlastOutputName;
+	command += " -out ";
+	command += MuscleOutputName;
+	//Execute command
+	system (command.c_str());
+	return 0;
+}
+
+//Create unaligned fasta file
+int Profile::WriteHits(string fileName,string queryFile, vector<string> hits)
+{
+	string line;
+	ofstream ofHandler;
+	ofHandler.open((fileName));
+	
+	//Begin with fasta of query
+	{
+		ifstream ifHandler((queryFile));
+		if(ifHandler.good())
+		{
+			while (getline (ifHandler, line).good())
+			{
+				ofHandler<<line<<endl;
+				ofHandler.flush();
+			}
+		}
+	}
+	
+	for(int i=0; i <hits.size(); i++)
+	{
+		{
+			ifstream ifHandler((hits[i].substr(0,4))); //fixt it!
+			if(ifHandler.good())
+			{
+				while (getline (ifHandler, line).good())
+				{
+					ofHandler<<line<<endl;
+					ofHandler.flush();
+				}
+			}
+		//ifHandler.close();
+		//ifHandler.clear();
+		}
+	}
+	ofHandler.close();
+	return 0;
+}
+
+//Display content of a fasta file
+int Profile::DisplayFasta(string fileName)
+{
+ 
+    ifstream input(fileName);
+    if(!input.good())
+	{
+        cerr << "Error opening '"<<fileName<<"'. Bailing out." << endl;
+        return -1;
+    }
+ 
+    string line, name, content;
+    while(getline( input, line ).good() )
+	{
+		cout<<line<<endl;
+        if(line.empty() || line[0] == '>' )
+		{
+            if( !name.empty() )
+			{ 
+                cout << name << " : " << content << endl;
+                name.clear();
+            }
+            if( !line.empty() )
+			{
+                name = line.substr(1);
+            }
+            content.clear();
+        } else if( !name.empty() )
+		{
+            if( line.find(' ') != string::npos )
+			{
+                name.clear();
+                content.clear();
+            } 
+			else
+			{
+                content += line;
+            }
+        }
+    }
+    if( !name.empty() )
+	{
+        cout << name << " : " << content << endl;
+    }
+ 
+    return 0;
+}
+
+//Reading the protein names of the best hits given by Psi-BLAST
+int Profile::ReadHits(string fileName,vector<string>* hits)
+{
+	string line;
+	ifstream fHandler;
+	fHandler.open((fileName));
+	if (fHandler.is_open())
+	{
+		cout<<"The hits are as follow:"<<endl;
+		while (getline (fHandler, line))
+		{
+			cout<<line<<endl;
+			stringstream ss(line);
+			if (getline(ss, line, '	'))
+			{
+				if (getline(ss, line, '	'))
+				{
+					(*hits).push_back(line);
+				}
+			}
+		}
+		for(int i=0; i <(*hits).size(); i++)
+		{
+			cout << (*hits)[i] <<endl;
+		}
+	}
+	fHandler.close();
 	return 0;
 }
 

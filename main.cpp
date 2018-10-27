@@ -7,6 +7,7 @@ int main()
 {
 	Profile* _profile = new Profile("abcd");
 	_profile->CallBLAST();
+	_profile->CallMUSCLE();
 	_profile->PSSMCalculator();
 	_profile->printname();
 	delete _profile;

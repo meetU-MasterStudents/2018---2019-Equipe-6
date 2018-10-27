@@ -6,6 +6,9 @@
 #include <map>
 #include <math.h>
 #include <tuple>
+#include <sstream>
+#include <fstream>
+#include <vector>
 
 using namespace std; 
 
@@ -14,6 +17,8 @@ using namespace std;
 //char AmAc[] = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V', 'X'};
 const char AmAc[] = "ABC\0"; //just for test
 
+const string BlastOutputName = "QueryBestHits.fasta";
+const string MuscleOutputName = "AlignedQueryBestHits.fasta";
 
 struct MultiAlignedSequences
 {
@@ -37,6 +42,7 @@ public:
   //Calculate PSSM
   int PSSMCalculator();
   int CallBLAST();
+  int CallMUSCLE();
   void printname();
   int DisplayFrequencyMatrix();
 
@@ -47,6 +53,10 @@ float CalculatePermutation(bool,int,int);
 float CalculateCombination(bool,int,int);
 int CalculateFrequencyMatrix();
 int CalculatePairFrequencyMatrix();
+int ReadHits(string,vector<string>* );
+int WriteHits(string,string,vector<string>);
+int DisplayFasta(string);
+
   
 //Data members
 private:
