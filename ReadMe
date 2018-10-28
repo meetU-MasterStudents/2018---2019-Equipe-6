@@ -1,0 +1,33 @@
+>> Required packages:
+
+1) Blast+ version 2.7.1+
+Installation and main instructions:
+https://www.ncbi.nlm.nih.gov/books/NBK52640/
+
+Some other useful instructions:
+https://angus.readthedocs.io/en/2016/running-command-line-blast.html
+
+
+2) MUSCLE
+Instructions:
+https://petrov.stanford.edu/software/src/muscle3.6/muscle3.6.html
+
+Installation:
+sudo apt-get install muscle
+
+--------------------------------------------------------------------
+
+And here are some links that might be useful:
+PSA:
+https://www.ebi.ac.uk/Tools/psa/
+
+MSA:
+https://www.ebi.ac.uk/Tools/msa/clustalo/
+
+PDB FTP:
+http://www.wwpdb.org/download/downloads
+https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch
+
+
+Equipe 6
+

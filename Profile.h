@@ -12,19 +12,19 @@
 
 using namespace std; 
 
-//Insert all BLOSUM matrices here as constant general variable 2D arrays! this general variable is Ok for the multithreading!
+//char AmAc[] = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V', '-'};
+const char AmAc[] = "ARNDCQEGHILKMFPSTWYV-\0";
 
-//char AmAc[] = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V', 'X'};
-const char AmAc[] = "ABC\0"; //just for test
-
+//These variables should be modified for multithreading!
 const string BlastOutputName = "QueryBestHits.fasta";
 const string MuscleOutputName = "AlignedQueryBestHits.fasta";
+const string PSSMOutputName = "PSSMProfile";
 
 struct MultiAlignedSequences
 {
   int familySize; 
   int seqLength;
-  char** maSequences; 
+  string* maSequences; 
 };
 
 typedef map<char,int*> frequencyMatrix;
@@ -45,6 +45,8 @@ public:
   int CallMUSCLE();
   int ProfileName();
   int DisplayFrequencyMatrix();
+  int WriteFrequencyMatrix();
+  int ReadMSA();
 
 //Private function members
 private:
@@ -61,14 +63,14 @@ int DisplayFasta(string);
 //Data members
 private:
   string _queryFile;
-  float** _PSSM;
+  //float** _PSSM;
   //const int _nAmAc = 21;
   const int _nAmAc = strlen(AmAc);
   //const int _nCols = 21;
   string _profileName;
   MultiAlignedSequences* _mAlignedSequences;  //given by Psi-BLAST!
   
-  //Frequency matrix (first step to create substitution matrix)
+  //Frequency matrix: PSSM (first step to create substitution matrix)
   frequencyMatrix _frequencyMatrix;
   
   //Pair frequency matrix (second step to create substitution matrix)

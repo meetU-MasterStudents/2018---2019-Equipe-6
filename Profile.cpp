@@ -7,91 +7,14 @@ Profile::Profile(string queryFile)
 	_queryFile = queryFile;
 	
 	_mAlignedSequences = new MultiAlignedSequences();
-	
-	//Memory allocation for the substitution matrix (and zero initializing)
-	_PSSM = new float*[_nAmAc];
-	for(int i = 0; i < _nAmAc; i++)
-	{
-    		_PSSM[i] = new float[_nAmAc]();
-	}	
-	
-	
-	//Memory allocation for the multi-aligned sequences (output of PSI-Blast)
-	_mAlignedSequences->familySize = 4; //just for test
-	_mAlignedSequences->seqLength = 5;  //just for test
-	_mAlignedSequences->maSequences = new char*[_mAlignedSequences->familySize];
-	for(int i = 0; i < _mAlignedSequences->familySize; i++)
-	{
-    		_mAlignedSequences->maSequences[i] = new char[_mAlignedSequences->seqLength];
-	}
-	
-	//just for test
-	_mAlignedSequences->maSequences[0][0] = 'A';
-	_mAlignedSequences->maSequences[0][1] = 'B';
-	_mAlignedSequences->maSequences[0][2] = 'C';
-	_mAlignedSequences->maSequences[0][3] = 'C';
-	_mAlignedSequences->maSequences[0][4] = 'B';
-	
-	_mAlignedSequences->maSequences[1][0] = 'A';
-	_mAlignedSequences->maSequences[1][1] = 'C';
-	_mAlignedSequences->maSequences[1][2] = 'A';
-	_mAlignedSequences->maSequences[1][3] = 'B';
-	_mAlignedSequences->maSequences[1][4] = 'A';
-	
-	_mAlignedSequences->maSequences[2][0] = 'C';
-	_mAlignedSequences->maSequences[2][1] = 'B';
-	_mAlignedSequences->maSequences[2][2] = 'C';
-	_mAlignedSequences->maSequences[2][3] = 'C';
-	_mAlignedSequences->maSequences[2][4] = 'B';
-	
-	_mAlignedSequences->maSequences[3][0] = 'A';
-	_mAlignedSequences->maSequences[3][1] = 'C';
-	_mAlignedSequences->maSequences[3][2] = 'B';
-	_mAlignedSequences->maSequences[3][3] = 'B';
-	_mAlignedSequences->maSequences[3][4] = 'B';
-	
-	
-	//Memory allocation for the frequency matrix (and zero initializing)
-	for(int i = 0; i < _nAmAc; i++)
-	{
-    		_frequencyMatrix[AmAc[i]] = new int[_mAlignedSequences->seqLength]();
-	}
-	
-	//Memory allocation for the pair residues
-	_numPairResidues = CalculatePermutation(false,_nAmAc,2);
-	
-	//Memory allocation for the pair frequency matrix (and zero initializing)
-	int count = 0;
-	residuesPair pair1,pair2;
-	for(int i = 0; i < _nAmAc; i++)
-	{
-		for(int j = 0; j < _nAmAc; j++)
-		{
-			get<0>(pair1) = AmAc[i]; get<1>(pair1) = AmAc[j];
-			get<0>(pair2) = AmAc[j]; get<1>(pair2) = AmAc[i];
-			if(_pairFrequencyMatrix.count(pair1) == 0 && _pairFrequencyMatrix.count(pair2) == 0)
-			{	
-				_pairFrequencyMatrix[pair1] = new int[_mAlignedSequences->seqLength]();
-				count++;
-			}
-		}
-	}
+	_mAlignedSequences->familySize = 0;
+	_mAlignedSequences->seqLength = 0;	
 	
 	_profileName = "profile";
 }
 
 Profile::~Profile()
 {
-	//dont delete query sequence here because it is initialized somewhere else
-	
-	//Memory deallocation for the substitution matrix
-	for (int i = 0; i < _nAmAc; i++)
-  	{
-  		delete[] _PSSM[i];
-  	}
-	delete[] _PSSM;
-	
-	
 	//Memory deallocation for the frequency matrix
 	for (int i = 0; i < _nAmAc; i++)
   	{
@@ -104,11 +27,7 @@ Profile::~Profile()
 		delete[] _pairFrequencyMatrix[it->first];
 	}
 	
-	//Memory deallocation for the multi-aligned sequences (output of PSI-Blast)
-	for (int i = 0; i < _mAlignedSequences->familySize; i++)
-  	{
-  		delete[] _mAlignedSequences->maSequences[i];
-  	}
+	//Memory deallocation for the multi-sequence alignement (output of MUSCLE)
 	delete[] _mAlignedSequences->maSequences;
 	
 	//Delete the MSA structure
@@ -157,6 +76,12 @@ float Profile::CalculateCombination(bool repetition, int n, int k)
 //Calculate the frequency matrix
 int Profile::CalculateFrequencyMatrix()
 {
+	//Memory allocation for the frequency matrix: PSSM (and zero initializing)
+	for(int i = 0; i < _nAmAc; i++)
+	{
+    		_frequencyMatrix[AmAc[i]] = new int[_mAlignedSequences->seqLength]();
+	}
+	
 	for(int i=0; i < _mAlignedSequences->familySize; i++)
 	{
 		for(int j=0; j < _mAlignedSequences->seqLength; j++)
@@ -172,6 +97,28 @@ int Profile::CalculatePairFrequencyMatrix()
 {
 	residuesPair pair;
 	char r1,r2;
+	
+	//Memory allocation for the pair residues
+	_numPairResidues = CalculatePermutation(false,_nAmAc,2);
+	
+	//Memory allocation for the pair frequency matrix (and zero initializing)
+	int count = 0;
+	residuesPair pair1,pair2;
+	for(int i = 0; i < _nAmAc; i++)
+	{
+		for(int j = 0; j < _nAmAc; j++)
+		{
+			get<0>(pair1) = AmAc[i]; get<1>(pair1) = AmAc[j];
+			get<0>(pair2) = AmAc[j]; get<1>(pair2) = AmAc[i];
+			if(_pairFrequencyMatrix.count(pair1) == 0 && _pairFrequencyMatrix.count(pair2) == 0)
+			{	
+				_pairFrequencyMatrix[pair1] = new int[_mAlignedSequences->seqLength]();
+				count++;
+			}
+		}
+	}
+	
+	
 	for (pairFrequencyMatrix::iterator it = _pairFrequencyMatrix.begin(); it!=_pairFrequencyMatrix.end(); ++it)
 	{
 		r1 = get<0>(it->first);
@@ -190,6 +137,23 @@ int Profile::CalculatePairFrequencyMatrix()
 	}
 	
 	return 0;
+}
+
+int Profile::WriteFrequencyMatrix()
+{
+	ofstream ofHandler;
+	ofHandler.open((PSSMOutputName));
+	for(int i = 0; i < _nAmAc; i++)
+	{
+		ofHandler<<AmAc[i]<<": ";
+		for(int j=0; j < _mAlignedSequences->seqLength; j++)
+		{
+			ofHandler<<_frequencyMatrix[AmAc[i]][j]<<"\t";
+		}
+		ofHandler<<endl;
+		ofHandler.flush();
+	}
+	ofHandler.close();
 }
 
 int Profile::DisplayFrequencyMatrix()
@@ -217,23 +181,15 @@ int Profile::DisplayFrequencyMatrix()
 	return 0;
 }
 
-
 int Profile::PSSMCalculator()
 {
+	ReadMSA();
 	CalculateFrequencyMatrix();
-	CalculatePairFrequencyMatrix();
-	DisplayFrequencyMatrix();
-	
-	for(int i = 0; i < _nAmAc; i++)
-	{
-		for(int j = 0; j < _nAmAc; j++)
-		{
-			_PSSM[i][j] = 0;
-		}
-	}
+	//CalculatePairFrequencyMatrix();
+	//DisplayFrequencyMatrix();
+	WriteFrequencyMatrix();
 	return 0;
 }
-
 
 //This version is not final and needs modifications!
 int Profile::CallBLAST()
@@ -417,6 +373,64 @@ int Profile::ReadHits(string fileName,vector<string>* hits)
 		}
 	}
 	fHandler.close();
+	return 0;
+}
+
+int Profile::ReadMSA()
+{
+	bool firstSeq = false;
+	string line;
+	int i=-1;
+	ifstream ifHandler((MuscleOutputName));
+	if(ifHandler.good())
+	{
+		while (getline (ifHandler, line).good())
+		{
+			if (line.find(">") != string::npos) 
+			{
+				if(_mAlignedSequences->familySize == 0)
+				{
+					firstSeq = true;
+				}
+				else
+				{
+					firstSeq = false;
+				}
+				_mAlignedSequences->familySize++;
+			}
+			else if(firstSeq)
+			{
+				_mAlignedSequences->seqLength += line.size();
+			}
+		}
+	}
+		
+	//We have reached the end of the file (ifHandler) and the EOF flag is already set. So we have to return to the beginning
+	ifHandler.clear();
+	ifHandler.seekg(0, ios::beg);
+	
+	cout<<"Number of sequences: "<<_mAlignedSequences->familySize<<endl;
+	cout<<"Length of each sequence: "<<_mAlignedSequences->seqLength<<endl;
+	
+	
+	//Memory allocation for the multi-sequence alignement (output of MUSCLE)
+	_mAlignedSequences->maSequences = new string[_mAlignedSequences->familySize]();
+		
+	if(ifHandler.good())
+	{
+		while (getline (ifHandler, line).good())
+		{
+			if (line.find(">") != string::npos) 
+			{
+				i++;
+			}
+			else
+			{
+				_mAlignedSequences->maSequences[i] += line;
+			}
+		}
+	}
+	ifHandler.close();
 	return 0;
 }
 
