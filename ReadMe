@@ -17,6 +17,14 @@ sudo apt-get install muscle
 
 --------------------------------------------------------------------
 
+>> Command line to build the package:
+sudo g++ -o profile main.cpp Profile.cpp -std=c++11
+
+>> Command line to execute the package:
+./profile
+
+--------------------------------------------------------------------
+
 And here are some links that might be useful:
 PSA:
 https://www.ebi.ac.uk/Tools/psa/
