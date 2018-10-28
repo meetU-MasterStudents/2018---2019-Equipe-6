@@ -2,9 +2,9 @@
 
 using namespace std;
 
-Profile::Profile(char* querySequence)
+Profile::Profile(string queryFile)
 {
-	_querySequence = querySequence;
+	_queryFile = queryFile;
 	
 	_mAlignedSequences = new MultiAlignedSequences();
 	
@@ -77,9 +77,7 @@ Profile::Profile(char* querySequence)
 		}
 	}
 	
-	
-	
-	_profileName = "profile1";
+	_profileName = "profile";
 }
 
 Profile::~Profile()
@@ -240,6 +238,7 @@ int Profile::PSSMCalculator()
 //This version is not final and needs modifications!
 int Profile::CallBLAST()
 {
+	string command;
 	cout<<"Executing PSI-Blast ...";
 	if (system(NULL))
 	{
@@ -255,18 +254,17 @@ int Profile::CallBLAST()
 		exit (EXIT_FAILURE);
 	}
 	
-	//Amino acide sequence (protein)
-	//number of sequences:
-	system("grep -c '^>' ..//blastdb//cow.1.protein.faa");
-	system("head -6 ..//blastdb//cow.1.protein.faa > ..//blastdb//cow.small.faa");
-	
-	system("psiblast -query ..//blastdb//cow.small.faa -db pdb -out cow_blast_results.txt -evalue 1e-5 -outfmt 6 -remote "); //Please check this website: https://blast.ncbi.nlm.nih.gov/Blast.cgi
+	//Executing blast command according to https://blast.ncbi.nlm.nih.gov/Blast.cgi
+	command = "psiblast -query ";
+	command += _queryFile;
+	command += " -db pdb -out blastOut.txt -evalue 1e-4 -outfmt 6 -remote "; //For multithread output file name should be modified
+	system(command.c_str()); 
 	
 	vector<string> hits;
-	//Extracting best hits (protein pdb name!)
-	ReadHits("cow_blast_results.txt",&hits);
+	//Extracting best hits (protein pdb codes!)
+	ReadHits("blastOut.txt",&hits);
 	
-	string command;
+	//Downloading protein sequences from pdb website in fasta format 
 	for(int i=0; i <hits.size(); i++)
 	{		
 		//curl
@@ -275,20 +273,19 @@ int Profile::CallBLAST()
 		command += " 'https://www.rcsb.org/pdb/download/viewFastaFiles.do?structureIdList=";
 		command += hits[i].substr (0,4);  //XXXXXXX fix it!! 
 		command += "&compressionType=uncompressed' > curlLog";
-		
 		//Execute command
 		system (command.c_str());
 		
 		DisplayFasta(hits[i].substr (0,4));
 	}
-		
-	WriteHits(BlastOutputName,"..//blastdb//cow.small.faa",hits);
+	
+	WriteHits(BlastOutputName,_queryFile,hits);
 	
 	hits.clear();
 	return 0;
 }
 
-//Execute MUSCLE algorithm to get multiple sequence alignement
+//Executes MUSCLE algorithm to get multiple sequence alignement
 int Profile::CallMUSCLE()
 {
 	string command;
@@ -301,7 +298,7 @@ int Profile::CallMUSCLE()
 	return 0;
 }
 
-//Create unaligned fasta file
+//Creates unaligned fasta file
 int Profile::WriteHits(string fileName,string queryFile, vector<string> hits)
 {
 	string line;
@@ -317,6 +314,10 @@ int Profile::WriteHits(string fileName,string queryFile, vector<string> hits)
 			{
 				ofHandler<<line<<endl;
 				ofHandler.flush();
+				if (line.find(">") != string::npos) 
+				{
+					_profileName = line.replace(0,1,"");
+				}
 			}
 		}
 	}
@@ -419,7 +420,8 @@ int Profile::ReadHits(string fileName,vector<string>* hits)
 	return 0;
 }
 
-void Profile::printname()
+int Profile::ProfileName()
 {
-	cout<<_profileName<<"\n";
+	cout<<"This is profile for query: "<<_profileName<<endl;
+	return 0;
 }

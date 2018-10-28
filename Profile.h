@@ -36,14 +36,14 @@ class Profile
 //Function Members
 public:
   //Constructor
-  Profile(char*);
+  Profile(string);
   //Destructor
   ~Profile();
   //Calculate PSSM
   int PSSMCalculator();
   int CallBLAST();
   int CallMUSCLE();
-  void printname();
+  int ProfileName();
   int DisplayFrequencyMatrix();
 
 //Private function members
@@ -60,12 +60,12 @@ int DisplayFasta(string);
   
 //Data members
 private:
-  char* _querySequence;
+  string _queryFile;
   float** _PSSM;
   //const int _nAmAc = 21;
   const int _nAmAc = strlen(AmAc);
   //const int _nCols = 21;
-  char* _profileName;
+  string _profileName;
   MultiAlignedSequences* _mAlignedSequences;  //given by Psi-BLAST!
   
   //Frequency matrix (first step to create substitution matrix)
