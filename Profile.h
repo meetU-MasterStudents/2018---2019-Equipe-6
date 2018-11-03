@@ -15,10 +15,7 @@ using namespace std;
 //char AmAc[] = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V', '-'};
 const char AmAc[] = "ARNDCQEGHILKMFPSTWYV-\0";
 
-//These variables should be modified for multithreading!
-const string BlastOutputName = "QueryBestHits.fasta";
-const string MuscleOutputName = "AlignedQueryBestHits.fasta";
-const string PSSMOutputName = "PSSMProfile";
+const string ResultPath = "Results//";
 
 struct MultiAlignedSequences
 {
@@ -35,8 +32,9 @@ class Profile
 {
 //Function Members
 public:
-  //Constructor
+  //Constructors
   Profile(string);
+  Profile(string,string);
   //Destructor
   ~Profile();
   //Calculate PSSM
@@ -50,14 +48,14 @@ public:
 
 //Private function members
 private:
-unsigned long long CalculateFactorial(int);
-float CalculatePermutation(bool,int,int);
-float CalculateCombination(bool,int,int);
-int CalculateFrequencyMatrix();
-int CalculatePairFrequencyMatrix();
-int ReadHits(string,vector<string>* );
-int WriteHits(string,string,vector<string>);
-int DisplayFasta(string);
+	unsigned long long CalculateFactorial(int);
+	float CalculatePermutation(bool,int,int);
+	float CalculateCombination(bool,int,int);
+	int CalculateFrequencyMatrix();
+	int CalculatePairFrequencyMatrix();
+	int ReadHits(string,vector<string>* );
+	int WriteHits(string,string,vector<string>);
+	int DisplayFasta(string);
 
   
 //Data members
@@ -68,7 +66,7 @@ private:
   const int _nAmAc = strlen(AmAc);
   //const int _nCols = 21;
   string _profileName;
-  MultiAlignedSequences* _mAlignedSequences;  //given by Psi-BLAST!
+  MultiAlignedSequences* _mAlignedSequences;
   
   //Frequency matrix: PSSM (first step to create substitution matrix)
   frequencyMatrix _frequencyMatrix;
@@ -78,9 +76,17 @@ private:
   
   //Pair residues
   int _numPairResidues;
+  
+  string _blastOutputName;
+  string _muscleOutputName;
+  string _pssmOutputName;
+  
+  bool homstradIrregularity = false;
 };
 
 //Operator overloading for matrix operations!
 //A class for errors and error messages!
 //A class for events and event messages!
-//Multithread: each query one thread!
+//Multithread: each query one thread
+//Use exit(-1) for std errors
+//Create a log report! (for example for bad characters outside AmAc)
