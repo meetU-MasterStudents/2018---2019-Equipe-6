@@ -1,17 +1,4 @@
 #include "Profile.h"
-#include <stdlib.h>
-#include <stdio.h>
-/* stdlib pour exit(), et stdio pour puts() */
-#include <string.h>
-#include <dirent.h>
-/* Pour l'utilisation des dossiers */
-
-
-#include <iostream>
-#ifndef WIN32
-    #include <sys/types.h>
-#endif
-
 
 using namespace std;
 
@@ -23,7 +10,26 @@ Profile::Profile(string queryFile)
 	_mAlignedSequences->familySize = 0;
 	_mAlignedSequences->seqLength = 0;	
 	
-	_profileName = "profile";
+	_profileName = "profile_";
+	
+	_blastOutputName = _queryFile + "_QueryBestHits.fasta";
+	_muscleOutputName = _queryFile + "_AlignedQueryBestHits.fasta";
+	_pssmOutputName = ResultPath + _queryFile + "_PSSMProfile";
+}
+
+Profile::Profile(string familyName,string msaFile)
+{
+	homstradIrregularity = true;
+	_queryFile = msaFile;
+	
+	_mAlignedSequences = new MultiAlignedSequences();
+	_mAlignedSequences->familySize = 0;
+	_mAlignedSequences->seqLength = 0;	
+	
+	_profileName = "profile_";
+	
+	_muscleOutputName = _queryFile;
+	_pssmOutputName = ResultPath + familyName + "_PSSMProfile";
 }
 
 Profile::~Profile()
@@ -40,7 +46,7 @@ Profile::~Profile()
 		delete[] _pairFrequencyMatrix[it->first];
 	}
 	
-	//Memory deallocation for the multi-sequence alignement (output of MUSCLE)
+	//Memory deallocation for the multi-sequence alignement
 	delete[] _mAlignedSequences->maSequences;
 	
 	//Delete the MSA structure
@@ -99,6 +105,11 @@ int Profile::CalculateFrequencyMatrix()
 	{
 		for(int j=0; j < _mAlignedSequences->seqLength; j++)
 		{
+			if(strchr(AmAc, _mAlignedSequences->maSequences[i][j]) == NULL)
+			{
+				cout<<"Bad character found in "<<_queryFile<<": "<<_mAlignedSequences->maSequences[i][j]<<endl; //Save it in the log!
+				_mAlignedSequences->maSequences[i][j] = '-';
+			}
 			_frequencyMatrix[_mAlignedSequences->maSequences[i][j]][j]++;
 		}
 	}
@@ -155,7 +166,7 @@ int Profile::CalculatePairFrequencyMatrix()
 int Profile::WriteFrequencyMatrix()
 {
 	ofstream ofHandler;
-	ofHandler.open((PSSMOutputName));
+	ofHandler.open((_pssmOutputName));
 	for(int i = 0; i < _nAmAc; i++)
 	{
 		ofHandler<<AmAc[i]<<": ";
@@ -248,7 +259,7 @@ int Profile::CallBLAST()
 		DisplayFasta(hits[i].substr (0,4));
 	}
 	
-	WriteHits(BlastOutputName,_queryFile,hits);
+	WriteHits(_blastOutputName,_queryFile,hits);
 	
 	hits.clear();
 	return 0;
@@ -259,9 +270,9 @@ int Profile::CallMUSCLE()
 {
 	string command;
 	command = "muscle -in ";
-	command += BlastOutputName;
+	command += _blastOutputName;
 	command += " -out ";
-	command += MuscleOutputName;
+	command += _muscleOutputName;
 	//Execute command
 	system (command.c_str());
 	return 0;
@@ -362,7 +373,7 @@ int Profile::DisplayFasta(string fileName)
 //Reading the protein names of the best hits given by Psi-BLAST
 int Profile::ReadHits(string fileName,vector<string>* hits)
 {
-        string line;
+	string line;
 	ifstream fHandler;
 	fHandler.open((fileName));
 	if (fHandler.is_open())
@@ -392,15 +403,25 @@ int Profile::ReadHits(string fileName,vector<string>* hits)
 int Profile::ReadMSA()
 {
 	bool firstSeq = false;
+	bool skipDesc = false;
 	string line;
 	int i=-1;
-	ifstream ifHandler((MuscleOutputName));
+	ifstream ifHandler((_muscleOutputName));
 	if(ifHandler.good())
 	{
 		while (getline (ifHandler, line).good())
 		{
+			if(skipDesc)
+			{
+				skipDesc = false;
+				continue;
+			}
 			if (line.find(">") != string::npos) 
 			{
+				if(homstradIrregularity)
+				{
+					skipDesc = true;
+				}
 				if(_mAlignedSequences->familySize == 0)
 				{
 					firstSeq = true;
@@ -422,19 +443,39 @@ int Profile::ReadMSA()
 	ifHandler.clear();
 	ifHandler.seekg(0, ios::beg);
 	
-	cout<<"Number of sequences: "<<_mAlignedSequences->familySize<<endl;
-	cout<<"Length of each sequence: "<<_mAlignedSequences->seqLength<<endl;
+	if(homstradIrregularity)
+	{
+		_mAlignedSequences->seqLength--;
+	}
+	else
+	{
+		cout<<"Number of sequences: "<<_mAlignedSequences->familySize<<endl;
+		cout<<"Length of each sequence: "<<_mAlignedSequences->seqLength<<endl;
+	}
 	
-	
-	//Memory allocation for the multi-sequence alignement (output of MUSCLE)
+	//Memory allocation for the multi-sequence alignement
 	_mAlignedSequences->maSequences = new string[_mAlignedSequences->familySize]();
-		
+	
+	skipDesc = false;
 	if(ifHandler.good())
 	{
 		while (getline (ifHandler, line).good())
 		{
+			if(skipDesc)
+			{
+				skipDesc = false;
+				continue;
+			}
 			if (line.find(">") != string::npos) 
 			{
+				if(homstradIrregularity)
+				{
+					if(i>-1)
+					{
+						_mAlignedSequences->maSequences[i] = _mAlignedSequences->maSequences[i].substr(0, _mAlignedSequences->maSequences[i].size()-1);
+					}
+					skipDesc = true;
+				}
 				i++;
 			}
 			else
@@ -442,53 +483,14 @@ int Profile::ReadMSA()
 				_mAlignedSequences->maSequences[i] += line;
 			}
 		}
+		if(homstradIrregularity)
+		{
+			_mAlignedSequences->maSequences[i] = _mAlignedSequences->maSequences[i].substr(0, _mAlignedSequences->maSequences[i].size()-1);
+		}
 	}
 	ifHandler.close();
 	return 0;
 }
-
-
-
-int Profile::ReadHomstrad()
-{
-    DIR* hom = NULL;
-    struct dirent* metafold = NULL; /* Déclaration d'un pointeur vers la structure dirent. */
-    char chemin[500] = "../2018---2019-partage/Data/HOMSTRAD";
-    hom = opendir(chemin); /* Ouverture du dossier qui contient HOMSTRAD .map */
-
-    if (hom == NULL) /* Si le dossier n'a pas pu être ouvert */
-        exit(1); /* (mauvais chemin par exemple) */
-    puts("Le dossier HOMSTRAD a ete ouvert avec succes");
-
-    while ((metafold = readdir(hom)) != NULL) 
-
-      {
-      printf("Le fichier lu s'appelle '%s'\n", metafold->d_name);
-      DIR* fold_hom = NULL;
-      struct dirent* map = NULL;
-      fold_hom = opendir(strcat(chemin, metafold->d_name));
-      fichier_map=readdir(fold_hom)
-       ifstream myReadFile;
-      myReadFile.open(strcat(metafold->d_name, '.map'));
-      char output[100];
-      if (myReadFile.is_open()) 
-	{
-	while (!myReadFile.eof()) 
-	  {
-          // problem here... 
-
-	  }
-      	}
-      }
-
-
-    if (closedir(hom) == -1) /* S'il y a eu un souci avec la fermeture */
-        exit(-1);
-    puts("Le dossier HOMASTRAD a ete ferme avec succes");
-
-    return 0;
-}
-
 
 int Profile::ProfileName()
 {
