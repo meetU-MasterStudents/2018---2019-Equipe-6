@@ -25,6 +25,7 @@ struct MultiAlignedSequences
 };
 
 typedef map<char,int*> frequencyMatrix;
+typedef map<char,float*> nFrequencyMatrix;
 typedef tuple<char, char> residuesPair;
 typedef map<residuesPair,int*> pairFrequencyMatrix;
 
@@ -68,8 +69,11 @@ private:
   string _profileName;
   MultiAlignedSequences* _mAlignedSequences;
   
-  //Frequency matrix: PSSM (first step to create substitution matrix)
+  //Frequency (Occurrences) matrix: PSSM (first step to create substitution matrix)
   frequencyMatrix _frequencyMatrix;
+
+  //Normalized frequency matrix
+  nFrequencyMatrix _nFrequencyMatrix;
   
   //Pair frequency matrix (second step to create substitution matrix)
   pairFrequencyMatrix _pairFrequencyMatrix;
@@ -89,4 +93,4 @@ private:
 //A class for events and event messages!
 //Multithread: each query one thread
 //Use exit(-1) for std errors
-//Create a log report! (for example for bad characters outside AmAc)
+//Create a log report! (for example for bad characters found outside AmAc)
