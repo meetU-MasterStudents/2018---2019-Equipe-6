@@ -39,6 +39,12 @@ Profile::~Profile()
   	{
   		delete[] _frequencyMatrix[AmAc[i]];
   	}
+
+	//Memory deallocation for the normalized frequency matrix
+	for (int i = 0; i < _nAmAc; i++)
+  	{
+  		delete[] _nFrequencyMatrix[AmAc[i]];
+  	}
 		
 	//Memory deallocation for the pair frequency matrix
 	for (pairFrequencyMatrix::iterator it = _pairFrequencyMatrix.begin(); it!=_pairFrequencyMatrix.end(); ++it)
@@ -99,8 +105,10 @@ int Profile::CalculateFrequencyMatrix()
 	for(int i = 0; i < _nAmAc; i++)
 	{
     		_frequencyMatrix[AmAc[i]] = new int[_mAlignedSequences->seqLength]();
+			_nFrequencyMatrix[AmAc[i]] = new float[_mAlignedSequences->seqLength]();
 	}
 	
+	//Occurrences
 	for(int i=0; i < _mAlignedSequences->familySize; i++)
 	{
 		for(int j=0; j < _mAlignedSequences->seqLength; j++)
@@ -113,6 +121,16 @@ int Profile::CalculateFrequencyMatrix()
 			_frequencyMatrix[_mAlignedSequences->maSequences[i][j]][j]++;
 		}
 	}
+
+	//Normalization
+	for(int i=0; i < _mAlignedSequences->familySize; i++)
+	{
+		for(int j=0; j < _mAlignedSequences->seqLength; j++)
+		{
+			_nFrequencyMatrix[_mAlignedSequences->maSequences[i][j]][j] = (float) _frequencyMatrix[_mAlignedSequences->maSequences[i][j]][j] / _mAlignedSequences->familySize;
+		}
+	}
+
 	return 0;
 }
 
@@ -172,7 +190,7 @@ int Profile::WriteFrequencyMatrix()
 		ofHandler<<AmAc[i]<<": ";
 		for(int j=0; j < _mAlignedSequences->seqLength; j++)
 		{
-			ofHandler<<_frequencyMatrix[AmAc[i]][j]<<"\t";
+			ofHandler<<_nFrequencyMatrix[AmAc[i]][j]<<"\t";
 		}
 		ofHandler<<endl;
 		ofHandler.flush();
@@ -187,7 +205,7 @@ int Profile::DisplayFrequencyMatrix()
 		cout<<AmAc[i]<<": ";
 		for(int j=0; j < _mAlignedSequences->seqLength; j++)
 		{
-			cout<<_frequencyMatrix[AmAc[i]][j]<<"\t";
+			cout<<_nFrequencyMatrix[AmAc[i]][j]<<"\t";
 		}
 		cout<<endl;
 	}
