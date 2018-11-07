@@ -1,22 +1,18 @@
 # About this project
 
-This repository ** meetU-MasterStudents/2018---2019-Equipe-6** is a C++ library providing profile-profile alignments under the form ```UBQ_foldrec```.
+This repository **meetU-MasterStudents/2018---2019-Equipe-6** takes part in the [Meet-U](http://meet-u.org/edition_2018.html) project. The aim of the 2018's edition is to predict the 3D structure of a protein taken as an entry the query. Our team is focused on the first part of the work, therefore the goal of this repository is to find the best profile-profile comparison between template sequences and a target sequence by transforming them into profiles and then optimizing a profile-profile alignment.
 
-![PSSM](etc/PSSM.jpeg)
-
-The project emerged while working on [AAM](https://www.github.com/cheind/aam), an active appearance models library. Fitting active appearance models is
-similar to the classic image alignment problem:
-
-> The goal of this repository is to find the best profile-profile comparison between template sequences and a target sequence by transforming them into profiles and then optimizing a profile-profile alignment. --
+We choosed to use C++ and Python.
 
 # Team
 
 Our team is composed of 5 students from UPMC university. Three of us compose the biological subteam and 2 of us compose the development subteam.
-- Yasser Mohseni Behbahani (development)
-- Irene Mauricette Mendy (development)
-- Gabriela Lobinska (Biologist)
-- Bénédicte Colnet (Biologist)
-- Amandine Sandri (Biologist)
+
+- [Yasser Mohseni Behbahani](https://github.com/yassermb)
+- [Bénédicte Colnet](https://github.com/BenedicteColnet)
+- [Gabriela Lobinska](https://github.com/gabriela3001)
+- [Irene Mauricette Mendy](https://github.com/reinamauricette) 
+- [Amandine Sandri](https://github.com/amandinesandri) 
 
 
 # Algorithms and Packages used
