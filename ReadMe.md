@@ -21,7 +21,6 @@ Our team is composed of 5 students from UPMC university.
 Basic Local ALignment Search Tool ([BLAST](https://en.wikipedia.org/wiki/BLAST)) algorithm is used to search sequence databases for optimal alignement to the [query](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/blob/master/query.fasta)
 
 **Installation and main instructions** can be used at the following [link](https://www.ncbi.nlm.nih.gov/books/NBK52640/)
-**Useful Instruction** can be used at the following [link](https://www.ncbi.nlm.nih.gov/books/NBK52640/)
 
 ### 2) MUSCLE
 Multiple Sequene Comparison by Log-Expectation (MUSCLE) that creates multiple Alignments using the output of BLAST.
