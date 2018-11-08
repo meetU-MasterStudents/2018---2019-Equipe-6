@@ -37,10 +37,10 @@ def calculateScore(profile1,profile2):
     n2,m2=np.shape(profile2)
     Profile1=np.transpose(profile1)
     Profile2=np.transpose(profile2)
-    MatrixScore=np.zeros((m1,m2))
+    MatrixScore=[]
     for i in range(m1):
         for j in range(m2):
-            MatrixScore[i][j]=np.dot(Profile1[i],Profile2[j])
+            MatrixScore.append(np.dot(Profile1[i],Profile2[j]))
     return MatrixScore
 
             
@@ -66,17 +66,16 @@ def RandomSampling(n,dico):
     return RandomDico
 
 def ScoringProfile(data):
-    mu=[]
-    sigma=[]
+    Scoring=[]
     for cle1, valeur1 in data.items():
         for cle2, valeur2 in data.items():
             if cle2!=cle1:
                 Score=calculateScore(valeur1,valeur2)
-                mu_i,sigma_j=calculateMean_Deviation(Score)
-                mu.append(mu_i)
-                sigma.append(sigma_j)
+                Scoring=Score+Scoring
             #else:
                 #print(cle1, cle2)
+    mu=np.mean(Scoring)
+    sigma=np.std(Scoring)
     return mu,sigma
 
 
@@ -90,13 +89,11 @@ def Mu_And_Sigma(Nb_iter, N_Matrix_Per_Iter, dico):
         SampleData=RandomSampling(N_Matrix_Per_Iter,dico)
         Sample_following.append(SampleData)
         Mu,Sigma=ScoringProfile(SampleData)
-        Result_Mu.append(Mu)
-        Result_Sigma.append(Sigma)
-        print('Mu: ', round(np.mean(Mu),5),', Sigma: ',round(np.mean(Sigma),5))
+        print('Mu: ', round(Mu,5),', Sigma: ',round(Sigma,5))
 
     return Sample_following, Result_Mu, Result_Sigma 
    
 
-test,_,_=Mu_And_Sigma(5, 3, Dictionnaire_Profile_Homstrad)
+test,_,_=Mu_And_Sigma(5, 15, Dictionnaire_Profile_Homstrad)
 #Effectuer le dot product entre tous les profils et la query, et stocker les scores.
 
