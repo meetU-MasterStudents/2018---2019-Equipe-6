@@ -33,6 +33,7 @@ def traceback_SW(matrix, give_alignment = True):
     traceback = [(x,y)]
     align_seq1 = [x]
     align_seq2 = [y]
+    ngap = 0
     
     # tant que l'on est pas arrivé au bout de la matrice
     while x > 0 and y > 0:
@@ -45,14 +46,51 @@ def traceback_SW(matrix, give_alignment = True):
             y -= 1
         elif max_possible == 1:
             x -= 1
+            ngap += 1
         elif max_possible == 2:
             y -= 1
+            ngap += 1
         
         traceback.append((x,y))
         align_seq1.append(x)
         align_seq2.append(y)
         
+    # 1ere et derniere pos alignée
+    start_query = np.min(align_seq1)
+    start_template = np.min(align_seq2)
+    
+    end_query = np.max(align_seq1)
+    end_template = np.max(align_seq2)
+    
+        
     if give_alignment:
-        return(align_seq1, align_seq2)
+        return(np.max(matrix),ngap, start_query, start_template, end_query, end_template, sorted(align_seq1), sorted(align_seq2))
     else:
         return(traceback)
+    
+def print_alignement(al1, al2, seq1, seq2):
+    
+    L = np.max([len(seq1), len(seq2)])
+    
+    seqal1 = ""
+    seqal2 = ""
+    
+    for i in range(L):
+        
+        # si match
+        if al1[i] == al2[i]:
+            print(i)
+            seqal1 += seq1[i]
+            seqal2 += seq2[i]
+            
+        # si gap dans seq1
+        elif al1[i] > al2[i]:
+            seqal1 += seq1[i]
+            seqal2 += "-"
+            
+        # si gap dans seq2
+        elif al1[i] < al2[i]:
+            seqal1 += "-"
+            seqal2 += seq2[i]
+    
+    return(seqal1, seqal2)
