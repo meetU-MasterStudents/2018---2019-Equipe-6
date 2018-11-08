@@ -70,6 +70,8 @@ Here below are examples of output files you should get after running the previou
 
 [To download PDB FTP](http://www.wwpdb.org/download/downloads)
 
+[To download Uniprot FTP](http://BLABLABLA on va trouver)
+
 [To download formatted data records for a list of input UIDs](https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch)
 
 # References
