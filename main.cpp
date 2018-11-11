@@ -17,10 +17,10 @@ int ProcessHomstrad(string homstradPath)
 	
     if (mainDirHandler == NULL)
 	{
-		cout<<"Problem in reading main HOMASTRAD directory."<<endl;
+		cout<<"Problem in reading main HOMSTRAD directory."<<endl;
         exit(1);
 	}
-    cout<<"HOMASTRAD dataset is open."<<endl;
+    cout<<"HOMSTRAD dataset is open."<<endl;
 	
     while ((familyFolder = readdir(mainDirHandler)) != NULL) 
 	{
@@ -65,7 +65,7 @@ int ProcessHomstrad(string homstradPath)
 int ProcessQuery(string queryPath)
 {
 	Profile* _profile = new Profile(queryPath);
-	_profile->CallBLAST();
+	_profile->CallBLAST("swissprot","1e-4");
 	_profile->CallMUSCLE();
 	_profile->PSSMCalculator();	
 	_profile->ProfileName();
@@ -75,7 +75,12 @@ int ProcessQuery(string queryPath)
 
 int main()
 {
-	//ProcessQuery("query.fasta");
+	system ("rm -rf Results");
+	system ("rm -rf Fastas");
+	system ("mkdir Results");
+	system ("mkdir Fastas");
+	
+	ProcessQuery("query.fasta");
 	ProcessHomstrad("..//HOMSTRAD");
 	return 0;
 }

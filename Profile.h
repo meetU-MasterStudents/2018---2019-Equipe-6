@@ -9,6 +9,7 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <math.h>
 
 using namespace std; 
 
@@ -16,6 +17,7 @@ using namespace std;
 const char AmAc[] = "ARNDCQEGHILKMFPSTWYV-\0";
 
 const string ResultPath = "Results//";
+const string FastasPath = "Fastas//";
 
 struct MultiAlignedSequences
 {
@@ -40,7 +42,7 @@ public:
   ~Profile();
   //Calculate PSSM
   int PSSMCalculator();
-  int CallBLAST();
+  int CallBLAST(string,string);
   int CallMUSCLE();
   int ProfileName();
   int DisplayFrequencyMatrix();
@@ -56,6 +58,8 @@ private:
 	int CalculatePairFrequencyMatrix();
 	int ReadHits(string,vector<string>* );
 	int WriteHits(string,string,vector<string>);
+  int DownloadFromPDB(vector<string>);
+  int DownloadFromUniProt(vector<string>);
 	int DisplayFasta(string);
 
   
@@ -74,6 +78,9 @@ private:
 
   //Normalized frequency matrix
   nFrequencyMatrix _nFrequencyMatrix;
+
+  //Log-odd ratio matrix
+  nFrequencyMatrix _lorMatrix;
   
   //Pair frequency matrix (second step to create substitution matrix)
   pairFrequencyMatrix _pairFrequencyMatrix;
