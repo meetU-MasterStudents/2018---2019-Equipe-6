@@ -35,10 +35,12 @@ def traceback_SW(matrix, give_alignment = True):
     align_seq2 = [y]
     ngap = 0
     
+    #print(matrix[x][y])
+    #print(x,y)    
+    
     # tant que l'on est pas arrivé au bout de la matrice
     while x > 0 and y > 0:
-        
-        possible = [matrix[x-1][y-1], matrix[x-1][y], matrix[y-1][x]]
+        possible = [matrix[x-1][y-1], matrix[x-1][y], matrix[x][y-1]]  #Gabriela
         max_possible = np.argmax(possible)
          
         if max_possible == 0:
