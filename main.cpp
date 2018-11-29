@@ -78,10 +78,11 @@ static void ShowUsage(string exeFile)
     cerr << "Usage: " << exeFile << " <option(s)> "
          << "Options:\n"
          << "\t-h,--help\t\tShow this help message\n"
-         << "\t-p,--procquery Homstrad-or-Query\tCreating profiles for either homstrad or query"
-		 << "\t-q,--query Query path\tQuery file path"
-		 << "\t-e,--evalue e-Value\te-Value for PSI-Blast"
-		 << "\t-d,--database Database\tDatabase for PSI-Blast"
+		 << "\t-t,--prochoms\t\tProcess the Homstrad\n"
+         << "\t-s,--procquery\t\tProcess a query\n"
+		 << "\t-q,--query\t\t<Query path>\t\tQuery file path\n"
+		 << "\t-e,--evalue\t\t<e-Value>\t\te-Value for PSI-Blast\n"
+		 << "\t-d,--database\t\t<database>\t\tDatabase for PSI-Blast"
          << endl;
 }
 
@@ -111,6 +112,10 @@ int main(int argc, char* argv[])
 		else if ((arg == "-p") || (arg == "--procquery")) 
 		{
 			HomsOrQuery = true;
+		}
+		else if ((arg == "-t") || (arg == "--prochoms")) 
+		{
+			HomsOrQuery = false;
 		}
 		else if ((arg == "-q") || (arg == "--query")) 
 		{
