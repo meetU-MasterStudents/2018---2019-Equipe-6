@@ -21,19 +21,17 @@ def RecupereBenchmarkQuery(repertoire):
         QueryFolder=repertoire+"/"+nom
         for queryfile in os.listdir(QueryFolder):
             if queryfile==nom+"."+"fasta": # engros je veux dire si mon extension de fichier est .fasta
-                fastafile=open('test_dataset'+"/"+nom+"/"+"/"+nom+"."+"fasta", 'r')
+                fastafile=open('test_dataset'+"/"+nom+"/"+nom+"."+"fasta", 'r')
                 fastaread=pd.read_table(fastafile, engine="python")
                 n,m=fastaread.shape
                 Fil=fastaread.iloc[1:n-1,:m-1]
                 fil=Fil.as_matrix()
                 Listfasta.append(fil)
                 fastafile.close()
-                total = {}
-            else:
-                print("fasta file is missing")
-    for x, y in zip(Listqueryfolder, fastafile):
-            total[x] = y 
-    return fastafile, Listqueryfolder, total
+    total = {}
+    for x, y in zip(Listqueryfolder, Listfasta):
+        total[x] = y 
+    return Listfasta, Listqueryfolder, total
 
 Data, Name, Dictionnaire_Fasta_Dataset =RecupereBenchmarkQuery(repertoire)
 
