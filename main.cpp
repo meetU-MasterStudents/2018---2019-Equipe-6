@@ -62,10 +62,10 @@ int ProcessHomstrad(string homstradPath)
 }
 
 
-int ProcessQuery(string queryPath)
+int ProcessQuery(string queryPath,string queryName, string eValue, string dataBase)
 {
-	Profile* _profile = new Profile(queryPath);
-	_profile->CallBLAST("swissprot","1e-4");
+	Profile* _profile = new Profile(queryPath, queryName, eValue, dataBase);
+	_profile->CallBLAST();
 	_profile->CallMUSCLE();
 	_profile->PSSMCalculator();	
 	_profile->ProfileName();
@@ -73,14 +73,107 @@ int ProcessQuery(string queryPath)
 	return 0;
 }
 
-int main()
+static void ShowUsage(string exeFile)
 {
-	system ("rm -rf Results");
-	system ("rm -rf Fastas");
-	system ("mkdir Results");
-	system ("mkdir Fastas");
-	
-	ProcessQuery("query.fasta");
-	ProcessHomstrad("..//HOMSTRAD");
+    cerr << "Usage: " << exeFile << " <option(s)> "
+         << "Options:\n"
+         << "\t-h,--help\t\tShow this help message\n"
+         << "\t-p,--procquery Homstrad-or-Query\tCreating profiles for either homstrad or query"
+		 << "\t-q,--query Query path\tQuery file path"
+		 << "\t-e,--evalue e-Value\te-Value for PSI-Blast"
+		 << "\t-d,--database Database\tDatabase for PSI-Blast"
+         << endl;
+}
+
+int main(int argc, char* argv[])
+{
+	bool HomsOrQuery = false;
+	string queryFilePath;
+	string eValue;
+	string dataBase;
+
+   // Check the number of parameters
+    if (argc < 2) 
+	{
+		ShowUsage(argv[0]);
+        return -1;
+    }
+
+	string arg;
+    for (int i = 1; i < argc; i++) 
+	{
+        arg = argv[i];
+        if ((arg == "-h") || (arg == "--help")) 
+		{
+            ShowUsage(argv[0]);
+            return 0;
+        } 
+		else if ((arg == "-p") || (arg == "--procquery")) 
+		{
+			HomsOrQuery = true;
+		}
+		else if ((arg == "-q") || (arg == "--query")) 
+		{
+            if (i + 1 < argc) 
+			{
+                queryFilePath = argv[++i];
+            } 
+			else 
+			{
+                cerr << "--query option requires one argument." << endl;
+                return -1;
+            }  
+        }
+		else if ((arg == "-e") || (arg == "--evalue")) 
+		{
+            if (i + 1 < argc) 
+			{
+                eValue = argv[++i];
+            } 
+			else 
+			{
+                cerr << "--evalue option requires one argument." << endl;
+                return 1;
+            }  
+        }
+		else if ((arg == "-d") || (arg == "--database")) 
+		{
+            if (i + 1 < argc) 
+			{
+                dataBase = argv[++i];
+            } 
+			else 
+			{
+                cerr << "--database option requires one argument." << endl;
+                return 1;
+            }  
+        }
+    }
+
+	if(HomsOrQuery)
+	{
+		string command;
+		string queryFileName;
+
+		int lastPos = queryFilePath.find_last_of("/");
+		queryFileName = queryFilePath.substr(lastPos+1, queryFilePath.length());
+		queryFileName.replace(queryFileName.find('.'),6,"");
+
+		command = "rm -rf QueryResults//"+queryFileName+"//";
+		system (command.c_str());
+		command = "mkdir QueryResults//"+queryFileName+"//";
+		system (command.c_str());
+
+		command = "mkdir QueryResults//"+queryFileName+"//Fastas//";
+		system (command.c_str());
+
+		ProcessQuery(queryFilePath,queryFileName,eValue,dataBase);
+	}
+	else
+	{
+		system ("rm -rf HomstradResults");
+		system ("mkdir HomstradResults");
+		ProcessHomstrad("..//HOMSTRAD");
+	}
 	return 0;
 }

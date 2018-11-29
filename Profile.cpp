@@ -2,19 +2,22 @@
 
 using namespace std;
 
-Profile::Profile(string queryFile)
+Profile::Profile(string queryFile,string queryName, string eValue, string dataBase)
 {
 	_queryFile = queryFile;
-	
+	_queryName = queryName;
+	_eValue = eValue;
+	_dataBase = dataBase;
 	_mAlignedSequences = new MultiAlignedSequences();
 	_mAlignedSequences->familySize = 0;
 	_mAlignedSequences->seqLength = 0;	
 	
-	_profileName = "profile_";
+	_profileName = "profile_"+queryName;
 	
-	_blastOutputName = _queryFile + "_QueryBestHits.fasta";
-	_muscleOutputName = _queryFile + "_AlignedQueryBestHits.fasta";
-	_pssmOutputName = ResultPath + _queryFile + "_PSSMProfile";
+	_blastOutputName = QueryResultPath + _queryName + "//" + _queryName + "_QueryBestHits.fasta";
+	_fastasAcquiredPath = QueryResultPath + _queryName + "//Fastas//";
+	_muscleOutputName = QueryResultPath + _queryName + "//" + _queryName + "_AlignedQueryBestHits.fasta";
+	_pssmOutputName = QueryResultPath + _queryName + "//" + _queryName + "_PSSMProfile";
 }
 
 Profile::Profile(string familyName,string msaFile)
@@ -29,7 +32,7 @@ Profile::Profile(string familyName,string msaFile)
 	_profileName = "profile_";
 	
 	_muscleOutputName = _queryFile;
-	_pssmOutputName = ResultPath + familyName + "_PSSMProfile";
+	_pssmOutputName = HomstradResultPath + familyName + "_PSSMProfile";
 }
 
 Profile::~Profile()
@@ -261,10 +264,11 @@ int Profile::PSSMCalculator()
 }
 
 //This version is not final and needs modifications!
-int Profile::CallBLAST(string database, string e_value)
+int Profile::CallBLAST()
 {
 	string command;
-	string blastInitialOutputName = "initial_" + _blastOutputName;
+	//string blastInitialOutputName = "initial_" + _blastOutputName;
+	string blastInitialOutputName = QueryResultPath + _queryName + "//" + _queryName + "_initial_QueryBestHits.fasta";
 	cout<<"Executing PSI-Blast ...";
 	if (system(NULL))
 	{
@@ -284,11 +288,11 @@ int Profile::CallBLAST(string database, string e_value)
 	command = "psiblast -query ";
 	command += _queryFile;
 	command += " -db ";
-	command += database;
+	command += _dataBase;
 	command += " -out ";
 	command += blastInitialOutputName;
 	command += " -evalue ";
-	command += e_value;
+	command += _eValue;
 	command += " -outfmt 6 -remote ";
 	system(command.c_str()); 
 	
@@ -297,11 +301,11 @@ int Profile::CallBLAST(string database, string e_value)
 	//Extracting best hits (protein pdb codes!)
 	ReadHits(blastInitialOutputName,&hits);
 
-	if(database == "pdb")
+	if(_dataBase == "pdb")
 	{
 		DownloadFromPDB(hits);
 	}
-	else if(database == "swissprot")
+	else if(_dataBase == "swissprot")
 	{
 		DownloadFromUniProt(hits);
 	}
@@ -326,14 +330,14 @@ int Profile::DownloadFromUniProt(vector<string> hits)
 		cout<<hits[i].substr(0,6)<<endl;
 		//curl
 		command = "curl -s -o ";
-		command += FastasPath;
+		command += _fastasAcquiredPath;
 		command += hits[i].substr(0,6);
 		command += " 'https://www.uniprot.org/uniprot/";
 		command += hits[i].substr (0,6);
 		command += ".fasta' > curlLog";
 		//Execute command
 		system (command.c_str());
-		DisplayFasta(FastasPath+hits[i].substr(0,6));
+		DisplayFasta(_fastasAcquiredPath+hits[i].substr(0,6));
 	}
 	return 0;
 }
@@ -346,7 +350,7 @@ int Profile::DownloadFromPDB(vector<string> hits)
 	{		
 		//curl
 		command = "curl -s -o ";
-		command += FastasPath;
+		command += _fastasAcquiredPath;
 		command += hits[i].substr(0,4); //Chain issue
 		command += " 'https://www.rcsb.org/pdb/download/viewFastaFiles.do?structureIdList=";
 		command += hits[i].substr (0,4);  //Chain issue
@@ -398,7 +402,7 @@ int Profile::WriteHits(string fileName,string queryFile, vector<string> hits)
 	for(int i=0; i <hits.size(); i++)
 	{
 		{
-			ifstream ifHandler((FastasPath+hits[i].substr(0,6))); //fixt it!
+			ifstream ifHandler((_fastasAcquiredPath+hits[i].substr(0,6))); //fixt it!
 			if(ifHandler.good())
 			{
 				while (getline (ifHandler, line).good())

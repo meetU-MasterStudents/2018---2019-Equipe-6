@@ -16,8 +16,8 @@ using namespace std;
 //char AmAc[] = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V', '-'};
 const char AmAc[] = "ARNDCQEGHILKMFPSTWYV-\0";
 
-const string ResultPath = "Results//";
-const string FastasPath = "Fastas//";
+const string HomstradResultPath = "HomstradResults//";
+const string QueryResultPath = "QueryResults//";
 
 struct MultiAlignedSequences
 {
@@ -36,13 +36,13 @@ class Profile
 //Function Members
 public:
   //Constructors
-  Profile(string);
+  Profile(string,string,string,string);
   Profile(string,string);
   //Destructor
   ~Profile();
   //Calculate PSSM
   int PSSMCalculator();
-  int CallBLAST(string,string);
+  int CallBLAST();
   int CallMUSCLE();
   int ProfileName();
   int DisplayFrequencyMatrix();
@@ -66,6 +66,7 @@ private:
 //Data members
 private:
   string _queryFile;
+  string _queryName;
   //float** _PSSM;
   //const int _nAmAc = 21;
   const int _nAmAc = strlen(AmAc);
@@ -89,8 +90,12 @@ private:
   int _numPairResidues;
   
   string _blastOutputName;
+  string _fastasAcquiredPath;
   string _muscleOutputName;
   string _pssmOutputName;
+
+  string _eValue = "1e-5";
+  string _dataBase = "swissprot";
   
   bool homstradIrregularity = false;
 };
