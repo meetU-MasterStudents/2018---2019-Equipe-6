@@ -78,7 +78,7 @@ static void ShowUsage(string exeFile)
     cerr << "Usage: " << exeFile << " <option(s)> "
          << "Options:\n"
          << "\t-h,--help\t\tShow this help message\n"
-		 << "\t-t,--prochoms\t\tProcess the Homstrad\n"
+		 << "\t-t,--prochoms\t\t<Homstrad path>\t\tHomstrad dataset path\n"
          << "\t-s,--procquery\t\tProcess a query\n"
 		 << "\t-q,--query\t\t<Query path>\t\tQuery file path\n"
 		 << "\t-e,--evalue\t\t<e-Value>\t\te-Value for PSI-Blast\n"
@@ -92,6 +92,7 @@ int main(int argc, char* argv[])
 	string queryFilePath;
 	string eValue;
 	string dataBase;
+	string homstradDatasetPath;
 
    // Check the number of parameters
     if (argc < 2) 
@@ -116,6 +117,15 @@ int main(int argc, char* argv[])
 		else if ((arg == "-t") || (arg == "--prochoms")) 
 		{
 			HomsOrQuery = false;
+            if (i + 1 < argc) 
+			{
+                homstradDatasetPath = argv[++i];
+            } 
+			else 
+			{
+                cerr << "--query option requires one argument." << endl;
+                return -1;
+            } 
 		}
 		else if ((arg == "-q") || (arg == "--query")) 
 		{
@@ -178,7 +188,7 @@ int main(int argc, char* argv[])
 	{
 		system ("rm -rf HomstradResults");
 		system ("mkdir HomstradResults");
-		ProcessHomstrad("..//HOMSTRAD");
+		ProcessHomstrad(homstradDatasetPath);
 	}
 	return 0;
 }

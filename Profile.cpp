@@ -269,15 +269,17 @@ int Profile::CallBLAST()
 	string command;
 	//string blastInitialOutputName = "initial_" + _blastOutputName;
 	string blastInitialOutputName = QueryResultPath + _queryName + "//" + _queryName + "_initial_QueryBestHits.fasta";
-	cout<<"Executing PSI-Blast ...";
+	cout<<"Executing PSI-Blast for query: "<<_queryName<<endl;
 	if (system(NULL))
 	{
+		/*
 		puts ("Ok");
 		cout<<"Computer is thinking very hard ..."<<endl;
 		cout<<"Do you want to hear a joke meanwhile???"<<endl;
 		cout<<"No!!??"<<endl;
 		cout<<"What did one bioinformatician say to another after a get together?"<<endl;
 		cout<<"Dude, that party was a BLAST!"<<endl;
+		*/
 	}
 	else
 	{
@@ -294,8 +296,8 @@ int Profile::CallBLAST()
 	command += " -evalue ";
 	command += _eValue;
 	command += " -outfmt 6 -remote ";
-	system(command.c_str()); 
-	
+	//cout<<command<<endl;
+	system(command.c_str()); 	
 	vector<string> hits;
 
 	//Extracting best hits (protein pdb codes!)
