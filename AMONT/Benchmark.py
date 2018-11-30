@@ -13,7 +13,8 @@ from ThreadManager import *
 
 benchmarkPath="../2018---2019-partage-master_old/Data/test_dataset"
 homstradPath="..//2018---2019-partage-master_old/Data/HOMSTRAD"
-shutil.rmtree('QueryResults')
+if os.path.exists('QueryResults'):
+    shutil.rmtree('QueryResults')
 os.mkdir('QueryResults')
 homstradProfilesPath = "HomstradResults"
 
@@ -45,10 +46,14 @@ def GetHomstradProfiles(repertoire):
     return data
 
 homstrad = ReadDatabase(homstradPath)
+homstradDict = {}
+for i in range(len(homstrad)):
+    homstradDict[homstrad[i][0]] = homstrad[i][1]
 queries = ReadDatabase(benchmarkPath)
 
 if(processHomstrad):
-    shutil.rmtree(homstradProfilesPath)
+    if os.path.exists(homstradProfilesPath):
+        shutil.rmtree(homstradProfilesPath)
     os.mkdir(homstradProfilesPath)
     os.system('./Profile -t '+homstradPath)
 
@@ -57,8 +62,8 @@ dataProfileHomstrad = GetHomstradProfiles(homstradProfilesPath)
 #parameter loop here
 evalue = "1e-5"
 database = "swissprot"
-#Scores = MultiThreadQuery(queries,homstrad,dataProfileHomstrad,evalue,database)
-Scores = MultiQuery(queries,homstrad,dataProfileHomstrad,evalue,database)
+#Scores = MultiThreadQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
+Scores = MultiQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
 
 # Results
 Benchmark_Fold={"UBQ":"protg", "DEP":"myb_DNA-binding", "igvar-h":"Desulfoferrodox",
@@ -101,25 +106,11 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
             #SF (accorder un poids)
             sf=r.get('SF')
             if (sf==List_Benchmark_SF.get(query)) and (sf!= None) and (List_Benchmark_SF.get(query)!= None):
-                accuracy+=1  
+                accuracy+=1
+        accuracy /= len(Results[i].keys()) 
         acc.append(accuracy)
     plt.plot(range(threshold), acc, 'ro')
     plt.xlabel("Seuil")
     plt.ylabel("Accuracy")
     plt.show()
     return
-    
-
-
-
-Benchmark_as_tuple=Tuple_of_query(Chemin)
-
-#Score donne 1/3 
-#Score 1 & 2 : 2/3
-# tous : 3/3 
-Small_Results=[{"SSB":{"Fold":"Taratata"}, "PAC":{"SF":"Toto"}, "Lipoprotein_4":{"SF":"mofe"}}, 
-               {"SSB":{"Fold":"TIMP"}, "PAC":{"SF":"GAF"}, "Lipoprotein_4":{"SF":"histone"}},
-               {"SSB":{"SF":"blabla"}, "PAC":{"Fold":"GAF"}, "Lipoprotein_4":{"Fold":"BAG"}}]
-
-
-Affichage_Accuracy(Benchmark_Fold, Benchmark_SF, Small_Results, 3)
