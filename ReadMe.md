@@ -5,7 +5,7 @@ Our team proposes a pipeline that
 - Second, we uses MUSCLE (MUltiple Sequence Comparison by Log- Expectation) for creating multiple alignments of proteins sequences using BLAST result.
 - Third, we build a profile from all the HOMSTRAD data base and a profile from the query you want to test. This profil is a PSSM profile. Then, we compare each profile of the data with the dot product. This gives a score for each comparison.
 
-A unique function can launch directly the process over the benchmark list and gives back accuracy plot (variation on parameter on database, blast, and so on is possible). The launch is multi-thread to easily scan all data.
+A unique function can launch directly the process over the benchmark list and gives back accuracy plot (variation on parameter on database, blast, and so on is possible). the accuracy plot takes into account the Fold and Super Famille prediction. The launch is multi-thread to easily scan all data.
 
 The aval team will have output files and PSSM profiles available.
 
