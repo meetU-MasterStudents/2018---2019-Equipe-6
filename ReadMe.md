@@ -14,6 +14,9 @@ Our team is composed of 5 students from UPMC university.
 - [Irene Mauricette Mendy](https://github.com/reinamauricette) 
 - [Amandine Sandri](https://github.com/amandinesandri) 
 
+# Flowchart
+
+![Flowchart](https://drive.google.com/open?id=1QtJI3bWGgn3PLK5nTrLXih2F6LsaX6BcbD77oNbhQek)
 
 # Algorithms and Packages used
 
