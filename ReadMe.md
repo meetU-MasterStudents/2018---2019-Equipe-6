@@ -1,3 +1,16 @@
+# [EQUIPE AMONT] Some words about strategy
+
+Our team proposes a pipeline that 
+- First uses PSI-BLAST on the query to catch the best hits over the data based asked bu the user.
+- Second, we uses MUSCLE (MUltiple Sequence Comparison by Log- Expectation) for creating multiple alignments of proteins sequences using BLAST result.
+- Third, we build a profile from all the HOMSTRAD data base and a profile from the query you want to test. This profil is a PSSM profile. Then, we compare each profile of the data with the dot product. This gives a score for each comparison.
+
+A unique function can launch directly the process over the benchmark list and gives back accuracy plot (variation on parameter on database, blast, and so on is possible). The launch is multi-thread to easily scan all data.
+
+The aval team will have output files and PSSM profiles available.
+
+
+
 # About this project
 
 This repository **meetU-MasterStudents/2018---2019-Equipe-6** takes part in the [Meet-U](http://meet-u.org/edition_2018.html) project. The aim of the 2018's edition is to predict the 3D structure of a protein taken as an entry the query. Our team is focused on the first part of the work, therefore the goal of this repository is to find the best profile-profile comparison between template sequences and a target sequence by transforming them into profiles and then optimizing a profile-profile alignment.
