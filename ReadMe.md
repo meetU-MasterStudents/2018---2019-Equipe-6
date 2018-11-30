@@ -36,9 +36,10 @@ sudo apt-get install muscle
 ```
 
 ### 3) Run
-Command lines to build the package
 
-**Packages** are quite simple to use. 
+Here are the command lines to build the package. 
+
+**Compilation of cpp files** Only needed once. 
 Start by writting the below command line to build the package:
 ```bash
 sudo g++ -o profile main.cpp Profile.cpp -std=c++11
@@ -47,9 +48,10 @@ sudo g++ -o profile main.cpp Profile.cpp -std=c++11
 **Execute the packages**
 Next, use the below command line to execute the packages: 
 ```bash
-./profile 
+Benchmark.py
 ```
-When alignment has finished, ``profile`` will display the matrix of frequency of each amino acid in the query and template sequences.
+These command launches the analysis on the benchmark data. Therefore you should upload the test-dataset from the common folder of Meet-U and gives the absolute path to the Benchmark.py.
+Then differents parameters are possible.
 
 # Examples
 
