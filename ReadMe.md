@@ -16,7 +16,7 @@ Our team is composed of 5 students from UPMC university.
 
 # Flowchart
 
-![Flowchart](![drawing](https://docs.google.com/drawings/d/1QtJI3bWGgn3PLK5nTrLXih2F6LsaX6BcbD77oNbhQek/export/png)
+![Flowchart](https://docs.google.com/drawings/d/1QtJI3bWGgn3PLK5nTrLXih2F6LsaX6BcbD77oNbhQek/export/png)
 
 # Algorithms and Packages used
 
