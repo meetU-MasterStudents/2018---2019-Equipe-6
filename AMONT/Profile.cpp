@@ -288,6 +288,7 @@ int Profile::CallBLAST()
 	
 	//Executing blast command according to https://blast.ncbi.nlm.nih.gov/Blast.cgi
 	command = "psiblast -query ";
+	//command = "blastp -query ";
 	command += _queryFile;
 	command += " -db ";
 	command += _dataBase;
@@ -339,7 +340,7 @@ int Profile::DownloadFromUniProt(vector<string> hits)
 		command += ".fasta' > curlLog";
 		//Execute command
 		system (command.c_str());
-		DisplayFasta(_fastasAcquiredPath+hits[i].substr(0,6));
+		//DisplayFasta(_fastasAcquiredPath+hits[i].substr(0,6));
 	}
 	return 0;
 }
@@ -359,7 +360,7 @@ int Profile::DownloadFromPDB(vector<string> hits)
 		command += "&compressionType=uncompressed' > curlLog";
 		//Execute command
 		system (command.c_str());
-		DisplayFasta(hits[i].substr(0,4));
+		//DisplayFasta(_fastasAcquiredPath+hits[i].substr(0,4));
 	}
 	return 0;
 }
@@ -428,7 +429,7 @@ int Profile::DisplayFasta(string fileName)
     ifstream input(fileName);
     if(!input.good())
 	{
-        cerr << "Error opening '"<<fileName<<"'. Bailing out." << endl;
+        cerr << "Error opening "<<fileName<< endl;
         return -1;
     }
  
@@ -448,7 +449,8 @@ int Profile::DisplayFasta(string fileName)
                 name = line.substr(1);
             }
             content.clear();
-        } else if( !name.empty() )
+        } 
+		else if( !name.empty() )
 		{
             if( line.find(' ') != string::npos )
 			{
@@ -480,7 +482,7 @@ int Profile::ReadHits(string fileName,vector<string>* hits)
 		cout<<"The hits are as follow:"<<endl;
 		while (getline (fHandler, line))
 		{
-			cout<<line<<endl;
+			//cout<<line<<endl;
 			stringstream ss(line);
 			if (getline(ss, line, '	'))
 			{
@@ -490,10 +492,12 @@ int Profile::ReadHits(string fileName,vector<string>* hits)
 				}
 			}
 		}
+		/*
 		for(int i=0; i <(*hits).size(); i++)
 		{
 			cout << (*hits)[i] <<endl;
 		}
+		*/
 	}
 	fHandler.close();
 	return 0;

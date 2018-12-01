@@ -79,7 +79,7 @@ static void ShowUsage(string exeFile)
          << "Options:\n"
          << "\t-h,--help\t\tShow this help message\n"
 		 << "\t-t,--prochoms\t\t<Homstrad path>\t\tHomstrad dataset path\n"
-         << "\t-s,--procquery\t\tProcess a query\n"
+         << "\t-p,--procquery\t\tProcess a query\n"
 		 << "\t-q,--query\t\t<Query path>\t\tQuery file path\n"
 		 << "\t-e,--evalue\t\t<e-Value>\t\te-Value for PSI-Blast\n"
 		 << "\t-d,--database\t\t<database>\t\tDatabase for PSI-Blast"

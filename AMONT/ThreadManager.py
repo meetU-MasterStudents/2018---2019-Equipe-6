@@ -35,16 +35,33 @@ def calculateScore(profile1,profile2):
             MatrixScore[i][j] = np.dot(Profile1[i],Profile2[j])
     return MatrixScore
 
+def SequenceAlignment(path,seq1Name,seq1Cont,seq2Name,seq2Cont):
+    inputFile = path+seq1Name+'_'+seq2Name
+    outputFile = inputFile + '_aligned.fasta'
+    with open(inputFile, 'w') as fHandler:
+        fHandler.write('>'+seq1Name+'\n')
+        fHandler.write(seq1Cont+'\n')
+        fHandler.write('>'+seq2Name+'\n')
+        fHandler.write(seq2Cont)
+    os.system('muscle -in ' + inputFile + ' -out ' + outputFile)
+    with open(outputFile, 'r') as fHandler:
+        lines = fHandler.readlines()
+    return lines[1],lines[3]
+
 def Profile2Comparison(query,seqHomstrad,profHomstrad,evalue,database,return_dict):
     print('Process id: {0}'.format(os.getpid()))
     os.system('./Profile -p -q ' + query[2] + ' -e ' + evalue + ' -d ' + database)
-    queryPath = queryProfilesPath + '/' + query[0] + '/' + query[0] + '_PSSMProfile'
-    profQuery = GetQueryProfile(queryPath)
+    queryPath = queryProfilesPath + '/' + query[0] + '/'
+    queryFilePath = queryPath + query[0] + '_PSSMProfile'
+    profQuery = GetQueryProfile(queryFilePath)
     
     return_dict[query[0]] = {}
     list_results = []
     for i in range(len(profHomstrad)):
-        print('Processing: ',query[0], ' VS ',profHomstrad[i][0])
+        print('Profile comparison: ',query[0], ' VS ',profHomstrad[i][0])
+
+        seqAln1,seqAln2 = SequenceAlignment(queryPath,query[0],query[1],profHomstrad[i][0],seqHomstrad[profHomstrad[i][0]])
+        
         matrix = np.array(calculateScore(profQuery,profHomstrad[i][1]))
         matrix = normalise_SW(matrix,mu,sigma)
         score = forward_SW(matrix, gapPenalty, misMatchPenalty)
@@ -53,7 +70,7 @@ def Profile2Comparison(query,seqHomstrad,profHomstrad,evalue,database,return_dic
 
         
         list_results.append(Result(query=query[0], name=profHomstrad[i][0],
-                               score = traceback[0], qseq=query[1], tseq=seqHomstrad[profHomstrad[i][0]],
+                               score = traceback[0], qseq=seqAln1, tseq=seqAln2,
                                gaps = traceback[1], qbegin = traceback[2], qend = traceback[3], tbegin = traceback[4], 
                                tend = traceback[5], qal = traceback[6], tal = traceback[7]))
     #print_all(query[0], len(query[1]), list_results, 'firstOut'+query[0])

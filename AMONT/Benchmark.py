@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import os, shutil
-
+import warnings
 from ThreadManager import *
 
 ### FUNCTIONS ###
@@ -11,6 +11,7 @@ from ThreadManager import *
 # Dictionnaire de query + nom
 #go into each folder to retrieve each query file.fasta
 
+warnings.filterwarnings("ignore")
 benchmarkPath="../2018---2019-partage-master_old/Data/test_dataset"
 homstradPath="..//2018---2019-partage-master_old/Data/HOMSTRAD"
 if os.path.exists('QueryResults'):
@@ -60,7 +61,7 @@ if(processHomstrad):
 dataProfileHomstrad = GetHomstradProfiles(homstradProfilesPath)
 
 #parameter loop here
-evalue = "1e-5"
+evalue = "1e-20"
 database = "swissprot"
 #Scores = MultiThreadQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
 Scores = MultiQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
