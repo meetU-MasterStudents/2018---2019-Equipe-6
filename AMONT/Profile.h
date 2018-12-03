@@ -30,6 +30,7 @@ typedef map<char,int*> frequencyMatrix;
 typedef map<char,float*> nFrequencyMatrix;
 typedef tuple<char, char> residuesPair;
 typedef map<residuesPair,int*> pairFrequencyMatrix;
+typedef tuple<string,int,int> hitInformation;
 
 class Profile
 {
@@ -56,10 +57,10 @@ private:
 	float CalculateCombination(bool,int,int);
 	int CalculateFrequencyMatrix();
 	int CalculatePairFrequencyMatrix();
-	int ReadHits(string,vector<string>* );
-	int WriteHits(string,string,vector<string>);
-  int DownloadFromPDB(vector<string>);
-  int DownloadFromUniProt(vector<string>);
+	int ReadHits(string,vector<hitInformation>* );
+	int WriteHits(string,string,vector<hitInformation>);
+  int DownloadFromPDB(vector<hitInformation>);
+  int DownloadFromUniProt(vector<hitInformation>);
 	int DisplayFasta(string);
 
   

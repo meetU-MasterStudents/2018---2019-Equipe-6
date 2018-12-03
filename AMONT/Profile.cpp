@@ -299,7 +299,7 @@ int Profile::CallBLAST()
 	command += " -outfmt 6 -remote ";
 	//cout<<command<<endl;
 	system(command.c_str()); 	
-	vector<string> hits;
+	vector<hitInformation> hits;
 
 	//Extracting best hits (protein pdb codes!)
 	ReadHits(blastInitialOutputName,&hits);
@@ -325,18 +325,19 @@ int Profile::CallBLAST()
 }
 
 //Downloads protein sequences from UniProt website in fasta format
-int Profile::DownloadFromUniProt(vector<string> hits)
+int Profile::DownloadFromUniProt(vector<hitInformation> hits)
 { 
+	string proteinName;
 	string command;
 	for(int i=0; i <hits.size(); i++)
 	{		
-		cout<<hits[i].substr(0,6)<<endl;
+		proteinName = get<0>(hits[i]).substr(0,6);
 		//curl
 		command = "curl -s -o ";
 		command += _fastasAcquiredPath;
-		command += hits[i].substr(0,6);
+		command += proteinName;
 		command += " 'https://www.uniprot.org/uniprot/";
-		command += hits[i].substr (0,6);
+		command += proteinName;
 		command += ".fasta' > curlLog";
 		//Execute command
 		system (command.c_str());
@@ -346,17 +347,19 @@ int Profile::DownloadFromUniProt(vector<string> hits)
 }
 
 //Downloads protein sequences from pdb website in fasta format
-int Profile::DownloadFromPDB(vector<string> hits)
+int Profile::DownloadFromPDB(vector<hitInformation> hits)
 { 
+	string proteinName;
 	string command;
 	for(int i=0; i <hits.size(); i++)
-	{		
+	{	
+		proteinName = get<0>(hits[i]).substr(0,4);	
 		//curl
 		command = "curl -s -o ";
 		command += _fastasAcquiredPath;
-		command += hits[i].substr(0,4); //Chain issue
+		command += proteinName;
 		command += " 'https://www.rcsb.org/pdb/download/viewFastaFiles.do?structureIdList=";
-		command += hits[i].substr (0,4);  //Chain issue
+		command += proteinName;
 		command += "&compressionType=uncompressed' > curlLog";
 		//Execute command
 		system (command.c_str());
@@ -379,8 +382,11 @@ int Profile::CallMUSCLE()
 }
 
 //Creates unaligned fasta file
-int Profile::WriteHits(string fileName,string queryFile, vector<string> hits)
+int Profile::WriteHits(string fileName,string queryFile, vector<hitInformation> hits)
 {
+	string proteinName;
+	string proteinSequence;
+	int startPos, endPos;
 	string line;
 	ofstream ofHandler;
 	ofHandler.open((fileName));
@@ -402,17 +408,29 @@ int Profile::WriteHits(string fileName,string queryFile, vector<string> hits)
 		}
 	}
 	
-	for(int i=0; i <hits.size(); i++)
+	for(int i=0; i < hits.size(); i++)
 	{
+		proteinSequence = "";
+		proteinName = get<0>(hits[i]).substr(0,6);  //fixt it!
+		startPos = get<1>(hits[i]);
+		endPos = get<2>(hits[i]);
+		//cout<<proteinName<<"\t"<<startPos<<"\t"<<endPos<<endl;
 		{
-			ifstream ifHandler((_fastasAcquiredPath+hits[i].substr(0,6))); //fixt it!
+			ifstream ifHandler((_fastasAcquiredPath+proteinName));
 			if(ifHandler.good())
 			{
 				while (getline (ifHandler, line).good())
 				{
-					ofHandler<<line<<endl;
-					ofHandler.flush();
+					if(line[0] == '>')
+					{
+						ofHandler<<line<<endl;
+						ofHandler.flush();
+						continue;
+					}
+					proteinSequence += line;
 				}
+				ofHandler<<proteinSequence.substr(startPos-1,endPos-startPos)<<endl;
+				ofHandler.flush();
 			}
 		//ifHandler.close();
 		//ifHandler.clear();
@@ -472,32 +490,36 @@ int Profile::DisplayFasta(string fileName)
 }
 
 //Reads the protein names of the best hits given by Psi-BLAST
-int Profile::ReadHits(string fileName,vector<string>* hits)
+int Profile::ReadHits(string fileName,vector<hitInformation>* hits)
 {
+	int i;
 	string line;
+	hitInformation hInfo; 
 	ifstream fHandler;
 	fHandler.open((fileName));
 	if (fHandler.is_open())
 	{
-		cout<<"The hits are as follow:"<<endl;
+		//cout<<"The hits are as follow:"<<endl;
 		while (getline (fHandler, line))
 		{
+			i=0;
 			//cout<<line<<endl;
 			stringstream ss(line);
-			if (getline(ss, line, '	'))
+			while(getline(ss, line, '	'))
 			{
-				if (getline(ss, line, '	'))
+				switch(i)
 				{
-					(*hits).push_back(line);
+					case 1: get<0>(hInfo) = line;
+							break;
+					case 8: get<1>(hInfo) = stoi(line,nullptr,10);
+							break;
+					case 9: get<2>(hInfo) = stoi(line,nullptr,10);;
+							break;
 				}
+				i++;
 			}
+			(*hits).push_back(hInfo);
 		}
-		/*
-		for(int i=0; i <(*hits).size(); i++)
-		{
-			cout << (*hits)[i] <<endl;
-		}
-		*/
 	}
 	fHandler.close();
 	return 0;
