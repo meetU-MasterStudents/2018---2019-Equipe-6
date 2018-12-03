@@ -51,6 +51,7 @@ def SequenceAlignment(path,seq1Name,seq1Cont,seq2Name,seq2Cont):
 def Profile2Comparison(query,seqHomstrad,profHomstrad,evalue,database,return_dict):
     print('Process id: {0}'.format(os.getpid()))
     os.system('./Profile -p -q ' + query[2] + ' -e ' + evalue + ' -d ' + database)
+    """
     queryPath = queryProfilesPath + '/' + query[0] + '/'
     queryFilePath = queryPath + query[0] + '_PSSMProfile'
     profQuery = GetQueryProfile(queryFilePath)
@@ -73,8 +74,8 @@ def Profile2Comparison(query,seqHomstrad,profHomstrad,evalue,database,return_dic
                                score = traceback[0], qseq=seqAln1, tseq=seqAln2,
                                gaps = traceback[1], qbegin = traceback[2], qend = traceback[3], tbegin = traceback[4], 
                                tend = traceback[5], qal = traceback[6], tal = traceback[7]))
-    #print_all(query[0], len(query[1]), list_results, 'firstOut'+query[0])
-        
+    print_all(query[0], len(query[1]), list_results, 'firstOut'+query[0])
+    """
 
     #Save data!!
 

@@ -19,7 +19,7 @@ if os.path.exists('QueryResults'):
 os.mkdir('QueryResults')
 homstradProfilesPath = "HomstradResults"
 
-processHomstrad = True
+processHomstrad = False
  
 def ReadDatabase(Chemin_Repertoire):
     Liste_Of_Tuple=[]
@@ -61,7 +61,7 @@ if(processHomstrad):
 dataProfileHomstrad = GetHomstradProfiles(homstradProfilesPath)
 
 #parameter loop here
-evalue = "1e-20"
+evalue = "1e-8"
 database = "swissprot"
 #Scores = MultiThreadQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
 Scores = MultiQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
