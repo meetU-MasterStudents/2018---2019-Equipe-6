@@ -38,9 +38,7 @@ def traceback_SW(ScoresSW, give_alignment = True):
     align_seq1 = [x]
     align_seq2 = [y]
     ngap = 0
-    
-    #print(matrix[x][y])
-    #print(x,y)    
+       
     
     # tant que l'on est pas arrivé au bout de la matrice
     while x > 0 and y > 0:

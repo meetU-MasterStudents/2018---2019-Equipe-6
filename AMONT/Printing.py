@@ -72,34 +72,10 @@ class Result:
         hitname = '   ' + self.name 
         return(score + ungapped + pvalueq + pscore + pqtscore + pvaluet + qlength + tlength + qbeginend + tbeginend + hitname)
         
-    def print_alignement(self, al1, al2, seq1, seq2):
-    
-        L = np.amax([len(al1), len(al2)])
-    
-        seqal1 = ""
-        seqal2 = ""
-    
-        for i in range(L):
-            j=al1[i]
-            k=al2[i]
-            if seq1[j]==seq2[k]:
-                seqal1 += seq1[j]
-                seqal2 += seq2[k]
-        
-            else:
-                if seq1[j]!=seq2[k]:
-                    if j>k:
-                        seqal1 += seq1[j]
-                        seqal2 += "-"
-                else:
-                    if j< k:
-                        seqal1 += "-" 
-                        seqal2 += seq2[k]
-        return(seqal1, seqal2)
     
     def print_result_2(self):
         if self.query != None and self.qseq != None and self.name != None:
-            names = 'Alignment : ' + self.query + ', ' + str(self.qseq)+' aa. vs  ' + self.name + '\n'
+            names = 'Alignment : ' + self.query + ', ' +' aa. vs  ' + self.name + '\n'
         else:
             names = 'Alignment : ' + '          ' + ', ' + '          '+' aa. vs  ' + '          ' + '\n'
         if self.score != None and self.norm_score != None and self.qcov != None:
@@ -118,16 +94,16 @@ class Result:
             info += " | Alignment length :    " + str(self.allength) + " | Corr score :   " + str(round(self.corr, 2)) + "\n\n"
         else: 
             info += " | Alignment length :    " + '        ' + " | Corr score :   " + '        ' + "\n\n"
-        if self.qal != None and self.tal != None and self.qseq != None and self.tseq != None:
-            seqs = self.print_alignement(self.qal, self.tal, self.qseq, self.tseq)
+        if self.qseq != None and self.tseq != None:
+            seqs = [self.qseq, self.tseq]
         else:
             seqs = 'N/A'
         if self.qbegin != None and self.qend != None: 
-            align_query = "Query       " + str(self.qbegin) + seqs[0] + "    " + str(self.qend) + '\n'
+            align_query = "Query       " + str(self.qbegin) +' '*(5 - len(str(self.qbegin)))+ seqs[0] + "    " + str(self.qend) + '\n'
         else:
             align_query = "Query       " + '           ' + "    " + '         ' + '\n'
         if self.tbegin != None and self.tend != None:
-            template_query = "Template    "+ str(self.tbegin) + seqs[1] + "    " + str(self.tend) + '\n'
+            template_query = "Template    "+ str(self.tbegin) +' '*(5 - len(str(self.tbegin)))+ seqs[1] + "    " + str(self.tend) + '\n'
         else:
             template_query = "Template    "+ '           ' + "    " + '           ' + '\n'
         
@@ -144,12 +120,13 @@ def print_all(name_query, len_query, list_results, output_file):
     to_write += "SEQUENCE QUERY FILE : " + name_query + ", " + len_query + " aa.\n"
     to_write += "\n"
     to_write += "#| Score | Ungaped_score | Pvalue_Q | Pscore | PQTscore | P-Value_T | Q. Length | T. Length | Q. begin-end |  T. begin-end | HITS"
-    to_write += '\n---------------------------------------------------------'
+    to_write += '\n---------------------------------------------------------\n'
     
     for i in range(len(list_results)):
         
         first_part = ' '*(5-len(str(i+1))) + str(i+1) + list_results[i].print_result_1()
         to_write += first_part
+        to_write += '\n'
         
     to_write += '\n\n\n'
     to_write += '*** ALIGNMENTS DETAILS ***\n'
