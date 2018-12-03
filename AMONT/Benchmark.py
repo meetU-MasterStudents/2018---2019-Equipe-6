@@ -19,7 +19,7 @@ if os.path.exists('QueryResults'):
 os.mkdir('QueryResults')
 homstradProfilesPath = "HomstradResults"
 
-processHomstrad = False
+processHomstrad = True
  
 def ReadDatabase(Chemin_Repertoire):
     Liste_Of_Tuple=[]
