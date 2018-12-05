@@ -95,23 +95,41 @@ def score(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold):
 #Plot
 import matplotlib.pyplot as plt
 def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold):
-    acc=[]
-    accuracy=0
-    for i in range(threshold):
-        for query in Results[i].keys():
-            r=Results[i].get(query)
+    
+    #stocke les accuracy
+    acc=[0]*threshold
+    
+    
+    for query in Results.keys():
+        r=Results.get(query)
+        rank_query=sorted(r, key=r.__getitem__) #Range les résultats du plus petit au plus grand
+        rank_query.reverse()
+        if threshold>len(r):
+            threshold=len(r)
+            print("Pas assez de résultats possibles pour afficher le threshold demandé dans le cas de "+query)
+      
+        accuracy_inter = 0  
+        for i in range(threshold):     
+            f=rank_query[i]
             #Fold (accorder un poids)
-            f=r.get('Fold')
             if (f==List_Benchmark_Fold.get(query)) and (f!= None) and (List_Benchmark_Fold.get(query)!= None):
-                accuracy+=1
+                accuracy_inter+=1
             #SF (accorder un poids)
-            sf=r.get('SF')
-            if (sf==List_Benchmark_SF.get(query)) and (sf!= None) and (List_Benchmark_SF.get(query)!= None):
-                accuracy+=1
-        accuracy /= len(Results[i].keys()) 
-        acc.append(accuracy)
+            if (f==List_Benchmark_SF.get(query)) and (f!= None) and (List_Benchmark_SF.get(query)!= None):
+                accuracy_inter+=1  
+            acc[i]=acc[i]+accuracy_inter
+    
+    nb_queries=len(Results.keys())        
+    for k in range(len(acc)):
+        acc[k]=acc[k]/nb_queries
+
+    #plot    
+    plt.figure()    
     plt.plot(range(threshold), acc, 'ro')
     plt.xlabel("Seuil")
     plt.ylabel("Accuracy")
     plt.show()
-    return
+    
+    
+    return acc
+   
