@@ -2,25 +2,10 @@ import numpy as np
 import pandas as pd
 import os, shutil
 import warnings
+import sys, getopt
+import matplotlib.pyplot as plt
 from ThreadManager import *
 
-### FUNCTIONS ###
-
-#Put HELP here
-# Va chercher les .fasta du benchmark
-# Dictionnaire de query + nom
-#go into each folder to retrieve each query file.fasta
-
-warnings.filterwarnings("ignore")
-benchmarkPath="../2018---2019-partage-master_old/Data/test_dataset"
-homstradPath="..//2018---2019-partage-master_old/Data/HOMSTRAD"
-if os.path.exists('QueryResults'):
-    shutil.rmtree('QueryResults')
-os.mkdir('QueryResults')
-homstradProfilesPath = "HomstradResults"
-
-processHomstrad = True
- 
 def ReadDatabase(Chemin_Repertoire):
     Liste_Of_Tuple=[]
     for nom in os.listdir(Chemin_Repertoire):
@@ -46,27 +31,6 @@ def GetHomstradProfiles(repertoire):
         File.close()
     return data
 
-homstrad = ReadDatabase(homstradPath)
-homstradDict = {}
-for i in range(len(homstrad)):
-    homstradDict[homstrad[i][0]] = homstrad[i][1]
-queries = ReadDatabase(benchmarkPath)
-
-if(processHomstrad):
-    if os.path.exists(homstradProfilesPath):
-        shutil.rmtree(homstradProfilesPath)
-    os.mkdir(homstradProfilesPath)
-    os.system('./Profile -t '+homstradPath)
-
-dataProfileHomstrad = GetHomstradProfiles(homstradProfilesPath)
-
-#parameter loop here
-evalue = "1e-8"
-database = "swissprot"
-#Scores = MultiThreadQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
-Scores = MultiQuery(queries,homstradDict,dataProfileHomstrad,evalue,database)
-
-# Results
 Benchmark_Fold={"UBQ":"protg", "DEP":"myb_DNA-binding", "igvar-h":"Desulfoferrodox",
                 "Rib_hydrolayse":"TIR", "Lum_binding":"EFTU_C", "DnaJ":"ATP-synt_DE_N",
                 "Cohesin":"Fimbrial", "PAC":"GAF", "Agglutinin":"intb", "hemery":"SRP54", "LRR":"Recep_L_domain",
@@ -93,7 +57,6 @@ def score(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold):
     return accuracy
 
 #Plot
-import matplotlib.pyplot as plt
 def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold):
     
     #stocke les accuracy
@@ -102,7 +65,7 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
     
     for query in Results.keys():
         r=Results.get(query)
-        rank_query=sorted(r, key=r.__getitem__) #Range les résultats du plus petit au plus grand
+        rank_query=sorted(r, key=r.__getitem__) #Range les resultats du plus petit au plus grand
         rank_query.reverse()
         if threshold>len(r):
             threshold=len(r)
@@ -126,10 +89,141 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
     #plot    
     plt.figure()    
     plt.plot(range(threshold), acc, 'ro')
-    plt.xlabel("Seuil")
-    plt.ylabel("Accuracy")
+    plt.xlabel("Threshold")
+    plt.ylabel("Semi-ROC")
     plt.show()
     
-    
     return acc
-   
+
+def usage(scriptFile):
+    print("Usage: " + scriptFile + " <option(s)> \n" + 
+          "Options:\n" + 
+          "\t-h,--help\t\tShow this help message\n" +
+          "\t-q,--qpath\t\t<Query path>\t\tPath to folder of queries\n" +
+          "\t-m,--hpath\t\t<HOMSTRAD path>\t\tPath to the folder of HOMSTRAD dataset\n" +
+          "\t-g,--confile\t\t<Configuration file>\t\tPath of the configuration file\n" +
+          "\t-e,--evalue\t\t<e-Value>\t\te-Value for PSI-Blast\n" +
+          "\t-d,--database\t\t<database>\t\tDatabase for PSI-Blast\n" +
+          "\t-p,--prochoms\t\tCreate profiles for the HOMSTRAD dataset\n" +
+          "\t-j,--qprof\t\tCreate profiles for the given queries\n" +
+          "\t-w,--wInProf\t\tWeighing sequences during profile creation\n" +
+          "\t-r,--mltproc\t\tRun in multiprocessing mode\n" +
+          "\t-c,--recomp\t\tRecompile packages\n" +
+          "\t-o,--output\t\tCreate output alignment\n" +
+          "\t-x,--compare\t\tPerform profile-profile comparison")
+
+def main(argv):
+    benchmarkPath = ''
+    homstradPath = ''
+    justQueryProfiles = False
+    processHomstrad = False
+    multiProcess = False
+    applyWeights = False
+    configuration = False
+    configPath = ''
+    recompile = False
+    printOutput = False
+    performComparison = False
+    homstradProfilesPath = "HomstradResults" #Constant
+    queryProfilesPath = "QueryResults"       #Constant
+    evalue = "1e-4"
+    database = "swissprot"
+    try:
+        opts, args = getopt.getopt(argv[1:],"hq:m:jpe:d:wrcg:ox",["help", "qpath=", "hpath="
+                                                                 "qprof", "prochoms", "evalue=",
+                                                                 "database=", "wInProf", "mltproc"
+                                                                 "recomp", "confile=", "output"
+                                                                 "compare"])
+    except getopt.GetoptError:
+        usage(argv[0])
+        sys.exit(-1)
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            usage(argv[0])
+            sys.exit()
+        elif opt in ("-q", "--qpath"):
+            benchmarkPath = arg
+        elif opt in ("-m", "--hpath"):
+            homstradPath = arg
+        elif opt in ("-j","--qprof"):
+            justQueryProfiles = True
+        elif opt in ("-p","--prochoms"):
+            processHomstrad = True
+        elif opt in ("-e","--evalue"):
+            evalue = arg
+        elif opt in ("-d","--database"):
+            database = arg
+        elif opt in ("-w","--wInProf"):
+            applyWeights = True
+        elif opt in ("-r","--mltproc"):
+            multiProcess = True
+        elif opt in ("-c","--recomp"):
+            recompile = True
+        elif opt in ("-g","--confile"):
+            configuration = True
+            configPath = arg
+        elif opt in ("-o","--output"):
+            printOutput = True
+        elif opt in ("-x","--compare"):
+            performComparison = True           
+
+    if(configuration):
+        with open(configPath, 'r') as fHandler:
+            lines = fHandler.readlines()
+            for line in lines:
+                option = line.replace('\n','').split(' ')
+                if(option[0] == 'qpath'):
+                    benchmarkPath = option[1]
+                elif(option[0] == 'hpath'):
+                    homstradPath = option[1]
+                elif(option[0] == "qprof"):
+                    justQueryProfiles = True
+                elif(option[0] == "prochoms"):
+                    processHomstrad = True
+                elif(option[0] == "evalue"):
+                    evalue = option[1]
+                elif(option[0] == "database"):
+                    database = option[1]
+                elif(option[0] == "wInProf"):
+                    applyWeights = True
+                elif(option[0] == "mltproc"):
+                    multiProcess = True
+                elif(option[0] == "recomp"):
+                    recompile = True
+                elif(option[0] == "output"):
+                    printOutput = True
+                elif(option[0] == "compare"):
+                    performComparison = True
+
+    warnings.filterwarnings("ignore")
+    if(recompile):
+        os.system('sudo g++ -o Profile main.cpp Profile.cpp -std=c++11')
+    if(justQueryProfiles):
+        if os.path.exists(queryProfilesPath):
+            shutil.rmtree(queryProfilesPath)
+        os.mkdir(queryProfilesPath)
+
+    homstrad = ReadDatabase(homstradPath)
+    homstradDict = {}
+    for i in range(len(homstrad)):
+        homstradDict[homstrad[i][0]] = homstrad[i][1]
+    queries = ReadDatabase(benchmarkPath)
+
+
+    if(processHomstrad):
+        if os.path.exists(homstradProfilesPath):
+            shutil.rmtree(homstradProfilesPath)
+        os.mkdir(homstradProfilesPath)
+        os.system('./Profile -t '+homstradPath)
+
+    dataProfileHomstrad = GetHomstradProfiles(homstradProfilesPath)
+
+    if(multiProcess):
+        Scores = MultiThreadQuery(queries,homstradDict,dataProfileHomstrad,evalue,database,justQueryProfiles,printOutput,performComparison)
+    else:
+        Scores = MultiQuery(queries,homstradDict,dataProfileHomstrad,evalue,database,justQueryProfiles,printOutput,performComparison)
+    
+    np.save(evalue+database,Scores)
+
+if __name__ == "__main__":
+   main(sys.argv)

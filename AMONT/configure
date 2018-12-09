@@ -1,0 +1,7 @@
+qpath ../2018---2019-partage-master_old/Data/test_dataset
+hpath ../2018---2019-partage-master_old/Data/HOMSTRAD
+qprof
+prochoms
+evalue 1e-4
+database swissprot
+
