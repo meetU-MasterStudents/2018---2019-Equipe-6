@@ -55,7 +55,7 @@ Here are the command lines to build the package.
 **Compilation of cpp files** Only needed once. 
 Start by writting the below command line to build the package:
 ```bash
-sudo g++ -o profile main.cpp Profile.cpp -std=c++11
+sudo g++ -o Profile main.cpp Profile.cpp -std=c++11
 ```
 
 **Execute the packages**
