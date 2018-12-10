@@ -101,7 +101,7 @@ def usage(scriptFile):
           "\t-h,--help\t\tShow this help message\n" +
           "\t-q,--qpath\t\t<Query path>\t\tPath to folder of queries\n" +
           "\t-m,--hpath\t\t<HOMSTRAD path>\t\tPath to the folder of HOMSTRAD dataset\n" +
-          "\t-g,--confile\t\t<Configuration file>\t\tPath of the configuration file\n" +
+          "\t-g,--confile\t\t<Config file>\t\tPath of the configuration file\n" +
           "\t-e,--evalue\t\t<e-Value>\t\te-Value for PSI-Blast\n" +
           "\t-d,--database\t\t<database>\t\tDatabase for PSI-Blast\n" +
           "\t-p,--prochoms\t\tCreate profiles for the HOMSTRAD dataset\n" +
@@ -110,7 +110,9 @@ def usage(scriptFile):
           "\t-r,--mltproc\t\tRun in multiprocessing mode\n" +
           "\t-c,--recomp\t\tRecompile packages\n" +
           "\t-o,--output\t\tCreate output alignment\n" +
-          "\t-x,--compare\t\tPerform profile-profile comparison")
+          "\t-x,--compare\t\tPerform profile-profile comparison\n" + 
+          "\t-s,--secstru\t\tUse 2nd structure in profile-profile comparison\n" +
+          "\t-l,--correl\t\tApply correlation in profile-profile comparison")
 
 def main(argv):
     benchmarkPath = ''
@@ -118,22 +120,24 @@ def main(argv):
     justQueryProfiles = False
     processHomstrad = False
     multiProcess = False
-    applyWeights = False
+    applyWeights = False #not applied
     configuration = False
     configPath = ''
     recompile = False
     printOutput = False
     performComparison = False
+    applyCorrelation = False #not applied
+    useSecStruct = False #not applied
     homstradProfilesPath = "HomstradResults" #Constant
     queryProfilesPath = "QueryResults"       #Constant
     evalue = "1e-4"
     database = "swissprot"
     try:
-        opts, args = getopt.getopt(argv[1:],"hq:m:jpe:d:wrcg:ox",["help", "qpath=", "hpath="
+        opts, args = getopt.getopt(argv[1:],"hq:m:jpe:d:wrcg:oxsl",["help", "qpath=", "hpath="
                                                                  "qprof", "prochoms", "evalue=",
                                                                  "database=", "wInProf", "mltproc"
                                                                  "recomp", "confile=", "output"
-                                                                 "compare"])
+                                                                 "compare","secstru","correl"])
     except getopt.GetoptError:
         usage(argv[0])
         sys.exit(-1)
@@ -165,7 +169,11 @@ def main(argv):
         elif opt in ("-o","--output"):
             printOutput = True
         elif opt in ("-x","--compare"):
-            performComparison = True           
+            performComparison = True
+        elif opt in ("-s","--secstru"):
+            useSecStruct = True   
+        elif opt in ("-l","--correl"):
+            applyCorrelation = True         
 
     if(configuration):
         with open(configPath, 'r') as fHandler:
@@ -194,7 +202,12 @@ def main(argv):
                     printOutput = True
                 elif(option[0] == "compare"):
                     performComparison = True
+                elif(option[0] == "secstru"):
+                    useSecStruct = True 
+                elif(option[0] == "correl"):
+                    applyCorrelation = True
 
+    # compare --> secstru --> correl!!
     warnings.filterwarnings("ignore")
     if(recompile):
         os.system('sudo g++ -o Profile main.cpp Profile.cpp -std=c++11')
