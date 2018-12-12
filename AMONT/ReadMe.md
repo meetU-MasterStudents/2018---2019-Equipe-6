@@ -38,8 +38,7 @@ Basic Local ALignment Search Tool ([BLAST](https://en.wikipedia.org/wiki/BLAST))
 
 **Installation and main instructions** can be used at the following [link](https://www.ncbi.nlm.nih.gov/books/NBK52640/)
 
-If the local database is used for BLAST algorithms please first build the local database using following command:
-This is an example to build the local swissprot database.
+If the local database is used for BLAST algorithms please first build the local database using following command (This is an example to build the local swissprot database):
 ```bash
 makeblastdb -in uniprot_sprot.fasta -dbtype prot
 ```
