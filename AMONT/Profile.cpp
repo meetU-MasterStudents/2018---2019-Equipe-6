@@ -2,12 +2,16 @@
 
 using namespace std;
 
-Profile::Profile(string queryFile,string queryName, string eValue, string dataBase)
+Profile::Profile(string queryFile,string queryName, string eValue, string dataBase, bool applyWeights, bool multiThreadBlast, bool remoteProcess)
 {
 	_queryFile = queryFile;
 	_queryName = queryName;
 	_eValue = eValue;
 	_dataBase = dataBase;
+	_applyWeights = applyWeights;
+	_multiThreadBlast = multiThreadBlast;
+	_remoteProcess = remoteProcess;
+
 	_mAlignedSequences = new MultiAlignedSequences();
 	_mAlignedSequences->familySize = 0;
 	_mAlignedSequences->seqLength = 0;	
@@ -296,7 +300,11 @@ int Profile::CallBLAST()
 	command += blastInitialOutputName;
 	command += " -evalue ";
 	command += _eValue;
-	command += " -outfmt 6 -remote ";
+	command += " -outfmt 6 ";
+	if(_remoteProcess)
+	{
+		command += "-remote ";
+	}
 	//cout<<command<<endl;
 	system(command.c_str()); 	
 	vector<hitInformation> hits;
@@ -304,18 +312,34 @@ int Profile::CallBLAST()
 	//Extracting best hits (protein pdb codes!)
 	ReadHits(blastInitialOutputName,&hits);
 
-	if(_dataBase == "pdb")
+	if(_remoteProcess)
 	{
-		DownloadFromPDB(hits);
+		if(_dataBase == "pdb")
+		{
+			DownloadFromPDB(hits);
+		}
+		else if(_dataBase == "swissprot")
+		{
+			_sp = 0;
+			DownloadFromUniProt(hits);
+		}
+		else
+		{
+			cout<<"Database is not defined.";
+			return -1;
+		}
 	}
-	else if(_dataBase == "swissprot")
+	else  //Fix it!
 	{
+		if(_dataBase == "uniref50.fasta")
+		{
+			_sp = 9;
+		}
+		else if(_dataBase == "uniprot_sprot.fasta")
+		{
+			_sp = 3;
+		}
 		DownloadFromUniProt(hits);
-	}
-	else
-	{
-		cout<<"Database is not defined.";
-		return -1;
 	}
 	
 	WriteHits(_blastOutputName,_queryFile,hits);
@@ -331,7 +355,7 @@ int Profile::DownloadFromUniProt(vector<hitInformation> hits)
 	string command;
 	for(int i=0; i <hits.size(); i++)
 	{		
-		proteinName = get<0>(hits[i]).substr(0,6);
+		proteinName = get<0>(hits[i]).substr(_sp,6); //Fix it!
 		//curl
 		command = "curl -s -o ";
 		command += _fastasAcquiredPath;
@@ -353,7 +377,7 @@ int Profile::DownloadFromPDB(vector<hitInformation> hits)
 	string command;
 	for(int i=0; i <hits.size(); i++)
 	{	
-		proteinName = get<0>(hits[i]).substr(0,4);	
+		proteinName = get<0>(hits[i]).substr(0,4); //Fix it!!	
 		//curl
 		command = "curl -s -o ";
 		command += _fastasAcquiredPath;
@@ -411,7 +435,7 @@ int Profile::WriteHits(string fileName,string queryFile, vector<hitInformation> 
 	for(int i=0; i < hits.size(); i++)
 	{
 		proteinSequence = "";
-		proteinName = get<0>(hits[i]).substr(0,6);  //fixt it!
+		proteinName = get<0>(hits[i]).substr(_sp,6);  //fixt it!
 		startPos = get<1>(hits[i]);
 		endPos = get<2>(hits[i]);
 		//cout<<proteinName<<"\t"<<startPos<<"\t"<<endPos<<endl;
@@ -513,7 +537,7 @@ int Profile::ReadHits(string fileName,vector<hitInformation>* hits)
 							break;
 					case 8: get<1>(hInfo) = stoi(line,nullptr,10);
 							break;
-					case 9: get<2>(hInfo) = stoi(line,nullptr,10);;
+					case 9: get<2>(hInfo) = stoi(line,nullptr,10);
 							break;
 				}
 				i++;

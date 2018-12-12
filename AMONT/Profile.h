@@ -37,7 +37,7 @@ class Profile
 //Function Members
 public:
   //Constructors
-  Profile(string,string,string,string);
+  Profile(string,string,string,string,bool,bool,bool);
   Profile(string,string);
   //Destructor
   ~Profile();
@@ -97,8 +97,12 @@ private:
 
   string _eValue = "1e-5";
   string _dataBase = "swissprot";
+  bool _applyWeights = false;
+  bool _multiThreadBlast = false;
+  bool _remoteProcess = false;
   
   bool homstradIrregularity = false;
+  int _sp = 0;
 };
 
 //Operator overloading for matrix operations!

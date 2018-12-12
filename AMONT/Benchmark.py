@@ -96,7 +96,7 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
     return acc
 
 def usage(scriptFile):
-    print("Usage: " + scriptFile + " <option(s)> \n" + 
+    print("Usage: " + scriptFile + " \n" + 
           "Options:\n" + 
           "\t-h,--help\t\tShow this help message\n" +
           "\t-q,--qpath\t\t<Query path>\t\tPath to folder of queries\n" +
@@ -112,7 +112,8 @@ def usage(scriptFile):
           "\t-o,--output\t\tCreate output alignment\n" +
           "\t-x,--compare\t\tPerform profile-profile comparison\n" + 
           "\t-s,--secstru\t\tUse 2nd structure in profile-profile comparison\n" +
-          "\t-l,--correl\t\tApply correlation in profile-profile comparison")
+          "\t-l,--correl\t\tApply correlation in profile-profile comparison\n" +
+          "\t-f,--rmtdb\t\tUse remote database for PSIBlast process")
 
 def main(argv):
     benchmarkPath = ''
@@ -120,24 +121,25 @@ def main(argv):
     justQueryProfiles = False
     processHomstrad = False
     multiProcess = False
-    applyWeights = False #not applied
+    applyWeights = False
     configuration = False
     configPath = ''
     recompile = False
     printOutput = False
     performComparison = False
-    applyCorrelation = False #not applied
-    useSecStruct = False #not applied
+    applyCorrelation = False
+    useSecStruct = False
+    remoteDB = False
     homstradProfilesPath = "HomstradResults" #Constant
     queryProfilesPath = "QueryResults"       #Constant
     evalue = "1e-4"
     database = "swissprot"
     try:
-        opts, args = getopt.getopt(argv[1:],"hq:m:jpe:d:wrcg:oxsl",["help", "qpath=", "hpath="
+        opts, args = getopt.getopt(argv[1:],"hq:m:jpe:d:wrcg:oxslf",["help", "qpath=", "hpath="
                                                                  "qprof", "prochoms", "evalue=",
                                                                  "database=", "wInProf", "mltproc"
                                                                  "recomp", "confile=", "output"
-                                                                 "compare","secstru","correl"])
+                                                                 "compare","secstru","correl","rmtdb"])
     except getopt.GetoptError:
         usage(argv[0])
         sys.exit(-1)
@@ -173,7 +175,9 @@ def main(argv):
         elif opt in ("-s","--secstru"):
             useSecStruct = True   
         elif opt in ("-l","--correl"):
-            applyCorrelation = True         
+            applyCorrelation = True
+        elif opt in ("-f","--rmtdb"):
+            remoteDB = True                
 
     if(configuration):
         with open(configPath, 'r') as fHandler:
@@ -206,8 +210,15 @@ def main(argv):
                     useSecStruct = True 
                 elif(option[0] == "correl"):
                     applyCorrelation = True
+                elif(option[0] == "rmtdb"):
+                    remoteDB = True
 
     # compare --> secstru --> correl!!
+    if performComparison == False:
+        useSecStruct = False
+    if useSecStruct == False:
+        applyCorrelation = False
+
     warnings.filterwarnings("ignore")
     if(recompile):
         os.system('sudo g++ -o Profile main.cpp Profile.cpp -std=c++11')
@@ -232,9 +243,13 @@ def main(argv):
     dataProfileHomstrad = GetHomstradProfiles(homstradProfilesPath)
 
     if(multiProcess):
-        Scores = MultiThreadQuery(queries,homstradDict,dataProfileHomstrad,evalue,database,justQueryProfiles,printOutput,performComparison)
+        Scores = MultiThreadQuery(queries,homstradDict,dataProfileHomstrad,evalue,database,
+                                  justQueryProfiles,printOutput,performComparison,useSecStruct,
+                                  applyCorrelation,applyWeights,remoteDB)
     else:
-        Scores = MultiQuery(queries,homstradDict,dataProfileHomstrad,evalue,database,justQueryProfiles,printOutput,performComparison)
+        Scores = MultiQuery(queries,homstradDict,dataProfileHomstrad,evalue,database,
+                            justQueryProfiles,printOutput,performComparison,useSecStruct,
+                            applyCorrelation,applyWeights,remoteDB)
     
     np.save(evalue+database,Scores)
 

@@ -35,6 +35,78 @@ def calculateScore(profile1,profile2):
             MatrixScore[i][j] = np.dot(Profile1[i],Profile2[j])
     return MatrixScore
 
+def dotProduct(profile1, profile2, mu, sigma):
+    matrix = np.array(calculateScore(profile1,profile2))
+    matrix = normalise_SW(matrix,mu,sigma)
+    return matrix
+
+def pearsonCorrelationCoefficient(profile1, profile2):
+    n1,m1=np.shape(profile1)
+    n2,m2=np.shape(profile2)
+    Profile1=np.transpose(profile1)
+    Profile2=np.transpose(profile2)
+    MatrixScore=np.zeros((m1,m2))
+    for i in range(m1):
+        for j in range(m2):
+            A=list(Profile1[i])
+            Abar=np.mean(A)
+            B=list(Profile2[j])
+            Bbar=np.mean(B)
+            num=0
+            denom=0
+            Aquadra=0
+            Bquadra=0
+            for k in range(n1):
+                num=num+(A[k]-Abar)*(B[k]-Bbar)
+                Aquadra=Aquadra+(A[k]-Abar)**2
+                Bquadra=Bquadra+(B[k]-Bbar)**2
+            denom=np.sqrt(Aquadra*Bquadra)
+            MatrixScore[i][j] = abs(num/denom)
+    return MatrixScore
+
+def spearmannCorrelationCoefficient(profile1, profile2):
+    n1,m1=np.shape(profile1)
+    n2,m2=np.shape(profile2)
+    Profile1=np.transpose(profile1)
+    Profile2=np.transpose(profile2)
+    MatrixScore=np.zeros((m1,m2))
+    for i in range(m1):
+        for j in range(m2):
+            A=list(Profile1[i])
+            Abar=np.mean(A)
+            B=list(Profile2[j])
+            Bbar=np.mean(B)
+            num=0
+            denom=0
+            Aquadra=0
+            Bquadra=0
+            for k in range(n1):
+                num=num+(k-Abar)*(k-Bbar)
+                Aquadra=Aquadra+(k-Abar)**2
+                Bquadra=Bquadra+(k-Bbar)**2
+            denom=np.sqrt(Aquadra*Bquadra)
+            MatrixScore[i][j] = abs(num/denom)
+    return MatrixScore
+
+def euclideanDistance(profile1, profile2):
+    n1,m1=np.shape(profile1)
+    n2,m2=np.shape(profile2)
+    Profile1=np.transpose(profile1)
+    Profile2=np.transpose(profile2)
+    MatrixScore=np.zeros((m1,m2))
+    for i in range(m1):
+        for j in range(m2):
+            A=list(Profile1[i])
+            B=list(Profile2[j])
+            num=0
+            denom=0
+            for k in range(n1):
+                num=num+(A[k]-B[k])**2
+            num=np.sqrt(num)
+            denom=n1
+            MatrixScore[i][j] = num/denom
+    return MatrixScore
+
 def SequenceAlignment(path,seq1Name,seq1Cont,seq2Name,seq2Cont):
     inputFile = path+seq1Name+'_'+seq2Name
     outputFile = inputFile + '_aligned.fasta'
@@ -48,10 +120,15 @@ def SequenceAlignment(path,seq1Name,seq1Cont,seq2Name,seq2Cont):
         lines = fHandler.readlines()
     return lines[1],lines[3]
 
-def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printOut,comparison,return_dict):
+def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB,return_dict):
     print('Process id: {0}'.format(os.getpid()))
     if(qProf):
-        os.system('./Profile -p -q ' + query[2] + ' -e ' + evalue + ' -d ' + database)
+        command = './Profile -p -q ' + query[2] + ' -e ' + evalue + ' -d ' + database
+        if(applyW):
+            command += ' -w '
+        if(remoteDB):
+            command += ' -r '
+        os.system(command)
     
     if(comparison):
         queryPath = queryProfilesPath + '/' + query[0] + '/'
@@ -62,8 +139,9 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
         list_results = []
         for i in range(len(profHomstrad)):
             print('Profile comparison: ',query[0], ' VS ',profHomstrad[i][0])
-            matrix = np.array(calculateScore(profQuery,profHomstrad[i][1]))
-            matrix = normalise_SW(matrix,mu,sigma)
+            matrix=dotProduct(profQuery, profHomstrad[i][1],mu,sigma)
+            #matrix = np.array(calculateScore(profQuery,profHomstrad[i][1]))
+            #matrix = normalise_SW(matrix,mu,sigma)
             score = forward_SW(matrix, gapPenalty, misMatchPenalty)
             traceback = traceback_SW(matrix)
             return_dict[query[0]][profHomstrad[i][0]] = score
@@ -77,13 +155,13 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
         if(printOut):
             print_all(query[0], len(query[1]), list_results, 'firstOut'+query[0])
 
-def MultiThreadQuery(queryList,homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison):
+def MultiThreadQuery(queryList,homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB):
     nQueries = len(queryList)
     manager = Manager()
     return_dict = manager.dict()
     procs = []
     for i in range(nQueries):
-        proc = Process(target=ProfileProcessor, args=(queryList[i],homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,return_dict))
+        proc = Process(target=ProfileProcessor, args=(queryList[i],homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB,return_dict))
         procs.append(proc)
         proc.start()
  
@@ -93,12 +171,12 @@ def MultiThreadQuery(queryList,homstradList,profilesHomstrad,evalue,database,qPr
     return return_dict
 
 
-def MultiQuery(queryList,homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison):
+def MultiQuery(queryList,homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB):
     nQueries = len(queryList)
     manager = Manager()
     return_dict = manager.dict()
     for i in range(nQueries):
-        ProfileProcessor(queryList[i],homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,return_dict)
+        ProfileProcessor(queryList[i],homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB,return_dict)
         np.save(queryList[i][0],return_dict)
     print('Benchmark score calculation for the given parameters is finished!')
     return return_dict

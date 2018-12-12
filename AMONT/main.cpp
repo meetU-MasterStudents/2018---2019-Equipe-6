@@ -62,9 +62,9 @@ int ProcessHomstrad(string homstradPath)
 }
 
 
-int ProcessQuery(string queryPath,string queryName, string eValue, string dataBase)
+int ProcessQuery(string queryPath,string queryName, string eValue, string dataBase, bool applyWeights, bool multiThreadBlast, bool remoteProcess)
 {
-	Profile* _profile = new Profile(queryPath, queryName, eValue, dataBase);
+	Profile* _profile = new Profile(queryPath, queryName, eValue, dataBase, applyWeights, multiThreadBlast, remoteProcess);
 	_profile->CallBLAST();
 	_profile->CallMUSCLE();
 	_profile->PSSMCalculator();	
@@ -75,20 +75,26 @@ int ProcessQuery(string queryPath,string queryName, string eValue, string dataBa
 
 static void ShowUsage(string exeFile)
 {
-    cerr << "Usage: " << exeFile << " <option(s)> "
+    cerr << "Usage: " << exeFile << " "
          << "Options:\n"
          << "\t-h,--help\t\tShow this help message\n"
 		 << "\t-t,--prochoms\t\t<Homstrad path>\t\tHomstrad dataset path\n"
          << "\t-p,--procquery\t\tProcess a query\n"
 		 << "\t-q,--query\t\t<Query path>\t\tQuery file path\n"
 		 << "\t-e,--evalue\t\t<e-Value>\t\te-Value for PSI-Blast\n"
-		 << "\t-d,--database\t\t<database>\t\tDatabase for PSI-Blast"
+		 << "\t-d,--database\t\t<database>\t\tDatabase for PSI-Blast\n"
+		 << "\t-r,--remote\t\tPerform PSI-Blast on remote database\n"
+		 << "\t-m,--mltthrd\t\tPerform PSI-Blast on in multithread mode(local db)\n"
+		 << "\t-w,--wInProf\t\tWeighing sequences during profile creation"
          << endl;
 }
 
 int main(int argc, char* argv[])
 {
 	bool HomsOrQuery = false;
+	bool remoteProcess = false;
+	bool multiThreadBlast = false;
+	bool applyWeights = false;
 	string queryFilePath;
 	string eValue;
 	string dataBase;
@@ -113,6 +119,18 @@ int main(int argc, char* argv[])
 		else if ((arg == "-p") || (arg == "--procquery")) 
 		{
 			HomsOrQuery = true;
+		}
+		else if ((arg == "-r") || (arg == "--remote")) 
+		{
+			remoteProcess = true;
+		}
+		else if ((arg == "-m") || (arg == "--mltthrd")) 
+		{
+			multiThreadBlast = true;
+		}
+		else if ((arg == "-w") || (arg == "--wInProf")) 
+		{
+			applyWeights = true;
 		}
 		else if ((arg == "-t") || (arg == "--prochoms")) 
 		{
@@ -182,7 +200,7 @@ int main(int argc, char* argv[])
 		command = "mkdir QueryResults//"+queryFileName+"//Fastas//";
 		system (command.c_str());
 
-		ProcessQuery(queryFilePath,queryFileName,eValue,dataBase);
+		ProcessQuery(queryFilePath,queryFileName,eValue,dataBase,applyWeights,multiThreadBlast,remoteProcess);
 	}
 	else
 	{
