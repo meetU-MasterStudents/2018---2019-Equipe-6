@@ -216,8 +216,8 @@ def main(argv):
     # compare --> secstru --> correl!!
     if performComparison == False:
         useSecStruct = False
-    if useSecStruct == False:
-        applyCorrelation = False
+    if useSecStruct == True:
+        applyCorrelation = True 
 
     warnings.filterwarnings("ignore")
     if(recompile):

@@ -139,9 +139,10 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
         list_results = []
         for i in range(len(profHomstrad)):
             print('Profile comparison: ',query[0], ' VS ',profHomstrad[i][0])
-            matrix=dotProduct(profQuery, profHomstrad[i][1],mu,sigma)
-            #matrix = np.array(calculateScore(profQuery,profHomstrad[i][1]))
-            #matrix = normalise_SW(matrix,mu,sigma)
+            if applyCorrl==True:
+                matrix=pearsonCorrelationCoefficient(profQuery, profHomstrad[i][1])
+            else:
+                matrix=dotProduct(profQuery, profHomstrad[i][1],mu,sigma)
             score = forward_SW(matrix, gapPenalty, misMatchPenalty)
             traceback = traceback_SW(matrix)
             return_dict[query[0]][profHomstrad[i][0]] = score
