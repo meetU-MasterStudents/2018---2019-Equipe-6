@@ -61,6 +61,7 @@ private:
 	int WriteHits(string,string,vector<hitInformation>);
   int DownloadFromPDB(vector<hitInformation>);
   int DownloadFromUniProt(vector<hitInformation>);
+  int LocalDownloadFromBlastDB(vector<hitInformation>);
 	int DisplayFasta(string);
 
   
