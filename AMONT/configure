@@ -1,7 +1,6 @@
-qpath ../2018---2019-partage-master_old/Data/test_dataset
-hpath ../2018---2019-partage-master_old/Data/HOMSTRAD
+qpath ../partage-master_new/test_dataset
+hpath ../partage-master_new/HOMSTRAD
 qprof
-prochoms
 evalue 1e-4
-database swissprot
+database uniprot_sprot.fasta
 
