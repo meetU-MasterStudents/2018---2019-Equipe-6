@@ -320,7 +320,6 @@ int Profile::CallBLAST()
 		}
 		else if(_dataBase == "swissprot")
 		{
-			_sp = 0;
 			DownloadFromUniProt(hits);
 		}
 		else
@@ -331,14 +330,6 @@ int Profile::CallBLAST()
 	}
 	else
 	{
-		if(_dataBase == "uniref50.fasta") //Probably we do not need this!!
-		{
-			_sp = 9;
-		}
-		else if(_dataBase == "uniprot_sprot.fasta")
-		{
-			_sp = 0;
-		}
 		LocalDownloadFromBlastDB(hits);
 	}
 	
@@ -354,8 +345,8 @@ int Profile::LocalDownloadFromBlastDB(vector<hitInformation> hits)
 	string proteinName;
 	string command;
 	for(int i=0; i <hits.size(); i++)
-	{	
-		proteinName = get<0>(hits[i]).substr(_sp,6);
+	{
+		proteinName = get<0>(hits[i]);
 		//cout<<proteinName<<endl;
 		command = "blastdbcmd -db ";
 		command += _dataBase;
@@ -379,7 +370,7 @@ int Profile::DownloadFromUniProt(vector<hitInformation> hits)
 	string command;
 	for(int i=0; i <hits.size(); i++)
 	{		
-		proteinName = get<0>(hits[i]).substr(_sp,6); //Fix it!
+		proteinName = get<0>(hits[i]);
 		//curl
 		command = "curl -s -o ";
 		command += _fastasAcquiredPath;
@@ -401,7 +392,7 @@ int Profile::DownloadFromPDB(vector<hitInformation> hits)
 	string command;
 	for(int i=0; i <hits.size(); i++)
 	{	
-		proteinName = get<0>(hits[i]).substr(0,4); //Fix it!!	
+		proteinName = get<0>(hits[i]);	
 		//curl
 		command = "curl -s -o ";
 		command += _fastasAcquiredPath;
@@ -459,7 +450,7 @@ int Profile::WriteHits(string fileName,string queryFile, vector<hitInformation> 
 	for(int i=0; i < hits.size(); i++)
 	{
 		proteinSequence = "";
-		proteinName = get<0>(hits[i]).substr(_sp,6);
+		proteinName = get<0>(hits[i]);
 		startPos = get<1>(hits[i]);
 		endPos = get<2>(hits[i]);
 		cout<<proteinName<<"\t"<<startPos<<"\t"<<endPos<<endl;
@@ -487,79 +478,6 @@ int Profile::WriteHits(string fileName,string queryFile, vector<hitInformation> 
 	ofHandler.close();
 	return 0;
 }
-
-//Creates unaligned fasta file from local database (very slow)
-/*
-int Profile::WriteHitsLocal(string fileName,string queryFile, vector<hitInformation> hits)
-{
-	string proteinName;
-	string proteinSequence;
-	int startPos, endPos;
-	bool hitFoundInDB = false;
-	string line;
-	ofstream ofHandler;
-	ofHandler.open((fileName));
-	
-	//Begin with fasta of query
-	{
-		ifstream ifHandler((queryFile));
-		if(ifHandler.good())
-		{
-			while (getline (ifHandler, line).good())
-			{
-				ofHandler<<line<<endl;
-				ofHandler.flush();
-				if (line.find(">") != string::npos) 
-				{
-					_profileName = line.replace(0,1,"");
-				}
-			}
-		}
-	}
-	
-	int counter = 0;
-	for(int i=0; i < hits.size(); i++)
-	{
-		counter = 0;
-		proteinSequence = "";
-		//proteinName = get<0>(hits[i]).substr(_sp,6);  //fixt it!
-		proteinName = get<0>(hits[i]);
-		startPos = get<1>(hits[i]);
-		endPos = get<2>(hits[i]);
-		{
-			ifstream ifHandler(("../blastdb/uniprot_sprot.fasta"));
-			if(ifHandler.good())
-			{
-				while (getline (ifHandler, line).good())
-				{
-					if(line[0] == '>' && hitFoundInDB)
-					{
-						hitFoundInDB = false;
-						break;
-					}
-					cout<<proteinName<<"\t"<<line<<endl;
-					if (line.find(proteinName) != std::string::npos) 
-					{
-						cout<<counter++<<endl;
-						hitFoundInDB = true;
-						ofHandler<<line<<endl;
-						ofHandler.flush();
-						continue;
-					}
-					if(hitFoundInDB)
-					{
-						proteinSequence += line;
-					}
-				}
-				ofHandler<<proteinSequence.substr(startPos-1,endPos-startPos)<<endl;
-				ofHandler.flush();
-			}
-		}
-	}
-	ofHandler.close();
-	return 0;
-}
-*/
 
 //Displays content of a fasta file
 int Profile::DisplayFasta(string fileName)
@@ -630,8 +548,17 @@ int Profile::ReadHits(string fileName,vector<hitInformation>* hits)
 			{
 				switch(i)
 				{
-					case 1: get<0>(hInfo) = line;
-							break;
+					case 1:
+						get<0>(hInfo) = line;
+						if(_dataBase == "swissprot") //For remote mode
+						{
+							get<0>(hInfo) = line.substr(0,6);
+						}
+						else if(_dataBase == "pdb") //For remote mode
+						{
+							get<0>(hInfo) = line.substr(0,4);
+						}
+						break;
 					case 8: get<1>(hInfo) = stoi(line,nullptr,10);
 							break;
 					case 9: get<2>(hInfo) = stoi(line,nullptr,10);

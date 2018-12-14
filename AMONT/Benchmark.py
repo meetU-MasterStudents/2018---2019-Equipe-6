@@ -227,10 +227,12 @@ def main(argv):
             shutil.rmtree(queryProfilesPath)
         os.mkdir(queryProfilesPath)
 
-    homstrad = ReadDatabase(homstradPath)
     homstradDict = {}
-    for i in range(len(homstrad)):
-        homstradDict[homstrad[i][0]] = homstrad[i][1]
+    if(printOutput):
+        homstrad = ReadDatabase(homstradPath)
+        for i in range(len(homstrad)):
+            homstradDict[homstrad[i][0]] = homstrad[i][1]
+
     queries = ReadDatabase(benchmarkPath)
 
 

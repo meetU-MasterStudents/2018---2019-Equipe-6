@@ -103,7 +103,6 @@ private:
   bool _remoteProcess = false;
   
   bool homstradIrregularity = false;
-  int _sp = 0;
 };
 
 //Operator overloading for matrix operations!

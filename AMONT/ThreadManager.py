@@ -128,6 +128,7 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
             command += ' -w '
         if(remoteDB):
             command += ' -r '
+        #command += ' -m'
         os.system(command)
     
     if(comparison):
@@ -139,7 +140,7 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
         list_results = []
         for i in range(len(profHomstrad)):
             print('Profile comparison: ',query[0], ' VS ',profHomstrad[i][0])
-            if applyCorrl==True:
+            if applyCorrl:
                 matrix=pearsonCorrelationCoefficient(profQuery, profHomstrad[i][1])
             else:
                 matrix=dotProduct(profQuery, profHomstrad[i][1],mu,sigma)
