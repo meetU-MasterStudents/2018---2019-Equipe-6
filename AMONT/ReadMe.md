@@ -33,7 +33,7 @@ Our team is composed of 5 students from UPMC university.
 
 # Algorithms and Packages used
 
-### 1) BLAST
+### 1) BLAST+ (version 2.7.1+)
 Basic Local ALignment Search Tool ([BLAST](https://en.wikipedia.org/wiki/BLAST)) algorithm is used to search sequence databases for optimal alignement to the [query](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/blob/master/query.fasta)
 
 **Installation and main instructions** can be used at the following [link](https://www.ncbi.nlm.nih.gov/books/NBK52640/)
