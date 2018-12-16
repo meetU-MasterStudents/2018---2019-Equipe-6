@@ -144,9 +144,9 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
                 matrix=pearsonCorrelationCoefficient(profQuery, profHomstrad[i][1])
             else:
                 matrix=dotProduct(profQuery, profHomstrad[i][1],mu,sigma)
-            score = forward_SW(matrix, gapPenalty, misMatchPenalty)
-            traceback = traceback_SW(matrix)
-            return_dict[query[0]][profHomstrad[i][0]] = score
+            scoreMat = forward_SW(matrix, gapPenalty, misMatchPenalty)
+            traceback = traceback_SW(scoreMat)
+            return_dict[query[0]][profHomstrad[i][0]] = traceback[0]
 
             if(printOut):
                 seqAln1,seqAln2 = SequenceAlignment(queryPath,query[0],query[1],profHomstrad[i][0],seqHomstrad[profHomstrad[i][0]])
@@ -175,10 +175,9 @@ def MultiThreadQuery(queryList,homstradList,profilesHomstrad,evalue,database,qPr
 
 def MultiQuery(queryList,homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB):
     nQueries = len(queryList)
-    manager = Manager()
-    return_dict = manager.dict()
+    return_dict = dict()
     for i in range(nQueries):
         ProfileProcessor(queryList[i],homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB,return_dict)
-        np.save(queryList[i][0],return_dict)
+        #np.save(queryList[i][0],return_dict)
     print('Benchmark score calculation for the given parameters is finished!')
     return return_dict
