@@ -1,7 +1,0 @@
-qpath ../../partage-master_new/test_dataset
-hpath ../../partage-master_new/HOMSTRAD
-prochoms
-recomp
-qprof
-evalue 1e-4
-database uniprot_sprot.fasta
