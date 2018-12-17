@@ -567,6 +567,10 @@ int Profile::ReadHits(string fileName,vector<hitInformation>* hits)
 				i++;
 			}
 			(*hits).push_back(hInfo);
+			if((*hits).size() > 1000) //Limits number of hits to 1000 (this section should be merged with sequence weighing)
+			{
+				break;
+			}
 		}
 	}
 	fHandler.close();
