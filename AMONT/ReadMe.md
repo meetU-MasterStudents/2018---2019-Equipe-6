@@ -13,7 +13,7 @@ The aval team will have output files and PSSM profiles available.
 
 # About this project
 
-This repository **meetU-MasterStudents/2018---2019-Equipe-6** takes part in the [Meet-U](http://meet-u.org/edition_2018.html) project. The aim of the 2018's edition is to predict the 3D structure of a protein taken as an entry the query. Our team is focused on the first part of the work, therefore the goal of this repository is to find the best profile-profile comparison between template sequences and a target sequence by transforming them into profiles and then optimizing a profile-profile alignment.
+This repository **meetU-MasterStudents/2018---2019-Equipe-6** takes part in the [Meet-U](http://www.meet-u.org/) project. The aim of the 2018's edition is to predict the 3D structure of a protein taken as an entry the query. Our team is focused on the first part of the work, therefore the goal of this repository is to find the best profile-profile comparison between template sequences and a target sequence by transforming them into profiles and then optimizing a profile-profile alignment.
 
 We chose to use C++ and Python.
 
