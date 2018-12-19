@@ -31,7 +31,7 @@ Our team is composed of 5 students from UPMC university.
 
 ![Flowchart](https://docs.google.com/drawings/d/1QtJI3bWGgn3PLK5nTrLXih2F6LsaX6BcbD77oNbhQek/export/png)
 
-# Algorithms and Packages used
+# Quick Review of the main algorithms and Packages used
 
 ### 1) BLAST+ (version 2.7.1+)
 Basic Local ALignment Search Tool ([BLAST](https://en.wikipedia.org/wiki/BLAST)) algorithm is used to search sequence databases for optimal alignement to the [query](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/blob/master/query.fasta)
@@ -44,7 +44,7 @@ makeblastdb -in uniprot_sprot.fasta -parse_seqids -dbtype prot
 ```
 
 ### 2) MUSCLE
-Multiple Sequene Comparison by Log-Expectation (MUSCLE) that creates multiple Alignments using the output of BLAST.
+Multiple Sequence Comparison by Log-Expectation (MUSCLE) that creates multiple Alignments using the output of BLAST.
 
 **Instructions** can be used at the following [link](https://petrov.stanford.edu/software/src/muscle3.6/muscle3.6.html)
 **Installation** is done following below command line:
@@ -53,23 +53,39 @@ Multiple Sequene Comparison by Log-Expectation (MUSCLE) that creates multiple Al
 sudo apt-get install muscle
 ```
 
-### 3) Run
+# Start the analysis
 
-Here are the command lines to build the package. 
+## 1) Prepare your environment 
 
-**Compilation of cpp files** Only needed once. 
-Start by writting the below command line to build the package:
-```bash
-sudo g++ -o Profile main.cpp Profile.cpp -std=c++11
-```
+![folders_environment](https://user-images.githubusercontent.com/43165921/50207903-24322f80-0370-11e9-84d1-f7a496a86d11.png)
 
-**Execute the packages**
-Next, use the below command line to execute the packages: 
+## 2) Run command lines
+
+### Build the local database
+
+makeblastdb -in uniprot_sprot.fasta -parse_seqids -dbtype prot
+
+### Create profiles
+
+python Benchmark.py -g configureProf
+
+Note : in configureProf file, the « prochoms » option (= process homstrad) may be removed after the first run because the profiles homstrad would have been already built).
+
+### Compare profiles
+
+python Benchmark.py -g configureComp
+
+*Note*
 ```bash
 Benchmark.py
 ```
 These command launches the analysis on the benchmark data. Therefore you should upload the test-dataset from the common folder of Meet-U and gives the absolute path to the Benchmark.py.
-Then differents parameters are possible.
+Then differents parameters are possible, you can access them with the command:
+```bash
+Benchmark.py --help
+```
+
+
 
 # Examples
 
