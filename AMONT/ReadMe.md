@@ -59,21 +59,32 @@ sudo apt-get install muscle
 
 ![folders_environment](https://user-images.githubusercontent.com/43165921/50207903-24322f80-0370-11e9-84d1-f7a496a86d11.png)
 
+|Folder                               |Where to find it             |Content             |
+|--------------------                 |-------------------        |:-----------------: |
+|**2018---2019-Equipe-6-master**          |Clone the repository available on github <br/> https://github.com/meetU-MasterStudents/2018---2019-Equipe-6                 |All the repository of team 6 |
+|   **blastdb**                        |Create new folder            |Database used to generate the PSSM  |
+|   **ncbi-blast-2.7.1+**                 |Download it from <br/> https://www.ncbi.nlm.nih.gov/books/NBK52640/                     |BLAST+ (version 2.7.1+) program to make database and generate PSSM    |
+|**partage-master_new**: <br/> 1) Homstrad <br/> 2) test_dataset                 |   Download those folders from the shared Meet-U repository : <br/> 1) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/HOMSTRAD <br/> 2) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/test_dataset   | 1) Homstrad sequences directories and files <br/>  2) Query directories and files |
+
 ## 2) Run command lines
 
 ### Build the local database
 
+```bash
 makeblastdb -in uniprot_sprot.fasta -parse_seqids -dbtype prot
-
+```
 ### Create profiles
 
+```bash
 python Benchmark.py -g configureProf
-
-Note : in configureProf file, the « prochoms » option (= process homstrad) may be removed after the first run because the profiles homstrad would have been already built).
+```
+Note : in configureProf file, the « prochoms» option (= process homstrad) may be removed after the first run because the profiles homstrad would have been already built).
 
 ### Compare profiles
 
+```bash
 python Benchmark.py -g configureComp
+```
 
 *Note*
 ```bash
