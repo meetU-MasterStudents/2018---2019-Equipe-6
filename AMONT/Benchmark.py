@@ -57,20 +57,22 @@ def score(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold):
     return accuracy
 
 #Plot
-def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold):
+def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold, name):
     
     #stocke les accuracy
     acc=[0]*threshold
     
     
     for query in Results.keys():
+        print("query is " +query)
         r=Results.get(query)
         rank_query=sorted(r, key=r.__getitem__) #Range les resultats du plus petit au plus grand
-        rank_query.reverse()
-        if threshold>len(r):
-            threshold=len(r)
-            print("Pas assez de résultats possibles pour afficher le threshold demandé dans le cas de "+query)
-      
+        rank_query.reverse() #list type
+        if threshold>len(rank_query):
+            threshold=len(rank_query)
+            print("Pas assez de resultats possibles pour afficher le threshold demande dans le cas de "+query)
+        print(List_Benchmark_Fold.get(query))
+        print(List_Benchmark_SF.get(query))
         accuracy_inter = 0  
         for i in range(threshold):     
             f=rank_query[i]
@@ -81,6 +83,7 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
             if (f==List_Benchmark_SF.get(query)) and (f!= None) and (List_Benchmark_SF.get(query)!= None):
                 accuracy_inter+=1  
             acc[i]=acc[i]+accuracy_inter
+
     
     nb_queries=len(Results.keys())        
     for k in range(len(acc)):
@@ -89,9 +92,13 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
     #plot    
     plt.figure()    
     plt.plot(range(threshold), acc, 'ro')
+    y = np.linspace(0, 1, threshold, endpoint=False)
+    plt.plot(range(threshold),y, linestyle='-.')
     plt.xlabel("Threshold")
     plt.ylabel("Semi-ROC")
+    plt.title(name)
     plt.show()
+    plt.savefig(name+".png")
     
     return acc
 
@@ -232,9 +239,10 @@ def main(argv):
         homstrad = ReadDatabase(homstradPath)
         for i in range(len(homstrad)):
             homstradDict[homstrad[i][0]] = homstrad[i][1]
-
+    
+    
     queries = ReadDatabase(benchmarkPath)
-
+    
 
     if(processHomstrad):
         if os.path.exists(homstradProfilesPath):
@@ -254,6 +262,16 @@ def main(argv):
                             applyCorrelation,applyWeights,remoteDB)
     
     np.save(evalue+database,Scores)
+    
+    if performComparison==True:
+        title=str(evalue)+"_"+database
+        if applyCorrelation == True:
+            title=title+"_correlation"
+        else:
+            title=title+"_dotProduct"
+        if useSecStruct==True:
+            title=title+"_withSecondaryStruct"
+        Affichage_Accuracy(Benchmark_Fold,  Benchmark_SF, Scores, 300, title)
 
 if __name__ == "__main__":
    main(sys.argv)
