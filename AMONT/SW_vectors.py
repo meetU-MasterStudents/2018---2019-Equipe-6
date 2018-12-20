@@ -35,17 +35,17 @@ def local_alignment_affine_gap_penalty(scoring_matrix, gap_opening_penalty, gap_
     '''
     v,w=scoring_matrix.shape
     # Initialize the matrices.
-    S_lower = [[0 for j in xrange(w+1)] for i in xrange(v+1)]
-    scoresSW = [[0 for j in xrange(w+1)] for i in xrange(v+1)]
-    S_upper = [[0 for j in xrange(w+1)] for i in xrange(v+1)]
+    S_lower = [[0 for j in range(w+1)] for i in range(v+1)]
+    scoresSW = [[0 for j in range(w+1)] for i in range(v+1)]
+    S_upper = [[0 for j in range(w+1)] for i in range(v+1)]
 
     # Initialize the maximum score below the lowest possible score.
     max_score = -1
     max_i, max_j = 0, 0
 
     # Fill in the Score and Backtrack matrices.
-    for i in xrange(1, v+1):
-        for j in xrange(1, w+1):
+    for i in range(1, v+1):
+        for j in range(1, w+1):
             S_lower[i][j] = max([S_lower[i-1][j] - gap_extension_penalty, scoresSW[i-1][j] - gap_opening_penalty])
             S_upper[i][j] = max([S_upper[i][j-1] - gap_extension_penalty, scoresSW[i][j-1] - gap_opening_penalty])
             middle_scores = [S_lower[i][j], scoresSW[i-1][j-1] + scoring_matrix[i-1,j-1], S_upper[i][j], 0]
@@ -76,7 +76,7 @@ def local_alignment_affine_gap_penalty(scoring_matrix, gap_opening_penalty, gap_
 #    v_aligned = v_aligned[i:]
 #    w_aligned = w_aligned[j:]
 
-    return(scoresSW)  
+    return(np.array(scoresSW))  
 
 
 

@@ -8,9 +8,9 @@ from Printing import *
 #Move them to the Benchmark.py
 mu = 0.03316
 sigma = 0.06867
-gapPenalty = -2
-misMatchPenalty = -1
-
+gapPenalty = -0.81
+misMatchPenalty = -0.91
+gapExtension = -0.06
 queryProfilesPath = "QueryResults" #Constant
 
 def GetQueryProfile(filePath):
@@ -144,7 +144,10 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
                 matrix=pearsonCorrelationCoefficient(profQuery, profHomstrad[i][1])
             else:
                 matrix=dotProduct(profQuery, profHomstrad[i][1],mu,sigma)
-            scoreMat = forward_SW(matrix, gapPenalty, misMatchPenalty)
+                
+            ### AFFINE
+            #scoreMat = forward_SW(matrix, gapPenalty, misMatchPenalty)
+            scoreMat = local_alignment_affine_gap_penalty(matrix, gapPenalty, gapExtension)
             traceback = traceback_SW(scoreMat)
             return_dict[query[0]][profHomstrad[i][0]] = traceback[0]
 

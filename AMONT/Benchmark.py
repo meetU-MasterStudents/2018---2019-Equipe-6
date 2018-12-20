@@ -71,8 +71,6 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
         if threshold>len(rank_query):
             threshold=len(rank_query)
             print("Pas assez de resultats possibles pour afficher le threshold demande dans le cas de "+query)
-        print(List_Benchmark_Fold.get(query))
-        print(List_Benchmark_SF.get(query))
         accuracy_inter = 0  
         for i in range(threshold):     
             f=rank_query[i]
@@ -271,7 +269,7 @@ def main(argv):
             title=title+"_dotProduct"
         if useSecStruct==True:
             title=title+"_withSecondaryStruct"
-        Affichage_Accuracy(Benchmark_Fold,  Benchmark_SF, Scores, 300, title)
+        Affichage_Accuracy(Benchmark_Fold,  Benchmark_SF, Scores, 400, title)
 
 if __name__ == "__main__":
    main(sys.argv)
