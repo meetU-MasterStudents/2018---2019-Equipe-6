@@ -70,6 +70,7 @@ sudo apt-get install muscle
 
 ### Build the local database
 First, download the uniprot_sprot.fasta database (Swiss-Prot) and store it into **blastdb** folder. Then, you can run below command in order to build the database and to have it ready to be searched by BLAST.
+Note that we can help you getting the database via USB key.
 
 ```bash
 makeblastdb -in uniprot_sprot.fasta -parse_seqids -dbtype prot
