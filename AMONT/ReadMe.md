@@ -62,48 +62,70 @@ sudo apt-get install muscle
 |Folder                               |Where to find it             |Content             |
 |--------------------                 |-------------------        |:-----------------: |
 |**2018---2019-Equipe-6-master**          |Clone the repository available on github <br/> https://github.com/meetU-MasterStudents/2018---2019-Equipe-6                 |All the repository of team 6 |
-|   **blastdb**                        |Create new folder            |Database used to generate the PSSM  |
+|   **blastdb**                        |Create new folder            |Database used to generate the MSA  |
 |   **ncbi-blast-2.7.1+**                 |Download it from <br/> https://www.ncbi.nlm.nih.gov/books/NBK52640/                     |BLAST+ (version 2.7.1+) program to make database and generate PSSM    |
 |**partage-master_new**: <br/> 1) Homstrad <br/> 2) test_dataset                 |   Download those folders from the shared Meet-U repository : <br/> 1) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/HOMSTRAD <br/> 2) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/test_dataset   | 1) Homstrad sequences directories and files <br/>  2) Query directories and files |
 
 ## 2) Run command lines
 
 ### Build the local database
+First, download the uniprot_sprot.fasta database (Swiss-Prot) and store it into **blastdb** folder. Then, you can run below command in order to build the database and to have it ready to be searched by BLAST.
 
 ```bash
 makeblastdb -in uniprot_sprot.fasta -parse_seqids -dbtype prot
 ```
 ### Create profiles
 
+
 ```bash
 python Benchmark.py -g configureProf
 ```
-Note : in configureProf file, the « prochoms» option (= process homstrad) may be removed after the first run because the profiles homstrad would have been already built).
+*Note 1* : 
+- ConfigureProf contains the options for Benchmark.py to perform alignements and create profiles.
+- In configureProf file, the « prochoms» option (= process homstrad) may be removed after the first run because the profiles homstrad would have been already built).
 
 ### Compare profiles
 
 ```bash
 python Benchmark.py -g configureComp
 ```
+*Note 2* : 
+ConfigureComp contains to compare query profiles against Homstrad profiles
 
-*Note*
+*Note 3*
 ```bash
 Benchmark.py
 ```
 These command launches the analysis on the benchmark data. Therefore you should upload the test-dataset from the common folder of Meet-U and gives the absolute path to the Benchmark.py.
 Then differents parameters are possible, you can access them with the command:
 ```bash
-Benchmark.py --help
+python Benchmark.py --help
+Usage: Benchmark.py 
+Options:
+	-h,--help		Show this help message
+	-q,--qpath		<Query path>		Path to folder of queries
+	-m,--hpath		<HOMSTRAD path>		Path to the folder of HOMSTRAD dataset
+	-g,--confile		<Config file>		Path of the configuration file
+	-e,--evalue		<e-Value>		e-Value for PSI-Blast
+	-d,--database		<database>		Database for PSI-Blast
+	-p,--prochoms		Create profiles for the HOMSTRAD dataset
+	-j,--qprof		Create profiles for the given queries
+	-w,--wInProf		Weighing sequences during profile creation
+	-r,--mltproc		Run in multiprocessing mode
+	-c,--recomp		Recompile packages
+	-o,--output		Create output alignment
+	-x,--compare		Perform profile-profile comparison
+	-s,--secstru		Use 2nd structure in profile-profile comparison
+	-l,--correl		Apply correlation in profile-profile comparison
+	-f,--rmtdb		Use remote database for PSIBlast process
 ```
-
-
 
 # Examples
 
 Here below are examples of output files you should get after running the previous commands:
-- [Example of Query Sequence](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/Query.?)
+- [Example of Query Sequence](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/Query.fasta)
 
-- [Exmple of MSA from Blast](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/MSA.blast_out.?)
+- [Exmple of MSA from Blast](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/MSA.blast_out?)
 
 - [Example of Query Profiles](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/query.aamtx.?)
 
@@ -120,7 +142,7 @@ Here below are examples of output files you should get after running the previou
 
 [To download PDB FTP](http://www.wwpdb.org/download/downloads)
 
-[To download Uniprot FTP](http://BLABLABLA on va trouver)
+[To download Uniprot FTP](https://www.uniprot.org/downloads)
 
 [To download formatted data records for a list of input UIDs](https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch)
 
