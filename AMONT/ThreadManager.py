@@ -8,9 +8,9 @@ from Printing import *
 #Move them to the Benchmark.py
 mu = 0.03316
 sigma = 0.06867
-gapPenalty = -0.81
-misMatchPenalty = -0.91
-gapExtension = -0.06
+gapPenalty = 0.81
+misMatchPenalty = 0.91
+gapExtension = 0.06
 queryProfilesPath = "QueryResults" #Constant
 
 def GetQueryProfile(filePath):
