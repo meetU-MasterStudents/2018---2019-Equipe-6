@@ -1,0 +1,8 @@
+Uniref50
+evalue e-4
+Affine 
+mu = 0.05
+sigma = 0.06867
+gapPenalty = 2
+misMatchPenalty = 0.91
+gapExtension = -0.06 
