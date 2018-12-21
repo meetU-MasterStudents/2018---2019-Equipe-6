@@ -1,5 +1,5 @@
 import numpy as np
-import pandas as pd
+
 import os, shutil
 import warnings
 import sys, getopt
@@ -21,10 +21,9 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
     
     
     for query in Results.keys():
-        print("query is " +query)
         r=Results.get(query)
         rank_query=sorted(r, key=r.__getitem__) #Range les resultats du plus petit au plus grand
-        #rank_query.reverse() #list type
+        rank_query.reverse() #list type
         if threshold>len(rank_query):
             threshold=len(rank_query)
             print("Pas assez de resultats possibles pour afficher le threshold demande dans le cas de "+query)
@@ -54,9 +53,38 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
     plt.xlabel("Threshold")
     plt.ylabel("Semi-ROC")
     plt.title(name)
-    plt.show()
     plt.savefig(name+".png")
+    plt.show()
     
     return acc
-r1=np.load("last.npy").item()
-Affichage_Accuracy(Benchmark_Fold,  Benchmark_SF, r1, 405, "affine")
+
+
+def plot_score(List_Benchmark_Fold,  List_Benchmark_SF, Results):
+    list_query=Results.keys()
+    nombre_abscisse=len(list_query)
+    plt.figure()
+    x=range(nombre_abscisse-1)
+    Top_one=[]
+    for query in list_query:
+        results_for_the_query=Results.get(query)
+        for res in results_for_the_query.keys():
+            if res==List_Benchmark_Fold.get(query) or List_Benchmark_SF.get(query)==res: 
+                Top_one.append(results_for_the_query[res])
+        
+    plt.plot(x, Top_one, '.', color='r', marker='s')
+    
+    compteur=0
+    for query in list_query:
+        results_for_the_query=Results.get(query)
+        not_matched=[]
+        for res in results_for_the_query.keys():
+            not_matched.append(results_for_the_query[res])
+        plt.scatter([compteur]*len(not_matched), not_matched, alpha=0.6, marker='.', color='b')
+        compteur=compteur+1
+    plt.xticks(x, list_query, rotation='vertical')
+    plt.show()
+
+
+r1=np.load("checkComparisonResults2.npy").item()
+Affichage_Accuracy(Benchmark_Fold, Benchmark_SF, r1, 405, "control check")
+plot_score(Benchmark_Fold, Benchmark_SF, r1)
