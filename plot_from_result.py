@@ -175,7 +175,7 @@ def plot_score(List_Benchmark_Fold,  List_Benchmark_SF, Results):
         compteur=compteur+1
     plt.xticks(x, list_query, rotation='vertical')
     plt.show()
-    fig.savefig("details_on_each_queries")
+    fig.savefig("details_on_each_query")
 
 
 r1=np.load("check6.npy").item()
