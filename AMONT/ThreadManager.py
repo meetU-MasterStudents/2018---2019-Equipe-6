@@ -51,7 +51,6 @@ def pearsonCorrelationCoefficient(profile1, profile2):
     for i in range(m1):
         for j in range(m2):
             A=Profile1[i]
-            print(A)
             B=Profile2[j]
             MatrixScore[i][j] = pearsonr(A,B)[0]
     return MatrixScore
