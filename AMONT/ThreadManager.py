@@ -79,6 +79,7 @@ def spearmannCorrelationCoefficient(profile1, profile2):
             MatrixScore[i][j] = abs(num/denom)
     return MatrixScore
 
+from scipy.spatial import distance
 def euclideanDistance(profile1, profile2):
     n1,m1=np.shape(profile1)
     n2,m2=np.shape(profile2)
@@ -87,15 +88,7 @@ def euclideanDistance(profile1, profile2):
     MatrixScore=np.zeros((m1,m2))
     for i in range(m1):
         for j in range(m2):
-            A=list(Profile1[i])
-            B=list(Profile2[j])
-            num=0
-            denom=0
-            for k in range(n1):
-                num=num+(A[k]-B[k])**2
-            num=np.sqrt(num)
-            denom=n1
-            MatrixScore[i][j] = num/denom
+            MatrixScore[i][j] = distance.euclidean(Profile1[i], Profile2[j])
     return MatrixScore
 
 def SequenceAlignment(path,seq1Name,seq1Cont,seq2Name,seq2Cont):
