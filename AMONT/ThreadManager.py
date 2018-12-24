@@ -40,6 +40,8 @@ def dotProduct(profile1, profile2, mu, sigma):
     matrix = normalise_SW(matrix,mu,sigma)
     return matrix
 
+
+from scipy.stats import pearsonr
 def pearsonCorrelationCoefficient(profile1, profile2):
     n1,m1=np.shape(profile1)
     n2,m2=np.shape(profile2)
@@ -48,20 +50,10 @@ def pearsonCorrelationCoefficient(profile1, profile2):
     MatrixScore=np.zeros((m1,m2))
     for i in range(m1):
         for j in range(m2):
-            A=list(Profile1[i])
-            Abar=np.mean(A)
-            B=list(Profile2[j])
-            Bbar=np.mean(B)
-            num=0
-            denom=0
-            Aquadra=0
-            Bquadra=0
-            for k in range(n1):
-                num=num+(A[k]-Abar)*(B[k]-Bbar)
-                Aquadra=Aquadra+(A[k]-Abar)**2
-                Bquadra=Bquadra+(B[k]-Bbar)**2
-            denom=np.sqrt(Aquadra*Bquadra)
-            MatrixScore[i][j] = abs(num/denom)
+            A=Profile1[i]
+            print(A)
+            B=Profile2[j]
+            MatrixScore[i][j] = pearsonr(A,B)[0]
     return MatrixScore
 
 def spearmannCorrelationCoefficient(profile1, profile2):
