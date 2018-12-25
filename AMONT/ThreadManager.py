@@ -53,6 +53,7 @@ def pearsonCorrelationCoefficient(profile1, profile2):
             A=Profile1[i]
             B=Profile2[j]
             MatrixScore[i][j] = pearsonr(A,B)[0]
+    MatrixScore = normalise_SW(matrix,mu,sigma)
     return MatrixScore
 
 def spearmannCorrelationCoefficient(profile1, profile2):
@@ -77,6 +78,7 @@ def spearmannCorrelationCoefficient(profile1, profile2):
                 Bquadra=Bquadra+(k-Bbar)**2
             denom=np.sqrt(Aquadra*Bquadra)
             MatrixScore[i][j] = abs(num/denom)
+    MatrixScore = normalise_SW(matrix,mu,sigma)
     return MatrixScore
 
 from scipy.spatial import distance
@@ -89,6 +91,7 @@ def euclideanDistance(profile1, profile2):
     for i in range(m1):
         for j in range(m2):
             MatrixScore[i][j] = distance.euclidean(Profile1[i], Profile2[j])
+    MatrixScore = normalise_SW(matrix,mu,sigma)
     return MatrixScore
 
 def SequenceAlignment(path,seq1Name,seq1Cont,seq2Name,seq2Cont):
