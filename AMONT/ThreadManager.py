@@ -8,9 +8,9 @@ from Printing import *
 #Move them to the Benchmark.py
 mu = 0.03316
 sigma = 0.06867
-gapPenalty = 0.81
-misMatchPenalty = 0.91
-gapExtension = 0.06
+gapPenalty = 12
+misMatchPenalty = 3
+gapExtension = 1
 queryProfilesPath = "QueryResults" #Constant
 
 def GetQueryProfile(filePath):
@@ -145,7 +145,7 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
                                             gaps = traceback[1], qbegin = traceback[2], qend = traceback[3], tbegin = traceback[4], 
                                             tend = traceback[5], qal = traceback[6], tal = traceback[7]))
         if(printOut):
-            print_all(query[0], len(query[1]), list_results, 'firstOut'+query[0])
+            print_all(query[0], len(query[1]), list_results, 'Output_'+query[0]+'.foldrec')
 
 def MultiThreadQuery(queryList,homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB):
     nQueries = len(queryList)
