@@ -105,7 +105,13 @@ def SequenceAlignment(path,seq1Name,seq1Cont,seq2Name,seq2Cont):
     os.system('muscle -in ' + inputFile + ' -out ' + outputFile)
     with open(outputFile, 'r') as fHandler:
         lines = fHandler.readlines()
-    return lines[1],lines[3]
+    alignedSeqs = []
+    for line in lines:
+        if '>' in line:
+            alignedSeqs.append('') 
+            continue
+        alignedSeqs[-1] += line.replace('\n','')
+    return alignedSeqs[0],alignedSeqs[1]
 
 def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB,return_dict):
     print('Process id: {0}'.format(os.getpid()))

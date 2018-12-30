@@ -1,5 +1,5 @@
-qpath ../../partage-master_new/test_dataset
-hpath ../../partage-master_new/HOMSTRAD
+qpath ../../partage-master_new/Data/test_dataset
+hpath ../../partage-master_new/Data/HOMSTRAD
 prochoms
 recomp
 qprof

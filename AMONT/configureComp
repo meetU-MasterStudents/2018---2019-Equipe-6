@@ -1,3 +1,4 @@
-qpath ../../partage-master_new/test_dataset
+qpath ../../partage-master_new/Data/test_dataset
+hpath ../../partage-master_new/Data/HOMSTRAD
 compare
 output
