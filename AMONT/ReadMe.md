@@ -1,15 +1,15 @@
 # [EQUIPE AMONT] Some words about strategy
 
 Our team proposes a pipeline that 
-- First uses PSI-BLAST on the query to catch the best hits over the data based asked bu the user.
-- Second, we uses MUSCLE (MUltiple Sequence Comparison by Log- Expectation) for creating multiple alignments of proteins sequences using BLAST result.
+- First uses PSI-BLAST on the query to catch the best hits over the data based asked by the user.
+- Second, we use MUSCLE (MUltiple Sequence Comparison by Log- Expectation) for creating multiple alignments of proteins sequences using PSI-BLAST result.
 - Third, we build a profile from all the HOMSTRAD data base and a profile from the query you want to test. This profil is a PSSM profile. Then, we compare each profile of the data with the dot product. This gives a score for each comparison.
 
-A unique function can launch directly the process over the benchmark list and gives back accuracy plot (variation on parameter on database, blast, and so on is possible). the accuracy plot takes into account the Fold and Super Famille prediction. The launch is multi-thread to easily scan all data.
+A unique function can launch directly the process over the benchmark list and gives back accuracy plot (variation on parameter on database, blast, and so on is possible). The accuracy plot takes into account the Fold and Super Famille prediction. 
 
-The aval team will have output files and PSSM profiles available.
+The downstream teams will have output files and PSSM profiles available in addition of the foldrec files.
 
-
+![Strategy](https://docs.google.com/drawings/d/1L4CTeDLFCykn0qLyoBxvrCMjXIciuDEtp1CsvYECo4g/export/png)
 
 # About this project
 
@@ -27,11 +27,14 @@ Our team is composed of 5 students from UPMC university.
 - [Irene Mauricette Mendy](https://github.com/reinamauricette) 
 - [Amandine Sandri](https://github.com/amandinesandri) 
 
-# Flowchart
+
+# Flowchart : "How to use the pipeline ?"
 
 ![Flowchart](https://docs.google.com/drawings/d/1QtJI3bWGgn3PLK5nTrLXih2F6LsaX6BcbD77oNbhQek/export/png)
 
-# Quick Review of the main algorithms and Packages used
+
+
+# Algorithms and Packages used
 
 ### 1) BLAST+ (version 2.7.1+)
 Basic Local ALignment Search Tool ([BLAST](https://en.wikipedia.org/wiki/BLAST)) algorithm is used to search sequence databases for optimal alignement to the [query](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/blob/master/query.fasta)
@@ -39,6 +42,8 @@ Basic Local ALignment Search Tool ([BLAST](https://en.wikipedia.org/wiki/BLAST))
 **Installation and main instructions** can be used at the following [link](https://www.ncbi.nlm.nih.gov/books/NBK52640/)
 
 If the local database is used for BLAST algorithms please first build the local database using following command (This is an example to build the local swissprot database):
+
+
 ```bash
 makeblastdb -in uniprot_sprot.fasta -parse_seqids -dbtype prot
 ```
