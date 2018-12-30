@@ -121,19 +121,6 @@ Options:
 	-f,--rmtdb		Use remote database for PSIBlast process
 ```
 
-# Examples
-
-Here below are examples of output files you should get after running the previous commands:
-- [Example of Query Sequence](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/Query.fasta)
-
-- [Exmple of MSA from Blast](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/MSA.blast_out?)
-
-- [Example of Query Profiles](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/query.aamtx.?)
-
-- [Example of Homstrad Profiles](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/template.aamtx.?)
-
-- [Example of scores from profiles-profiles alignments](https://github.com/meetU-MasterStudents/2018---2019-Equipe-6/edit/master/Example/score.foldrec.?)
-
 
 # Useful links 
 
