@@ -1,5 +1,5 @@
 Uniref50
-evalue e-4
+evalue e-3
 Affine 
 DotProduct
 mu = 0.05
