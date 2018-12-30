@@ -125,7 +125,10 @@ Options:
 	-l,--correl		Apply correlation in profile-profile comparison
 	-f,--rmtdb		Use remote database for PSIBlast process
 ```
+# Plot results
 
+Output is a foldrec and a dictionary ranking saved in a .npy file. To plot the results of the benchmark, it is possible to use the plot_from_result.py script to plot the results. 
+Warning : it is useful mostly for the benchmark results.
 
 # Useful links 
 
