@@ -75,7 +75,7 @@ class Result:
     
     def print_result_2(self):
         if self.query != None and self.qseq != None and self.name != None:
-            names = 'Alignment : ' + self.query + ', ' +' aa. vs  ' + self.name + '\n'
+            names = 'Alignment : ' + self.query + ', ' +' aa. vs  ' + self.name + ' :  \n'
         else:
             names = 'Alignment : ' + '          ' + ', ' + '          '+' aa. vs  ' + '          ' + '\n'
         if self.score != None and self.norm_score != None and self.qcov != None:
