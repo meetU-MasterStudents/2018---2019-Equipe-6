@@ -79,15 +79,18 @@ class Result:
         else:
             names = 'Alignment : ' + '          ' + ', ' + '          '+' aa. vs  ' + '          ' + '\n'
         if self.score != None and self.norm_score != None and self.qcov != None:
-            info = "Score :  " + str(round(self.score, 3))+ " | Normalized score :    " + str(round(self.norm_score, 3))+ " | Query coverage : " + str(round(self.qcov, 2)) 
+            #info = "Score :  " + str(round(self.score, 3))+ " | Normalized score :    " + str(round(self.norm_score, 3))+ " | Query coverage : " + str(round(self.qcov, 2)) 
+            info = "Score :  " + str(round(self.score, 3))+ " | Normalized score :    " + str(round(self.norm_score, 3))+ " | Query coverage : " + str(round(self.qcov, 2)*100) + "%"
         else:
             info = "Score :  " + '       '+ " | Normalized score :    " + '       ' + " | Query coverage : " + '       '
         if self.identity != None:
-            info += "% | Identity :   " + str(round(self.identity, 2)) + "% | Gaps :     "
+            #info += "% | Identity :   " + str(round(self.identity, 2)) + "% | Gaps :     "
+            info += "% | Identity :   " + str(round(self.identity, 2)*100) + "% | Gaps :     " 
         else:
             info += "% | Identity :   " + '        ' + "% | Gaps :     "
         if self.gaps != None and self.ssscore != None:
-            info += str(round(self.gaps, 2)) + "% | SS Score :    " + str(round(self.ssscore, 2))
+            #info += str(round(self.gaps, 2)) + "% | SS Score :    " + str(round(self.ssscore, 2))
+            info += str(round(self.gaps, 2)*100) + "% | SS Score :    " + str(round(self.ssscore, 2))
         else:
             info += '        ' + "% | SS Score :    " + '        '
         if self.allength != None and self.corr != None:

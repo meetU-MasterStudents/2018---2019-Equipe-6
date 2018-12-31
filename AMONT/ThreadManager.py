@@ -148,10 +148,12 @@ def ProfileProcessor(query,seqHomstrad,profHomstrad,evalue,database,qProf,printO
                 seqAln1,seqAln2 = SequenceAlignment(queryPath,query[0],query[1],profHomstrad[i][0],seqHomstrad[profHomstrad[i][0]])
                 list_results.append(Result(query=query[0], name=profHomstrad[i][0],
                                             score = traceback[0], qseq=seqAln1, tseq=seqAln2,
-                                            gaps = traceback[1], qbegin = traceback[2], qend = traceback[3], tbegin = traceback[4], 
-                                            tend = traceback[5], qal = traceback[6], tal = traceback[7]))
+                                            gaps = traceback[1], qbegin = traceback[2]+1, qend = traceback[4]+1, tbegin = traceback[3]+1, 
+                                            tend = traceback[5]+1, qal = traceback[6], tal = traceback[7],
+                                            norm_score=0.5,qcov=0.8,identity=0.05,ssscore=6.30,allength=len(seqAln1),corr=50))
         if(printOut):
-            print_all(query[0], len(query[1]), list_results, 'Output_'+query[0]+'.foldrec')
+            list_results_sorted = sorted(list_results, key=lambda x:x.score, reverse=True)
+            print_all(query[0], len(query[1]), list_results_sorted, 'Output_'+query[0]+'.foldrec')
 
 def MultiThreadQuery(queryList,homstradList,profilesHomstrad,evalue,database,qProf,printOut,comparison,useSS,applyCorrl,applyW,remoteDB):
     nQueries = len(queryList)
