@@ -1,0 +1,942 @@
+>UniRef50_UPI00046DAAFF uncharacterized protein LOC103343703 n=1 Tax=Prunus mume TaxID=102107 RepID=UPI00046DAAFF
+-----PGPYAIK-S-VKL---EKYLLYTP------------PDGSLL---F-S----GE-
+-SGTD-P--NTTFKV--EADKDH-S------DLVNIKSS-NGKYWRRV----DETNN---
+---------Y-INSTAD-VPYRNQS-SWQCTL--FQ----IT-----------KD-----
+TDGHK-----------------YRIRHVQLGGYVAPNPENKNRAYVSTSNDTGNQEV---
+---------
+>UniRef50_UPI0009ABA9BD uncharacterized protein LOC109949353 n=1 Tax=Prunus persica TaxID=3760 RepID=UPI0009ABA9BD
+----ALKSVTLE----------RYVVY---IRKEVYP----LNDVLE---C-S----GT-
+-DPES-A--DATFQV--AADAQD-P------SLVNIKSS-NGKYWRRA----DNESS---
+---------W-IVSDAV-EIHEDQD-SWECTL--FR-P-VKV-----------DD-----
+DPQNNR----------------YRFQHVQLGYYIQPL-------AKWEGELILNAHQEAT
+NDDQIFEV-
+>UniRef50_A0A0K9RRJ9 Uncharacterized protein n=2 Tax=Spinacia oleracea TaxID=3562 RepID=A0A0K9RRJ9_SPIOL
+----LPVLVALRKD-HGWPTKRDFLAC---VTEGS------RQGCIA---L-S----SEA
+-DALS-P--SANFFV--HPPKD---------GLVHLRSRYNNKYLCRA----EGNVV---
+-----NLFLYFIAAGENWSQEEERN--W--------------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A0K9RRC4 Uncharacterized protein n=1 Tax=Spinacia oleracea TaxID=3562 RepID=A0A0K9RRC4_SPIOL
+----LPVLVALRKD-HGWPTKRDFLAC---VTEGS------RQGCIA---L-S----SEA
+-DALS-P--SANFFV--HPPKD---------GLVHLRSRYNNKYLCRA----EGNVV---
+-----NLFLYFIAAGENWSQEEERI-VVYKAL----------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A0A0K970 Uncharacterized protein n=7 Tax=Cucumis TaxID=3655 RepID=A0A0A0K970_CUCSA
+----LPKYVGFQ-N-HTE---RKYLQYL-------------THGFFKGNLYFS----SD-
+-QALT-P--FTKFEI--EPDKNG--------KYWHIKCCYNNKYLASS----NDYNR---
+---------F-VRPFVS-KPSENDT-SWPCTL----------------------------
+------------------------------------------------------------
+---------
+>UniRef50_UPI000B8F32CD uncharacterized protein LOC110876882 n=1 Tax=Helianthus annuus TaxID=4232 RepID=UPI000B8F32CD
+----IPSFFVIQ-S-SAS---SLYLSP---NTTEKR-----PSGVLE---F------SEA
+-RIFS-P--LVKFAA--EQSRTG-DA-----SVVHIRSCFNNKYWVPH----EVSKG-V-
+---------FEVGVSAN-KPQEDTT-DPACTV--FR-V-SIH-----------SD-----
+PDGTSG----------------FRFFHIRTSLYALNLSGGMGMI----------------
+---------
+>UniRef50_A0A251SSH7 Putative clostridium epsilon toxin ETX n=1 Tax=Helianthus annuus TaxID=4232 RepID=A0A251SSH7_HELAN
+----IPSFFVIQ-S-SAS---KLYLTP---NTTEKR-----PSGVLE---F------SEA
+-RIFS-P--RVKFAA--EQSKKGGDA-----TLVHIRSCFNNKYWVPH----EVSKGV--
+---------FEVGASAN-KPQEDTT-DPACTL--FR-VSIHS-----------DP-----
+DGTSG-----------------FRFFHVSTSLYAVNLSG---------------------
+---------
+>UniRef50_A0A251U9V1 Putative agglutinin domain-containing protein n=1 Tax=Helianthus annuus TaxID=4232 RepID=A0A251U9V1_HELAN
+----IPTFFVIQ-S-SAS---RLYLSP---NTTEKR-----PSGVLE---F------REA
+-SIFS-P--RVKFAA--EQSKKG---GDA--TVVHIRSCFNNKYWVPH----EV----SK
+GV-------FEVGASAN-KPQEDTT-DPACTL--FR-V-SIH-----------SD-----
+PDG-TSG---------------FRFFHVSMSLYAVNLSG---------------------
+---------
+>UniRef50_A0A0K9R0T2 Uncharacterized protein n=1 Tax=Spinacia oleracea TaxID=3562 RepID=A0A0K9R0T2_SPIOL
+----LPLVAAFQ---TRNGRRGYFWCR--------------GNGIL----WND----GR-
+-NVLN-P--NTRFEI--ERSSSN-N------SLVHIRSTFNNKYLVSE----NGL-----
+---------F-VDARAE-KPEENTS-VQSCTL--FR-P-ELD-----------QT-----
+QNA-------------------YRLRHL--------------------------------
+---------
+>UniRef50_A0A097PIE3 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIE3_LINUS
+----LPRFIALY-A-KTA---KKYVKY---QSDGGH-------GYKQ---ILT----AKS
+-EQLSSS--LAKFEV--VESTSD-----P--SMVHIRCCYNNKYLRID----NS-----S
+NGR------L-ITASMD-GPEENQT-VWYSTL--FQ-P-ELL------------------
+TDG-T-----------------IRLLHIKSGYYMQ-WLDAGPNSMYRSWIHVISSEPLMP
+KSENILQVI
+>UniRef50_UPI000B7832E6 uncharacterized protein LOC110699051 n=1 Tax=Chenopodium quinoa TaxID=63459 RepID=UPI000B7832E6
+-----PQFVALR-T-DFN---KRYVAV---VTDGSQ-----KNGLEM---S-S----EA-
+-EIVVNL--KAKFTV--EPSTTA--------GLVHIRSNYNNKYWCSE--------S-PS
+SG-------L-IAAKGV-EQVEDKS-SWNCTL--FR-V-QFY------------------
+GQN-------------------VSFYHVGSNSDVQVS-------TVNNQLLLDVNKTST-
+GNKEIFTPV
+>UniRef50_UPI000E6FEBE6 uncharacterized protein LOC113311160 n=3 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6FEBE6
+----LPWFFALE-S-VDV---SKYLRH---EKGDDE-----NKPDTK---C-T----GE-
+-EVVS-P--CTKFEA--EMPDKM-DDNDK--GLVHIRCCYNNKYLVLL--------D-ND
+NG-----D-R-ISPRAT-VPVEDKT-DPSCTL--FE-P--IF-----------NS-----
+DGR-------------------VQFKHAYLDRQVIVYEA---------------------
+---------
+>UniRef50_M5WR60 Uncharacterized protein n=10 Tax=Prunus TaxID=3754 RepID=M5WR60_PRUPE
+--ADLPKFFALK-S-AKN---QKYVVF---KDQSTAE----LPNRLE---C-S----GE-
+-ESHS-K--YARFKA--EKDVNQ-P------SLVHIKSTYSDKYLRTA----SEDSP---
+---------W-IVAEAD-EKQPNKN-LWSCTL--FK-P-VVL-----------QKPAPYV
+DGV-------------------YQFVHVRLGNLT--------------------------
+---------
+>UniRef50_A0A1R3HSZ6 Aerolysin/hemolysin/leukocidin toxin n=1 Tax=Corchorus olitorius TaxID=93759 RepID=A0A1R3HSZ6_9ROSI
+---------------NGP---MGFMSY---DKENF------HMRCME---F---------
+-DITS-A--YAKLEV--VPSATS--------RFVHIKSCQNNKYLERI----HDPSI-HP
+PSIANY---W-ITATAD-KPEEDRT-KESCTLFRFR-----------------QHQSQII
+RNT-------------------VRIDHV--------------------------------
+---------
+>UniRef50_A0A1R3HSN4 Agglutinin n=2 Tax=Corchorus olitorius TaxID=93759 RepID=A0A1R3HSN4_9ROSI
+----LPEFIVLK-F-VGR---PEYMGY---QRGGG------ANGYVR---M------SE-
+-TFPQSP--YARFAV--EVSNVD-G------SLVHIRSFQSNRYLERV----PYNFG--A
+VGQSIHPY-W-IAATAE-KREEDRS-KESCTL--FR-VSRIN------------------
+DTT-------------------FRMLHVQSGCLVRIDYTWGP-----HSFVHAVENYIYN
+DGNERIEII
+>UniRef50_A0A1R3HT94 Aerolysin/hemolysin/leukocidin toxin n=1 Tax=Corchorus olitorius TaxID=93759 RepID=A0A1R3HT94_9ROSI
+--------------------------------------------YGS---C------QES
+-DIMS-P--YAKFEV--ETC----GTN----GLVHIRSCRNNKYLVRT----RIHDP-SM
+DAAAEQEEHWIIAATAK-KAEEDQT-KECCTL--FR-P-ICV-----------SL-----
+EEN-T-----------------VRLKHVQSGCYLRVCPNSDG----SNLVMARHTRIDGE
+KKMDVFKFF
+>UniRef50_A0A2P5Q4Y1 Uncharacterized protein n=1 Tax=Gossypium barbadense TaxID=3634 RepID=A0A2P5Q4Y1_GOSBA
+-----PTFMVLK-C-EAK---NKYLSY---MHESCD-----CNGYLR---F------SET
+-LAGS-P--YTKFEV--ERAKCS-GED----GLVHIKSCHNNKYWKRV----K--NV-SI
+TGKLKEQY-W-ISAAAG-QPEEGRS-KDSCTL--FK-L-IPV-----------DT-----
+ATN-K-----------------IRIMHVQSGCYLCLCWVDPP--KFNNYVLANDKVFDGD
+NSCDLFTVI
+>UniRef50_UPI00063B0057 uncharacterized protein LOC105796341 isoform X1 n=3 Tax=Gossypium raimondii TaxID=29730 RepID=UPI00063B0057
+-----PRFMVLK-C-EAR---NKYLSY---MREICD-----CKGYLK---F------SET
+-LAFS-P--YTKFEV--ERAKCN-GED----GLVHIKSCHNNKYCKRV----K--NV-SI
+TGNSKEQY-W-ISAAAD-QPEEGRS-KESCTL--FK-F-IPV-----------DT-----
+VTN-K-----------------IRIMHVQSGCYLCLWWVDPP--TFNNCVLANYKVFDG-
+NSCDLFTVI
+>UniRef50_A0A0D2RDS5 Uncharacterized protein (Fragment) n=3 Tax=Gossypium TaxID=3633 RepID=A0A0D2RDS5_GOSRA
+-----PRFMVLK-C-EAR---NKYLSY---MREICD-----CKGYLK---F------SET
+-LAFS-P--YTKFEV--ERAKCN-GED----GLVHIKSCHNNKYCKRV----K--NV-SI
+TGNSKEQY-W-ISAAAD-QPEEGRS-KESCTL--FK-F-IPV-----------DT-----
+VTN-K-----------------IRIMHVQSGCYLCLWWVDPP--TFNNCVLANYKVFDG-
+NSCDLFTVI
+>UniRef50_A0A2P5Q4Y1 Uncharacterized protein n=1 Tax=Gossypium barbadense TaxID=3634 RepID=A0A2P5Q4Y1_GOSBA
+-----PRFMVLK-C-EAR---NKYLSY---MRESCD-----CNGYLK---F------SET
+-LAFS-P--YTKFEV--ERA--N-GED----GLVHIKSCHNNQYCKRV----K--NV-SI
+TGNSKEQY-W-ISAAAD-KPVEVRS-KKSCTL--FK-L-IPV-----------DT-----
+ATN-K-----------------IRIMHVQSGCYLCLWWVDPP--TFNNCVLANYEVFDD-
+NSCDLFTVI
+>UniRef50_A0A1U8LH33 uncharacterized protein LOC107927410 n=1 Tax=Gossypium hirsutum TaxID=3635 RepID=A0A1U8LH33_GOSHI
+-----PRFMVLK-C-EAR---NKYLSY---MHESYD-----CNGYLK---F------SET
+-LAFS-P--YTKFEV--ERAKCG-GED----GLVHIKSCHNKKYCKRV----K--NV-SI
+TGNSKEQY-W-ISAAAD-KPVEGRS-EESCTL--FK-L-IPV-----------DT-----
+ATN-K-----------------IRIMHVQSGC----------------------------
+---------
+>UniRef50_A0A1U8LH33 uncharacterized protein LOC107927410 n=1 Tax=Gossypium hirsutum TaxID=3635 RepID=A0A1U8LH33_GOSHI
+-----PRFMVLK-C-EAR---NKYLSY---MHESYD-----CHGYLR---F------SET
+-LACS-P--YTKFEV--ERAKCS-GED----GLVHIKSCQNNKYCKRV----K--NV-SI
+TGNSKEQY-W-ISAAAD-KPEEGRS-EESCTL--FK-L-SPV-----------DT-----
+ATN-K-----------------IRIMHVQSGCYLCLWWVDSP--TFNNCVLANYKVFDG-
+NSCDLFTVI
+>UniRef50_UPI00063B0057 uncharacterized protein LOC105796341 isoform X1 n=3 Tax=Gossypium raimondii TaxID=29730 RepID=UPI00063B0057
+-----PRFMVLK-C-EAR---NKYLSL---MHESYD-----CNGYLK---F------SET
+-LAFS-P--YTKFEV--ERAKCS-EED----GLVHIKSCHNKKYCKRV----K--NV-SI
+TGNSNEQY-W-ISAAAD-KPEEGQS-EESCTL--FK-L-IPV-----------DT-----
+ATN-K-----------------IRIMHVQSGCYLCLWWVDSP--TFNNCVLANYKVFDG-
+NSCDLFTVI
+>UniRef50_UPI00063B0057 uncharacterized protein LOC105796341 isoform X1 n=3 Tax=Gossypium raimondii TaxID=29730 RepID=UPI00063B0057
+-----PRFMVLK-C-EAR---NKYLSY---MHESYD-----CHGYLR---F------SET
+-LACS-P--YTKFEV--ERAKCS--ED----GLVHIKSCHNNKYCKRV----K--NV-SI
+TGNSNEQY-W-ISAAAD-KPEEGRS-EESCTL--FK-L-IPV-----------DT-----
+ATN-K-----------------IRIMHVQSGCYLCLWWVDSP--TFNNCVLANYKVLDG-
+NSCDLFTVI
+>UniRef50_A0A0D2RDS0 Uncharacterized protein n=8 Tax=Malvaceae TaxID=3629 RepID=A0A0D2RDS0_GOSRA
+-----PRFMVLK-C-EAR---NKYLSY---MHESYD-----CHGYLR---F------SET
+-LACS-P--YTKFEV--ERAKCS-EED----GLVHIKSCHNKKYCKRV----K--NV-SI
+TGNSNEQY-W-ISAAAD-KPEEGQS-EESCTL--FK-L-IPV-----------DT-----
+ATN-K-----------------IRIMHVQSGCYLCLWWVDSP--TFNNCVLANYKVFDG-
+NSCDLFTVI
+>UniRef50_A0A2P5XJH6 Uncharacterized protein n=1 Tax=Gossypium barbadense TaxID=3634 RepID=A0A2P5XJH6_GOSBA
+----LPRFIVIK-S-INA---NACLAF---KQDDP------YEGYAE---F------SE-
+-SMVTGP--NAKFEV--ESAKG---------GLVHIRNCINMKYLERT----EEGSI---
+SGKADERY-W-ITATAE-KKEEDQS-REWCTL--FQ-P--LE-----------ED-----
+LVNKT-----------------YRFMHVQSGCYLRLRQTYSS--DITAGVLATSTKIDA-
+NGNDVFKVI
+>UniRef50_A0A2P5W8H6 Uncharacterized protein n=2 Tax=Gossypium TaxID=3633 RepID=A0A2P5W8H6_GOSBA
+----LPRFIVIK-S-INA---NACLGF---KQDDP------YEGYAE---F------SE-
+-SMVTSP--NAKFEV--ESAKG---------GLVHIRNCINMNYLERT----EEDSI---
+SGKADEQY-W-ITATAE-KKEEDLS-KEWCTL--FQ-P--LE-----------ED-----
+SVNKT-----------------YRFMHVQSGCYLRLRQSYSP--DITAGVLATSTKIDA-
+NGNDIFKVI
+>UniRef50_A0A1U8LH39 uncharacterized protein LOC107927379 n=1 Tax=Gossypium hirsutum TaxID=3635 RepID=A0A1U8LH39_GOSHI
+---ALPGFVVLQ-P-IDK---IDYLGY---IHEGGD-----NDGYLR---F------MEP
+-QVAS-P--YAKFEV--EFS----GSN----DFVHIRSCQNNKYWERK----Q--IL-SI
+SG----GY-W-VTATAD-KKEDDQS-KESCTL--FK-V-TSV-----------DH-----
+AMN-T-----------------VRIMHVQSGCYLCCWRWDSE--KYTRGMYSFYKTHDQ-
+NGFDIFKFI
+>UniRef50_A0A2P5Q345 Uncharacterized protein n=1 Tax=Gossypium barbadense TaxID=3634 RepID=A0A2P5Q345_GOSBA
+---ALPNFIVLQ-P-VDK---IDYLGY---IHEGGD-----HDGYLR---F------MEP
+-QAAS-P--YAKFEI--EFS----ASN----EFVHIRSCQNNKYWERK----Q--IL-SI
+SG----GY-W-VTATAD-KKEDDQS-KESSTL--FK-V-TSV-----------DH-----
+AMN-T-----------------VRIMHVQSGCYLCCWRWDSE--KYTRGMYSFSTRHDQ-
+NGFDIFKFI
+>UniRef50_UPI0008193A63 uncharacterized protein LOC108475107 n=1 Tax=Gossypium arboreum TaxID=29729 RepID=UPI0008193A63
+---SLPRFIVLK-S-PDA---ETYLGY---KHDNGN-----YNGYAE---F------TEP
+-TVVS-A--NAKFEV--EIAKD---------GLVHIRSCTNNKYLERT----RNPSI---
+TGNPMEEY-W-ITITAK-KPEEDQS-KKSCTL--FK-P--IL-----------ED-----
+SVYKN-----------------YRFVHVQSGCYLCLWPLATS--ELSRGVLANNSHVAA-
+NQYDIFEVI
+>UniRef50_A0A2P5PWU4 Uncharacterized protein n=1 Tax=Gossypium barbadense TaxID=3634 RepID=A0A2P5PWU4_GOSBA
+----VPRFIVLK-S-SGA---ETYLGY---KHDNGK-----YNGYAE---F------TEP
+-TVVS-A--NAKFEV--EFAKD---------GLVHIRSCTNNKYLERT----HNPSI---
+TGKPDEEY-W-ITITAD-KPEEDRS-KESCTL--FE-P--IL-----------KD-----
+SVYKN-----------------FRFVHAQSGCYLCLWPLATS--ELGRGVLANNKNVAD-
+NGNDIFKVI
+>UniRef50_A0A1U8PQ97 uncharacterized protein LOC107960610 n=24 Tax=Malvaceae TaxID=3629 RepID=A0A1U8PQ97_GOSHI
+----VPRFIVLK-S-SGA---ETYLGY---KHDNGK-----YNGYAE---F------TEP
+-TVVS-A--NAKFEV--EFAKD---------GLVHIRSCTNNKYLERT----HNPSI---
+TGKPDEEY-W-ITITAD-KPEEDRS-KESCTL--FE-P--IL-----------KD-----
+SVYKN-----------------FRFVHAQSGCYLCLWPLATS--ELGRGVLANNKNVAD-
+NGNDIFKVI
+>UniRef50_A0A1U8M9U3 uncharacterized protein LOC107934453 n=21 Tax=Malvaceae TaxID=3629 RepID=A0A1U8M9U3_GOSHI
+----LPKFIVLK-P-SDN---NGYLSY---VREGEN-----NLGFLK---F------FET
+-QAVS-P--YAKFEV--EISDTS--------GLVHIRSCQNNKYWQRT----KTVSI---
+AGVPPGQY-W-ITATAQ-NKEEDQS-KETCTLFKFA-PIDHA------------------
+TGP-------------------VRIVHVQSGCNLCLWLGSDL--ILNRCVSANYREFDS-
+NGFDIFSII
+>UniRef50_A0A1U8LHE0 uncharacterized protein LOC107927413 n=3 Tax=Gossypium TaxID=3633 RepID=A0A1U8LHE0_GOSHI
+-----PRFIVLKSN-------KEYLGI---IDGNGA-----GDGYLK---F------SSE
+TQATS-S--YAKFEV--EEAAAGH-------GLVHIRSCRNNKYWEGV----RNNPTEDG
+QY-------W-IAATAK-KPEEDQS-RDSCTL--FK-L-ILM-----------GT-----
+ATTDT-----------------VRIMHV--------------------------------
+---------
+>UniRef50_A0A2P5Q4Y1 Uncharacterized protein n=1 Tax=Gossypium barbadense TaxID=3634 RepID=A0A2P5Q4Y1_GOSBA
+-----PRFIVLK-S-HQN---NKYLGF---DHEKGDY----KDGYLK---F------FET
+-RVAS-P--YAKFEV--EIAQRG-GID----GLVHIRSSQNNKYLVSD----E--T----
+---------R-ITATAK-KPEEDRS-KNSCTL--FK-L-ISV-----------DD-----
+AAN-E-----------------VQILHVQSRK----------------------------
+---------
+>UniRef50_UPI00063B0057 uncharacterized protein LOC105796341 isoform X1 n=3 Tax=Gossypium raimondii TaxID=29730 RepID=UPI00063B0057
+-----PRFIVLK-S-HQN---NKYLGF---DHEKGDY----KDGYLK---F------SET
+-RVAS-P--YAKFEV--EIAQRG-GID----GLVHIRSSQNNKYLVSD----E--T----
+---------R-ITATAR-KPEEDRS-KKSCTL--FK-L-ISV-----------DD-----
+AAN-D-----------------VQIVHVQSRKYLWVIRETPN--LFTSEHLDEY------
+-SRDMFTII
+>UniRef50_A0A0D2RDS0 Uncharacterized protein n=8 Tax=Malvaceae TaxID=3629 RepID=A0A0D2RDS0_GOSRA
+-----PRFIVLK-S-HQN---NKYLGF---DHEKGDY----KDGYLK---F------SET
+-RVAS-P--YAKFEV--EIAQRG-GID----GLVHIRSSQNNKYLVSD----E--T----
+---------R-ITATAR-KPEEDRS-KKSCTL--FK-L-ISV-----------DD-----
+AAN-D-----------------VQIVHVQSRKYLWVIRETPN--LFTSEHLDEY------
+-SRDMFTII
+>UniRef50_A0A0D2RDS5 Uncharacterized protein (Fragment) n=3 Tax=Gossypium TaxID=3633 RepID=A0A0D2RDS5_GOSRA
+-----PRFIVLK-S-HQN---NKYLGF---DHEKGDY----KDGYLK---F------SET
+-RVAS-P--YAKFEV--EIAQRG-GID----GLVHIRSSQNNKYLVSD----E--T----
+---------R-ITATAR-KPEEDRS-KKSCTL--FK-L-ISV-----------DD-----
+SAT-D-----------------VQIVHVQSRKHLWVIRETPN--LFTSEHLDEY------
+-SRDMFTII
+>UniRef50_UPI000C050F00 uncharacterized protein LOC111277576 n=1 Tax=Durio zibethinus TaxID=66656 RepID=UPI000C050F00
+----LPRFIVLK-S-NDK---NDYLGY---IHEDGE-----SDGVSQ---L-Q----GT-
+-QAVS-P--IRKFEV--EIVGKD--------GLVHISRCQNNKYWVRT----KNLSI---
+RGNPLEQYFW-ITATAN-KEEEDQS-EESCTL--FK-FICVD------------------
+PVKTT-----------------VRIKHVQSGCYLCLWQISNP--AFPRCVMANYTLCDS-
+NSCDIFTII
+>UniRef50_UPI000C0516D2 uncharacterized protein LOC111280670 n=1 Tax=Durio zibethinus TaxID=66656 RepID=UPI000C0516D2
+---ALPSFIVLR-S-DEK---NEYLGF---IHENGK-----SDGYLE---F------FET
+-QAVS-P--YAKFEG--EIVART-GKD----HLVHTRSCQNNKYWVRT----KNLST---
+HETPREGY-W-IAATAN-KPDED-------------------------------------
+------------------------------------------------------------
+---------
+>UniRef50_UPI0002C35F27 uncharacterized protein LOC101314284 n=1 Tax=Fragaria vesca subsp. vesca TaxID=101020 RepID=UPI0002C35F27
+--------FALK-S-VNN---SKYMRF---QSEEGE-----RQGFVR---F------TTT
+-DVVQEP--RAKFEV--EAADGGATK-----GMVHIRCCYNNKYLRRW----DIDHH---
+---------W-IVAGGD-KKVEDQT-HWTCTL--FE-P--VL-----------ETPADSD
+KDTKAV----------------IRLRHVQLGRYVMQFTPHE---DFKECLFPMSDKPYN-
+GNYDLFEVL
+>UniRef50_UPI000E6FDF02 uncharacterized protein LOC113329091 n=15 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6FDF02
+----LPTTVIIQ-S-NHN---RRYLRL---DGGYQE-----LNNALR---C-E----GDY
+-SFGI----ETRFEL--VPSTTA-T------GLFHIRSLYNNKYWQTT--------S-GT
+NG-------W-TIPGAT-EPEEDRS-SVRCTL--FQ-P-VFT-----------VS-----
+NSNRI-----------------VRLRHVNTGIYVRRFHGTSS--GNYVGVLTVRPKNQPT
+DKTDEFTLL
+>UniRef50_UPI000E703948 wall-associated receptor kinase 5-like n=2 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E703948
+------------------------------------------------------------
+------P----------ATTGS---------GLYNIRSMHNNKYLSHL----ADDHI---
+---------W-ITAIAV-VPDEDQN-SKTCTL--FK-P--VL------------------
+------------------------------------------------------------
+---------
+>UniRef50_UPI000E700C18 uncharacterized protein LOC113345870 n=1 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E700C18
+----LPKFIIIQ-S-NFN---HRYLHL---EKVNPT-----AADSLR---F-D----GD-
+-YSFG-L--ETRFEV--VPATTEN-------GLVHIRSKLNDRFWANM----GGPNG---
+---------W-ITATSV-KPDENRS-SQSCTL--FQ-P-VYL-----------NS-----
+NSNKI-----------------VRLLHVHTSYYVSFFMGT----NQTNGCLNLISNSQLT
+DQRDLFTII
+>UniRef50_UPI000E6F6940 uncharacterized protein LOC113282834 isoform X1 n=6 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6F6940
+----LPKFIIIQ-S-NFN---HKYLHL---EKVNPT-----AADSLR---F-D----GD-
+-YSFG-L--ETRFEV--VPATTEN-------GLVHIRSKLNDRFWANM----GGPNG---
+---------W-ITATSV-KPDENRS-SQSCTL--FQ-P-VYL-----------NS-----
+NSNKI-----------------VRVLHVHTSYYVSFFMGT----NQTNGCLNLISNSQLT
+DQRDLFTII
+>UniRef50_UPI000E6FE4E7 uncharacterized protein LOC113293920 n=1 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6FE4E7
+----------------NN---NRYLHL---RTENPA-----VADALR---F-D----GD-
+-YSYD-L--DTRFEV--VPATKGT-------GLVHIRSLQNYKYWVNL----DETKN---
+---------NFVTATAV-KPEENQA-DKQCTL--FQ-P-VFL-----------KA-----
+DSNGI-----------------LRLRHVSTGAYVAFFLGTGN----SYGLLCLSHYHDAA
+GTYNVCTVL
+>UniRef50_UPI000E6FEA4E uncharacterized protein LOC113316292 n=1 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6FEA4E
+----LPKSVIIQ-S-NID---NLYLHF---EKENPW-----VPNAIR---F-H----GD-
+-YSFG-L--ETRFEV--VQATTV-T------GLVHIRCLRNNKYWANS--------G-TS
+YR-------W-VTAMAI-KPEENQS-DPYCTL--FK-P-IFE-----------YS-----
+NNNRV-----------------VKLRHVNTGYYVRRFY--GG--DHYYGALYLSA-----
+---------
+>UniRef50_UPI000E6FD922 uncharacterized protein LOC113337187 n=5 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6FD922
+----LPKYVIIQ-S-NQN---NTYLHL---ENDNPF-----VTNALR---Y-A----GE-
+-YSFD-L--DTRFEV--VPATTG-N------GQIHVRSMKNNKYWANF----GTSYN---
+---------W-ITAMAD-KPEENQS-DKNCTL--FE---LLS-----------KS-----
+QSK-------------------LMIRHVNTSKYVRFYMNSG---QPSDGLLNLSSDRYDE
+DVCTFI---
+>UniRef50_A0A0K9R2U0 Uncharacterized protein n=5 Tax=Spinacia oleracea TaxID=3562 RepID=A0A0K9R2U0_SPIOL
+--ASLPLCAAIL-S-NKN---NKYLSY---VKEGK------THKHLR---F-S----GE-
+-EIVS-R--STKFAI--ERSSKE-DDENT--ELVHLRCCHNNKYLVKK--------S--E
+AE-----G-W-IIAAAE-KPEEDES-VWSSTL--FE-P--II-V---------ES-----
+HDG-YGRTV-------------LRFKHV--------------------------------
+---------
+>UniRef50_A0A314YXM8 Uncharacterized protein n=1 Tax=Prunus yedoensis var. nudiflora TaxID=2094558 RepID=A0A314YXM8_PRUYE
+--SSLPQIFVLK-P-ITN---NKYLRY---INQSMGE----VKDILQ---F-C----GN-
+-DIMS-I--YSRFEK--ETAAPD----NP--DLVHIKCSYNNNYLSRA--------K--Q
+ED-----S-L-IVAGAS-QKQQQPN-LWTCTL--FK-P-ELV-H---------QE-----
+PEN-YKGIVGQ-----------FRFSHVQ-------------------------------
+---------
+>UniRef50_UPI000E6F687D uncharacterized protein LOC113286523 n=3 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6F687D
+----LPRYVILQ-S-DYN---DRYLRS---VEGNLQ-----VPLALK---F------GGQ
+YSFDR----DTRFEL--EKGKNK-----DAAGLFNIKCMYNNKYLSTV----SATNN---
+---------W-ITAVAA-EPEEDQT-KWSCTL--FQ-P-VFV-----------TA-----
+GDNTM-----------------VRFRHMATGDFTCLQAGAS---TLVDCLKADSDR----
+DGYDKFLVI
+>UniRef50_UPI000E6FBA4C uncharacterized protein LOC113286519 n=2 Tax=Papaver somniferum TaxID=3469 RepID=UPI000E6FBA4C
+----LPRYVILQ-S-DYN---GRYLRT---VEGNSQ-----VPLALK---F-G----GE-
+-YSFD-R--DTRFEL--EKGKDD-----DSVGMFNIRCMYNNKYLSTV----DASNN---
+---------W-ITATAS-EPEEDQT-KWSCTL--FQ-P--VF-----------DT-----
+AGENTM----------------VRFRHIGTGNFACLHTGSS---TLVDCLKADGDGY---
+---------
+>UniRef50_B9S0N4 Uncharacterized protein n=6 Tax=Euphorbiaceae TaxID=3977 RepID=B9S0N4_RICCO
+----IPRYSVFK-S-NYS---DKYLRY---VNESES-----LYRYVR---C-D----GE-
+-DIVS-P--FAKFKV--ETATKS-A------DFVHIRCCFSNKYWRRN----NEEGD---
+---------Y-IIAAAD-KPDEDES-KWSCTL--FK-P-IQF-----------LD-----
+DKT-------------------FRFQHVQLGHNVWFNRSAN---EYRGCLIARYSVPEL-
+AGADLFTVT
+>UniRef50_K9MRS8 Hfr-2-like protein (Fragment) n=18 Tax=Senecio TaxID=18794 RepID=K9MRS8_9ASTR
+--ALLPSFFVLQSG-------GKYLSVTDNISSNL------PSGFLK---F-G----DE-
+-PIWS-P--RVKFAV--EQTNTD----ED--RFVHIRSCYNNKYLVMN----Q--ID--S
+NS-------W-IVASAK-KLEEDDS-KDSCTL--FE-P-YSL-E---------DD-----
+ETT-N-----------------VRLRPVQ-------------------------------
+---------
+>UniRef50_UPI000B934C85 uncharacterized protein LOC111024291 n=1 Tax=Momordica charantia TaxID=3673 RepID=UPI000B934C85
+---------YLR-C-VQD---HEILEY----------------GFLK---V-S----GK-
+-SVLS-P--YSKMES--EASESS-----P--KHVHIRYCNNNKYWVRQ--------S--P
+DS-----F-Y-IVTAAA-EKEEDRS-KWNCTL--FS-A--FY-M---------HH-----
+GSH-EV----------------FGLNHVQL------------------------------
+---------
+>UniRef50_A0A097PIA2 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIA2_LINUS
+AGLPLPRFVVFE-SKTANSNCGRYLRY---IAEQGE-----LNDVVS---C-D----GY-
+-NATI-P--NAKFEV--EQPRNL-AVMDK--PVVHIRSCYNNKYLR----------A--E
+QH-----R-W-IVAAAD-EPNEDQC-QWSCTL--FE-P--VF-S---------RH-----
+HPN-L-----------------IRLLHV--------------------------------
+---------
+>UniRef50_UPI000B933C8C uncharacterized protein LOC111022081 n=1 Tax=Momordica charantia TaxID=3673 RepID=UPI000B933C8C
+--------FALQ-S-KYN---DKYLCY---IDNEDPQ----LHGFLK---F-S----ED-
+-EFST----HSKFHK--EPASTA-----D--EFINIRSVYSNKYWVSR----Y---E--N
+DE-----H-W-IVAEAN-EPNEDQS-SSSCTL--FQ-A--IP-V---------DD-----
+GSA-------------------IRLLHVHLNKYVCLSKDSS---QFPLCIFAGSVDPDP-
+DRIDVFV--
+>UniRef50_UPI000B92FB95 uncharacterized protein LOC111014701 n=2 Tax=Momordica charantia TaxID=3673 RepID=UPI000B92FB95
+----LPRYVALK-S-KYN---ANYLRY---VNEASP-----VQTFVQ---Y-S----GE-
+-SIST-P--YTKFEV--EPAKSDP-------SLVNIRCSYNNKYWVSS----SSDPR---
+---------F-IIAGSD-KSQEDKS-QWTCTL--FE-P-SYD------------------
+STNQA-----------------YRFRHVYRGFNVCLWRDTT---AYQNCLITQQSTPDP-
+NLCDLCTIT
+>UniRef50_UPI000C1FE24D uncharacterized protein LOC111461222 n=1 Tax=Cucurbita moschata TaxID=3662 RepID=UPI000C1FE24D
+----LPKSVVLK-S-KYN---HNYLRF---VNEACSP----VRTFMQ---Y-S----GK-
+-EILS-P--FTPFEF--EQAKCD-----P--SLYHIKCCYNNKYWVSL--------A--R
+DH-----H-F-IVAGAD-RKDEDKS-KWTCTL--FR-P--VY-----------DN-----
+CHQ-S-----------------FRFCHVHLGLNVVLWRVGP---PYGECLRAQWSVPDK-
+DLCDLSVVI
+>UniRef50_A0A1S3CBZ5 uncharacterized protein LOC103499082 n=6 Tax=Cucurbitaceae TaxID=3650 RepID=A0A1S3CBZ5_CUCME
+----LPKFAALK-S-KYN---NKYLRY---VNEKSSP----VRTFLQ---Y-S----GD-
+-EILT-P--FTKFEF--EKAHSD-----P--SSYHIKCCYNNKYLVSA----S---S--S
+DH-----H-Y-IVAGAD-QKQEDKS-KWTCTL--FR-P--TY-----------DN-----
+YHQ-S-----------------FRFSHVYLGSHVVLWRFHA---PYGECLRAQS------
+---------
+> Agglutinin
+--AGLPVIMCLK-S-NNH---QKYLRY---QSDNIQ-----QYGLLQ---F-S----AD-
+-KILD-P--LAQFEV--EPSKTYD-------GLVHIKSRYTNKYLVRW----SPNHY---
+---------W-ITASAN-EPDENKS-NWACTL--FK-P-LYV-----------EE-----
+GNMKK-----------------VRLLHVQLGHYTQNYTVGG---SFVSYLFAESSQIDTG
+SKDVFHVID
+>UniRef50_Q71QF2 Agglutinin n=13 Tax=Caryophyllales TaxID=3524 RepID=Q71QF2_AMACA
+--AGLPVIMCLK-S-NNN---QKYLRY---QSDNIQ-----QYGLLQ---F-S----AD-
+-KILD-P--LAQFEV--EPSKTY-----D--GLVHIKSRYTNKYLVRW--------S--P
+NH-----Y-W-ITASAN-EPDENKS-NWACTL--FK-P--LY-V---------EE-----
+GNM-KK----------------VRLLHVQLGHYTQNYTVGG---SFVSYLFAESSQIDT-
+GSKDVFHVI
+>UniRef50_A0A067KSH6 Uncharacterized protein n=1 Tax=Jatropha curcas TaxID=180498 RepID=A0A067KSH6_JATCU
+---ALPRFVAIKTSISTN---SKYLRY---MNEDDK-----VRGFFQ---F-S----ED-
+-EILRTP--YTKFEL--QYPKTG---DAD--DLVHIRCCYNNKYLVRS--------S--A
+ED-----D-W-IVGAAD-EPEEDKS-KWSCTL--FQ-L--LS-S---------HH-----
+TTN-G-----------------YTLRHVQTGFFV--------------------------
+---------
+>UniRef50_A0A0A0KDU4 Uncharacterized protein n=6 Tax=Cucurbitaceae TaxID=3650 RepID=A0A0A0KDU4_CUCSA
+--SSFPRRFSLK-S-ISN---NLYLGY---VHGKNE-----LNGFLQ---F-S----AK-
+-EAVS-P--YTMFEI--EESKLG-----H--GYVHIKCCYNNKYWVLQ--------S--P
+SS-----H-Y-IVATAN-EKDENLS-AHSCTL--FK-P--NY-K---------DG-----
+DNK-HHT---------------FRFQHVF-------------------------------
+---------
+>UniRef50_W9RM79 Uncharacterized protein n=1 Tax=Morus notabilis TaxID=981085 RepID=W9RM79_9ROSA
+----LPRFVVLK-S-VNN---GKYLSK---ISNEESTKKGLQATFLK---F-H----GE-
+-EIAS-P--FAKFEV--ETAKKN-P------EFVHIRCCHNNKYLVRL----LGEGS-SS
+RSL------W-IVAAAN-KSQEDVD-VLSCTM--FK-P--VQ-----------SD-----
+ENH-------------------FRFLHVESGRYARLSKEKE---PYTDGLLAGSSSIDT-
+DLQDVYKVF
+>UniRef50_A0A0A0K983 Uncharacterized protein n=8 Tax=Cucurbitaceae TaxID=3650 RepID=A0A0A0K983_CUCSA
+----IPKNLSLK-S-IRN---GKYLRY---ISESEN-----ADGLLR---F-S----GK-
+-NIVG-P--YSKFSV--HASKTK-----P--GFFHIRCCYNNKFWVRL--------S--E
+DS-----N-Y-IAAVAN-EEEDDTS-KWSCTL--FE-P--IF-V---------PE-----
+KTG-L-----------------YYIRHVQLNT----------------------------
+---------
+>UniRef50_A0A0A0KA25 Uncharacterized protein n=1 Tax=Cucumis sativus TaxID=3659 RepID=A0A0A0KA25_CUCSA
+----IPKNLFLK-S-IRN---GKYLRY---ISKGEN-----ADGLLQ---Y-S----SK-
+-NMVG-P--YSKFVL--HGSKTK-----P--GFFHIRCCYNNKFWVRL--------S--E
+DS-----N-Y-IAAKAN-EEEDDTS-KWSCTL--FE-P-IIF-A---------PD-----
+RTE-L-----------------YYIRHVQLNT----------------------------
+---------
+>UniRef50_A0A097PIB5 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIB5_LINUS
+----LPKFVVIK-S-RYN---RKYLRY---RNEEGE-----QHGFLQ---F-SLEDDKDA
+-AVAN-R--YAKFEV--EKAKSG-N------GLVHLKCCHNKKYLARS----DSTK----
+-------W-W-ISAGAD-EVDEDDS-KWSCTL--FE-P-VFV-----------DD-----
+STATM-----------------VRFRHVQLGRYACLFNSDS---SFGECLYAGWKDPNP-
+NLLDVCTII
+>UniRef50_A0A097PIE6 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIE6_LINUS
+----LPKFAAIK-S-RYN---HNYLRY---RNEKGE-----QHGFLQ---F-S--LEDDK
+AAAVANQ--YAKFEV--KKAKSGD-------GLVHLKCCFNNKYLVRS----DSTKW---
+---------W-IRAAAD-AVVEDES-KWSCTL--FK-P-VYV-----------ND-----
+DSG-------------------VRFQHVQLRHFLCLFRSGP---PFGECLYAGWKDPNQ-
+DLCDVFSVI
+>UniRef50_A0A097PIC8 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIC8_LINUS
+----MPKFAVIK-S-RYN---HKYLRY---RNEKGE-----QHGFLQ---F-SLEGDKAD
+AVANR----YAKFEL--KKASFG-D------GLVHLKCCXNNKYLMRS----DATKW---
+---------W-IRAGAD-AVVEDES-KWSCTL--FK-P-VYV-----------NY-----
+DGG-------------------IRFWHVQLRHFVSLFRSGP---PFGECLYAGWKDPNQ-
+DLCDVFTVI
+>UniRef50_A0A097PIB5 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIB5_LINUS
+----LPKYVVLK-S-MYN---NKYLSYRDEEAGEDG-----QDGFIH---L------SDP
+-DATTLR--YSKFEV--MESKSNAEK-----GSVHLKCSFNNKYLARQ----SPTSW---
+---------W-ITASTD-HIQEDRS-EWSCTL--FK-P-VLV-----------DSDDYYN
+DDEKSTAV--------------VRFHHVELNHFACVFQSDGS--PFSDCLYAGRDSPNL-
+NLFDAFSV-
+>UniRef50_A0A097PIC8 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIC8_LINUS
+-----PKYVVLK-S-MYN---NKYLSY-----RDEQGED--QHGFLQ---F-S----ED-
+-DPTS-R--YSKFEV--KRSTAE-----D--GSVHLKCSFSKKYLARE--------S--S
+TS-----W-W-ISASSRGKAQEDRS-EWSCTL--FK-P--IV-VNGDHYKHDDND-----
+DEK-LTV---------------VRFFHVQLNHFACLFRS-GP--PYGECLYAGWESPNQ-
+DLCDAVSVI
+>UniRef50_A0A097PIC0 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIC0_LINUS
+-------------KSMYN---DKYLSY---REDPGKE----QDGFLQ---F-S----GN-
+-DPMS-P--YSKFEV--KMSATET-------GSFHLMCSLNNKYLVRT----SPSQH---
+---------W-IRGSNT-RPEEDKS-KWSCTL--FK-P-IPV-----------DD-----
+HNGDGNLIV-------------VRFLHVQLNHYACLFRSGP---PFGDCLFAGWKSPNQ-
+DLCDACSVI
+>UniRef50_A0A097PIE1 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIE1_LINUS
+----LPKYVVLK-S-MYN---NKYLSYRDEPGKEHD-------GFLQ---F-S----ED-
+-DPTS-L--YSKFEV--KMSTSE-K------GSFHLMCSFNDKYLVRK----SSSEN---
+---------W-IRGSSN-QSEEDKS-KWSCTL--FK-P-VLV-----------TD-----
+HNG-DQKSMV------------VRFLHVQLNHYACLFKGDPK-----DCLYAGWSSPNK-
+ELCDACSVI
+>UniRef50_A0A097PID4 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PID4_LINUS
+---ALPKQFTLK-S-KSN---GKYLKY---VAEGPQ------RGLLQ---F-S----ED-
+-HLFS-P--YAKFES--EPYSKS-YETKE--ELVHLRCFYNNKYWV----------G--N
+SD-----H-Y-ISGEAD-VSEEDRS-KPTCTL--FK-P--EF-L---------DD-----
+QGH-T-----------------VRLRHVQLDRYARLSSPD-PSKGYVEMLSAGEQQKQE-
+DMSDVCEVV
+>UniRef50_A0A097PID8 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PID8_LINUS
+---ALPKQFTLK-S-KSN---GKYLKY---VAEGPQ------SGLLQ---F-S----ED-
+-HHFS-P--YAKFES--EPYSKS-YKTKE--ELVHLRCFYNNKYWVGN-----------S
+DH-------Y-ISGDAD-VSEEVRS-KPTCTL--FK-P-EFL-----------DD-----
+QGH-TAARP---------------------------------------------------
+---------
+>UniRef50_A0A2G5DFK2 Uncharacterized protein n=1 Tax=Aquilegia coerulea TaxID=218851 RepID=A0A2G5DFK2_AQUCA
+---ALPRFVVLK-S-VCE---NKYLNFTNGEDDSL------PVGFMK---F-N----GV-
+-DIVS-P--FAKFEL--ERAKST-VAKQK--GWVHIRCCYNNKYWVKA----NGML----
+---------W-VVAGAE-EPEEDQY-KPSCTL--FK----VE-----------KN-----
+KSN-------------------VGFRHIQLGK----------------------------
+---------
+>UniRef50_A0A315AM92 Uncharacterized protein n=2 Tax=Prunus TaxID=3754 RepID=A0A315AM92_PRUYE
+--------LALK-S-ETN---NRYLRY---IHQDIEG----VHGILQ---F-S----GE-
+-EVLS-P--YAKFQV--EVEVGQ---------WVHIRSCYNNKYWRRA--------D--Q
+NS-----R-W-IVAGAD-EQEAEPT-RWSCTLFEFE-P--II-I---------ND-----
+TSF-SQ----------------IRLVHVHSRDYLKIS-------PTNECLFIS-------
+QNFDVFTVI
+>UniRef50_UPI000C202F6F uncharacterized protein LOC111435501 n=3 Tax=Cucurbita TaxID=3660 RepID=UPI000C202F6F
+-----------------N---EKYLSY---INDNSE-----LHGFLQ---F-S----GD-
+-DPPS-T--YSLFKV--EMAKTA-----E--QLFSIRSVFNEKYWVCR----L--SN--N
+EH---DEH-W-IVAEAD-EPNEDQS-SLTCTL--FK-W--IF-I---------DS-----
+DRD-Q-----------------VQLRHVN-------------------------------
+---------
+>UniRef50_A0A2P6SCT5 Putative aerolysin, Agglutinin domain, aerolysin-like toxin, beta complex domain-containing protein n=8 Tax=rosids TaxID=71275 RepID=A0A2P6SCT5_ROSCH
+--AGLPRFVVLK-S--LN---HKCLCLTKNVPYE-------PAGFMK---C-I----RE-
+-QVVS-P--QAKFEV--EMAKTG-----N--GLVHIRCCYNNKYWVTN----Q--AA--R
+DDT----V-W-IVASAD-KPEEDQS-KSSCTL--FN-P--RF-A---------EG-----
+QTQ-------------------VRFIHVQLRISVSLWKSA---TTFENALYLGGRG----
+---DVFEVV
+>UniRef50_A0A1S3CBK3 uncharacterized protein LOC103498960 n=9 Tax=Cucurbitaceae TaxID=3650 RepID=A0A1S3CBK3_CUCME
+----VPKYFTLK-S-RQN---GRYLRY---INDDKT-----MHGFLK---F-S----GT-
+-QVVS-P--FAKFEV--EKAKEK--SN-K--GLVHVRCCYNNKYWVRW--------S--E
+KS-----K-Y-IVATAN-EPNEDKT-KFSSTL--FQ-P--IY-D---------QD-----
+RNV-------------------FRFKHVQLDRYIQLRQHITS--QFQDALFADSSGFED-
+DESDLLTIV
+>UniRef50_A0A1S5T867 Aerolysin-like protein FEM32 n=1 Tax=Rumex acetosa TaxID=41241 RepID=A0A1S5T867_RUMAC
+------------------------------------------------------------
+---------LLKFEV--EEAKNA-----P--GFVHIRTCYNHKYLVRK--------S--E
+ES-----K-S-LVAEAD-EAEEDXL-KWSCTL--FK-P--VF-L---------GE-----
+SEE-KEG-----------------------------------------------------
+---------
+>UniRef50_UPI00053F621F uncharacterized protein LOC104889726 isoform X1 n=2 Tax=Beta vulgaris subsp. vulgaris TaxID=3555 RepID=UPI00053F621F
+------------------------------------------------------------
+---------IAKFAV--EPVKDS--------DLVHIRCCYNNHYLCRH----KTSYP---
+---------Y-IVAGAR-EPVEDKT-AYFCTL--FR-HKFVE------------------
+NSQ-------------------VMFTHIESG-----------------------------
+---------
+>UniRef50_A0A1S3CB39 uncharacterized protein LOC103498962 n=2 Tax=Cucumis TaxID=3655 RepID=A0A1S3CB39_CUCME
+----LPKFIGLQ-CKNYN---NKYLRY---VYEDNE-----AHGLQQ---F-S----SD-
+-TVVS-G--YAKFQV--EKAKMG-----K--GYVHIRSLYNNKYWVRR--------S--P
+TE-----F-W-ITANAD-EPDENEF-TWTCTL--FE-P--IP-V---------DG-----
+CNN-SGLT--------------IRLRHVNLSHYLCLWRIP---PPYEACMFAASPDHDE-
+SRLDIFTVF
+>UniRef50_A0A314XZ08 Uncharacterized protein n=1 Tax=Prunus yedoensis var. nudiflora TaxID=2094558 RepID=A0A314XZ08_PRUYE
+----LPRFVVVK-S-NHN---KKYLRY---LKIEDGEVDA-PSGFLK---F-T----GE-
+-EAGS-H--YAKYEV--EMAKST--EN-K--GFVHIRCCYNNKYWVSV--------N--G
+MDKFEGDV-L-IVAGAD-EPEEDQS-KPSCTL--FE-P--VY-VD------PIDD-----
+EDD-DNKPDDKAEDDLEEDSQVVQFRHVQLGRYTCLHNDSDALVLFGGSNSTTDDPNNL-
+ESRDVCTVV
+>UniRef50_A0A251QER9 Uncharacterized protein n=9 Tax=Amygdaloideae TaxID=171637 RepID=A0A251QER9_PRUPE
+----LPRFVVVK-S-NHN---KKYLRY---LKTEDGEEDA-PAEFLK---F-T----GE-
+-EAGS-H--YAKYEV--EMAKST--EN-K--GFVHIRCCYNNKYWVSV--------N--G
+MDKFEGDV-L-IVAGAD-EPEEDQS-KPSCTL--FE-P--VY-VD------PIDE-----
+EDD-DNKPDDKAEDDLEEDNQVVQFRHVQLGRYTCLHNDSDALVLFGGSNSTTDDPNNL-
+ESRDVCTVV
+>UniRef50_UPI000498B298 uncharacterized protein LOC103406850 n=1 Tax=Malus domestica TaxID=3750 RepID=UPI000498B298
+----LPRFVVIK-S-NYN---DKYLRFNIDADENLKRVMP-AARYIN---F-T----GE-
+-EAWS-E--YTKFEV--EKAKSN--GN-E--GLVHIRCCYNNKYWVML--------A--C
+GY-----T-Q-IVTGAD-EPDEDKS-KFSCTL--FE-P--IY-A---------YD-----
+DSL-PVHDARSANYIV------LRFRHVHNGKYVALVQNN-PNDKYWGFIYTYGESPGQ-
+KFMDVFMVI
+>UniRef50_A0A251QDQ7 Uncharacterized protein n=9 Tax=Prunus TaxID=3754 RepID=A0A251QDQ7_PRUPE
+----LPRFVVVT-S-NTN---GKYLRY---IDEDIKNDV--PAGYLK---F-S----GQ-
+-EAGS-Q--YAKFEV--EMAKSR--CN-E--GLVHIKCCYNNKYWVRR--------R--P
+DS-----Y-L-IAAVAD-EPVEDKS-KYSCTL--FE-P--VY-I---------ND-----
+DFL-VGDDKSTNHILV------LRFRHTGRGEYLTI------------------------
+---------
+>UniRef50_A0A314UHT3 Uncharacterized protein n=1 Tax=Prunus yedoensis var. nudiflora TaxID=2094558 RepID=A0A314UHT3_PRUYE
+----LPRFVVVT-S-NTN---GKYLRY---IDEDIKNEV--PAGYLK---F-S----GQ-
+-EAGS-Q--YAKFEV--EKAKSS--GN-E--GLVHIKCCYNNKYWVKR----T--LT--S
+SS-----Y-L-IAAVAD-EPVEDKTNEHSCTL--FE-P--VY-I---------N------
+------------------------------------------------------------
+---------
+>UniRef50_A0A314Y401 Uncharacterized protein n=6 Tax=Amygdaloideae TaxID=171637 RepID=A0A314Y401_PRUYE
+--ATLPRFVVLR-S-CSN---HKHLHY---IHDEDEKKVP-VAGFLK---F-S----GE-
+-NIGS-H--YSKFEL--ERAKSS--QN-E--SLLHIRCCYNNKYWVRL--------Q--G
+TNKFHKEA-L-IVAGAD-EPEEDRS-KTTCTL--FE-P--IY-E---------RE-----
+DSC-YDGDGDLSSFSLDIKVLSLQFRHVQLGSY---------------------------
+---------
+>UniRef50_UPI000B8CD9D6 uncharacterized protein LOC110811943 n=1 Tax=Carica papaya TaxID=3649 RepID=UPI000B8CD9D6
+------------------------------------------------------------
+--------------------------------MVHFKCCYNNRYLVRWSPNHW-------
+---------W-LVGAAD-GPEEDQS-KWSCTL--FK-VTPVD------------------
+-DNPHM----------------VRFWHVNLGH----------------------------
+---------
+>UniRef50_UPI000B8CF538 uncharacterized protein LOC110811942 n=3 Tax=Carica papaya TaxID=3649 RepID=UPI000B8CF538
+---ALPKFIVLK-S-KFN---NQYLRY---VQEDSQ-----VHSFLQ---F-S----GE-
+-NVVS-A--FTKLEV--VPAQTE--------GLVHLKCSYNNRYLVRW----SPNHW---
+---------W-LVGAAN-EPEEDQS-KWSCTL--FK-P--ST------------------
+VDN--NQQT-------------FRFLHVQLGHYACLWRLAP---PFGNCLLAESASIDK-
+DFSDVCIVI
+>UniRef50_A0A2P6SCU9 Putative Agglutinin domain, aerolysin-like toxin, beta complex domain-containing protein n=1 Tax=Rosa chinensis TaxID=74649 RepID=A0A2P6SCU9_ROSCH
+----LPRFVVLK-S-NNN---NKYLSY---TKINEENVDQVPMGLLK---F-S----GE-
+-EVGS-H--YAKFEV--EMAKSS--EN-Q--GLVHIRCCHNNKYWVRL--------L--E
+TNTSNHDH-W-IVARAE-EPEEDRS-KSSCTL--FE-P--IV-T---------IE-----
+EL----------------------------------------------------------
+---------
+>UniRef50_UPI000B8C9E85 uncharacterized protein LOC110826026 n=2 Tax=rosids TaxID=71275 RepID=UPI000B8C9E85
+---ALPRYVVLK-S-KYN---NKYLRY---IHEDTQ-----VHGFLQ---F-S----GD-
+-EVVS-P--YSKFEV---------------------------------------------
+------------------EPS-----KTASGL--MA------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A2R6R6R8 Natterin-3 like n=6 Tax=Pentapetalae TaxID=1437201 RepID=A0A2R6R6R8_ACTCH
+---ALPRFVVLK-S-NYN---DKYLRY---INEDVQ-----VHGFLQ---F-S----GE-
+-EVVS-P--YVKYEV--EMAKNGK-------GLVHIRCCYNNKYWVRW----SSSHW---
+---------W-IVAGAD-EPEEDQS-KWSCTL--FE-P--VY-----------AD-----
+DAKTI-----------------VRFRHVQLGHNACLWRAAP---PHESCLFAGSAQPDK-
+DRCDIYTII
+>UniRef50_D7U3H9 Uncharacterized protein n=31 Tax=Pentapetalae TaxID=1437201 RepID=D7U3H9_VITVI
+----LPRYVVFK-S-KYN---NKCLRY---IHEDGE-----IHGFLQ---F-S----GE-
+-EVMT-P--YSKYHV--EMAKNG-----K--GLVHIRCCYNNKYWVRW--------S--E
+NH-----W-W-IVAGAD-ETDEDQS-LWTCTL--FE-P--VY-V---------DG-----
+--D-AQT---------------LRFRHVQLGHYACLWRLP-P--PYGSCLFAGSASPDK-
+DLYDVFTII
+>UniRef50_A0A314XW07 Uncharacterized protein n=1 Tax=Prunus yedoensis var. nudiflora TaxID=2094558 RepID=A0A314XW07_PRUYE
+--ATLPRYMVCK-S-RYN---AKYLSY---VKEDVQ-----IHGFLK---F-S----GE-
+-EVLC-P--YAKFEV--EVAKGG---N----GLVHIRCCYNNKYWVRW----SDNQY---
+---------W-IVAGAN-EPEEDQS-KGTCTL--FE-P-VYV-----------DD-----
+KDPAQG----------------VRFQHVQLGHYACLRRVSP---PQDSCLFAGSKVPDQ-
+ELCDAYLIV
+>UniRef50_UPI000498A832 uncharacterized protein LOC103419001 n=1 Tax=Malus domestica TaxID=3750 RepID=UPI000498A832
+----LPRYVVLQ-S-RYN---AKYLSY---VKEDDK-----IHDFLK---F-S----EE-
+-EVVS-L--YAKFHV--EMAKSSGATK----GLEHIRCCYNNKYWVRR----SQTHN---
+---------W-IVAGAD-EPQEDES-KWSCTL--FE-P-VYV-----------DE-----
+HNSAQD----------------VRFGHVQLQNYACLWCNXP---PYKSCLIAA-------
+---------
+>UniRef50_UPI000498C904 uncharacterized protein LOC103428911 n=1 Tax=Malus domestica TaxID=3750 RepID=UPI000498C904
+----LPRYVVLQ-S-RYN---AEYLSY---VKEDEQ-----IHGFLK---F-S----GE-
+-EVVS-T--YAKFHV--EMAKSSGATK----GLVHIRCCYNNKYWVRR----LQTHN---
+---------W-IVAGAD-EPLEDE------------------------------------
+------------------------------------------------------------
+---------
+>UniRef50_UPI0005107FDB uncharacterized protein LOC103934724 n=3 Tax=Pyrus x bretschneideri TaxID=225117 RepID=UPI0005107FDB
+--AILPNPFALK-S-NSN---HRYLCYG-------------AGRILQ---FTG----QD-
+------P--APFFTT--ENAQTP--------GYMHIKYNAIGKYLVRV----PGQTR---
+-------PLLKIVATAD-TPNENTT-DDNCTL--FE-S---------------ENVGPNT
+PTQVV-----------------FRFRQVQSKLYIRPNYVQ--------------------
+---------
+>UniRef50_A0A097PI97 Amaranthin-like lectin n=4 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PI97_LINUS
+--AGLPKYVVLK-S-KPS---GKYLHF---LWNDE------FGEYYK-----DLGAKRDV
+-DPVN-P--FVKFEV--VPSTAD-P------TLVHLRCSYNNKFIQLI----SKYGVS--
+---------W-LSATAD-SAVDDRT-KETSTL--FQ-P-IFP------------------
+AGEPNT----------------VGFLHVQSNRHV--------------------------
+---------
+>UniRef50_A0A097PIE5 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIE5_LINUS
+----LPRFVVFY-S-KSA---AKYLTY-----QSGQ-----ELGMQS-----G-------
+-KVSS-P--LSKFEV--VPSMVD-S------SKVHLRSCYNNKYLRQK----NSKEI---
+---------L-IIAAADKAEEQNQT-LWSSTL--FQ-P-EFV-----------AD-----
+GS--------------------VRLLHVYSKQYLEWYSYGHGHQDSLILVDSKYPNPNNN
+VFQPI----
+>UniRef50_A0A097PIC5 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIC5_LINUS
+----LPRFAMFY-S-GNW---GRYVSY---MSDEGGE----FNQILK----------VSA
+RKVSN-P--RSRFEV--EPSNVH-P------TMVHIRSCYDNKYLRRR----SEEEW---
+---------W-IVAAAD-SPNDDQS-SWSSTL--FQ-PEFVT------------------
+SAGLIS----------------VRLLHFQLGQYAQW------------------------
+---------
+>UniRef50_UPI0004991718 uncharacterized protein LOC103443055 n=6 Tax=Maleae TaxID=721813 RepID=UPI0004991718
+----LPSPFXLK-A-DIN---NKYLRY--QLDXESD-----LXEIVQ---F-S----EDN
+-ENSR----FIKFTT--EKPNNE-DYADK--NYVHIKCSYNGNYLRRV----DQNRL---
+---------L-VLAAAA-DRNETKD-NWACTL--FKVE-PVG-----------PPDXNNL
+ITR-------------------CRLRHLQSDLITRPF-------IENRFELRLNQKQPDA
+GGVDIYS--
+>UniRef50_UPI0004993055 uncharacterized protein LOC103455732 n=2 Tax=Maleae TaxID=721813 RepID=UPI0004993055
+----------LK-S-NNN---DMYLRY---MPDQENN----IHQILR---F------SAQ
+DRTSE----HAXFQV--ERANXRDHQTK---HYVHIKCLYNGKYLRRM----DKYKL---
+---------L-ILAAAE-NRDENTE-RWTCTL--FK-PQSVG-----------PT-----
+GNNRNNVL--------------CRLRHVATGLYTKP------------------------
+---------
+>UniRef50_UPI00051171B2 uncharacterized protein LOC103935239 n=2 Tax=Maleae TaxID=721813 RepID=UPI00051171B2
+--VGIPNHFVLK-S-NNN---DRYLRY--KLDEDII-----NREILQ---F------TAV
+-EPTN-P--DTKFQI--ELANSR-ENQDN--HYVHIKCSHNNKYFRRL----DQNNL---
+---------L-ILAAAD-QRDEDKR-RWSCTL--FK-P-ELVGQ---------AD-----
+KDNNNVL---------------CRLQHVQSSLYTRP------------------------
+---------
+>UniRef50_UPI00051175C3 uncharacterized protein LOC103946987 n=3 Tax=Maleae TaxID=721813 RepID=UPI00051175C3
+---ALPNPFVLE-S-NSC---DRYLSYI--LDEENH-----NHEIVQ---F-S----GE-
+-DPKR-E--QSIFQV--EQANNK-DHQEN--HYVHIKCSYNNKYLRRM----DIDKQ---
+---------L-IMAVAD-RRDESTK-SWGCTL--FK-P-ERV-----------GQ-----
+ASK-NHNNVL------------CRLRHVQSGLYTRPF-----------------------
+---------
+>UniRef50_UPI000B7AF780 uncharacterized protein LOC110745111 n=1 Tax=Prunus avium TaxID=42229 RepID=UPI000B7AF780
+-------------H-------NIYVIN---NRQEVL-----QEVVLQ---F-S----GD-
+-DVAS-K--HAKFQV--EEDEQDP-------KLVHIKSSFNNKYLRRA----GQNSS---
+---------W-IVARAE-KKEQDRH-QWSCTL--FE-PQEFH-----------DTQNCCN
+PTTIGQ----------------FRLRHVQLDHFIEPFSANGSDPDLFAGREFQP------
+KDNTVFYVE
+>UniRef50_A0A314YVT2 Uncharacterized protein n=1 Tax=Prunus yedoensis var. nudiflora TaxID=2094558 RepID=A0A314YVT2_PRUYE
+---------------KMN---NKYLHN---IYAITNLQEFLQEEVLQ---F-S----GD-
+-DVAS-K--HAEFQV--EEDEQNP-------KLVHIKSSFNNKYLRRA----GENSS---
+---------W-IVAGAE-KKEQDP--QWSCTL--FE-PQEFH-----------DTQNCCN
+PTTIGQ----------------FRLRHVQLNHFIEPFSANG-------------------
+---------
+>UniRef50_A0A0Q3JIZ0 Uncharacterized protein n=2 Tax=Brachypodium distachyon TaxID=15368 RepID=A0A0Q3JIZ0_BRADI
+--------------------------------------------LMR-------------
+------P--HVRFYI--ELSREY-Q------GLVHVR-CYNNKYWVPE----QPAGG-IS
+---------FAVMGVAD-KPEEDPS-KPSCTL--FE-P-TFN-----------AS-----
+GDHPSDPLRS------------VSFFHVQLKQ----------------------------
+---------
+>UniRef50_I1H3D5 Uncharacterized protein n=2 Tax=Brachypodium distachyon TaxID=15368 RepID=I1H3D5_BRADI
+-------------F-KSN---SKYLRY---LPAGGQIQ---KESNLA---M-T----GE-
+-DAKN-P--YSRFCS--EPSRKH-----GNKGLVHIRCCYNNKYWVAG----DGGPP---
+---------ITIFCSAN-EPQDDPS-KPYCTL--FR-P-L--------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A3B6AQE1 Uncharacterized protein n=4 Tax=Triticinae TaxID=1648030 RepID=A0A3B6AQE1_WHEAT
+--SGPPVCATLG-D-PSR---PGCLRS---VYDQAT-----AATYIE---LSY----VVL
+-RATT-P--AEKFYL--EPSKKH-D------GLLHVRCSDGDKYWVAQ----QLRAP-GG
+GGST-----WFICATAD-EPEEDLT-KPSCTLFDFR-P---------------DS-----
+TTKRT-----------------ARFFHSQQKKYACMLSVSGPGKAYLQLRDNLEADSSNM
+SLFS-----
+>UniRef50_A0A3B6BXN5 Uncharacterized protein n=1 Tax=Triticum aestivum TaxID=4565 RepID=A0A3B6BXN5_WHEAT
+------------------------------------------------------------
+------P--AERFYL--EPSKQH-E------GLLHVRCCDGNKYWVAR----QQRTP-DG
+GSA------WFISATAD-EPEEDLT-KPSCTL--FDFQ-VAS-----------DSKRPSE
+GGGGY-----------------IRCFHSQQNKYVGWVSVSGD-----LCFIPGNKAYLQL
+GVRDLLS--
+>UniRef50_M8BXN9 Uncharacterized protein n=1 Tax=Aegilops tauschii TaxID=37682 RepID=M8BXN9_AEGTA
+--SGPPVCVCFGHSLQRG-----CLRS---VHDQKT-----GASSIQ---LSD----DDV
+VRRNRTP--AEKFYL--EPSKQHQ-------GLVHVRCSDGDKYWVAQ----AQQHGGGG
+GSTP-----WFIAATAD-EPEEDLT-KPSCTL--FQ----FY------------------
+ASS---------------------------------------------------------
+---------
+>UniRef50_M8C6J1 Uncharacterized protein n=1 Tax=Aegilops tauschii TaxID=37682 RepID=M8C6J1_AEGTA
+--SALPRCIALR-S-KHD---NSYLRS---VHDESQ-----GGSFIE---LSA----GDG
+-GVMN-P--RSRFYL--EASKEH-D------GLVHVRCCYNNKYWVPQ----QRVLH-GS
+TR-------W-TIGTAN-ELEEDLS-KPSCTL--FKHV-PVA-----------DE-----
+EDS-T-----------------CRFSL---------------------------------
+---------
+>UniRef50_A0A287H8R6 Uncharacterized protein n=6 Tax=Poaceae TaxID=4479 RepID=A0A287H8R6_HORVV
+---------------------------------------------LR-----A----GDG
+-GLMN-P--RSRFYL--EASKEH-N------GLVHIRCCYNNKYWVPQ----QRVLH-GS
+TR-------W-TIGTAN-ELEEDLS-KPSCTL--FK-H-IPV-----------AG-----
+EDG-ST----------------CRFLHSHLRK----------------------------
+---------
+>UniRef50_I1IKC1 Uncharacterized protein n=2 Tax=BOP clade TaxID=359160 RepID=I1IKC1_BRADI
+-----PKCVAFR-S-KRT---GNYLRSVAFRSQEGK--------FFA---DQSSAGDGDN
+-DVLASP--YARFYL--EPSKEH-E------GLIHVRCCYNNKYWVAK----HDGDG-SG
+CGH------W-IIGIVN-EPDDDLS-KPSCTL--FQ-P----------------------
+------------------------------------------------------------
+---------
+>UniRef50_M8A350 Natterin-4 n=10 Tax=Triticinae TaxID=1648030 RepID=M8A350_TRIUA
+---GSPKCVAFR-S-KHA---RKYLGSVHAGNEESRGGGRFFEELSD---G-A----DDV
+-DVLASP--YTRFYL--EPSKEH-G------GLLHVRCCHNNKYWVAK----HGGEG-SG
+H--------W-TIGIVN-EPDDDLS-KPSCTL--LS-P-SLSRT---------GT-----
+------------------------------------------------------------
+---------
+>UniRef50_A0A3B6IZE9 Uncharacterized protein n=1 Tax=Triticum aestivum TaxID=4565 RepID=A0A3B6IZE9_WHEAT
+---GSPKCVAFR-S-KHT---GKYLGSVQAGSEESAGGGKFFEELSH--GA------DDV
+-DVLASP--YTRFYL--EPSKEH-----D--GLLHVRCCHNNKYWVAK----HV--G-EG
+SGH------W-IIGIVN-EPEDDLS-KPSCTL--FE-P-IPL-----------AD-----
+TDN-NLS---------------IRFFRP--------------------------------
+---------
+>UniRef50_T1NKK3 Uncharacterized protein n=1 Tax=Triticum urartu TaxID=4572 RepID=T1NKK3_TRIUA
+----------------------KYLCY---ARQGSGAA---ADGLLQ---L-D----GE-
+-DVTS-P--HTRFFM--EPSKAHP-------GLLHVRCCYDNKYWAAK----QLHDGDDD
+GG-------W-IVGAAD-EAEEDLS-KTTCTL--FK---TTP-----------GD-----
+RSSGY-----------------IRFVHAQLQM----------------------------
+---------
+>UniRef50_A0A3B6MSU4 Uncharacterized protein n=4 Tax=Triticinae TaxID=1648030 RepID=A0A3B6MSU4_WHEAT
+----------------------KYLCYARQGKGAA------ADGLFQ---L-D----GE-
+-DVTS-P--HTRFFM--EPSKAH-P------GLLHVRCCYDNKYWAAK----QLHDG-DD
+DGG------W-IVGAAD-EAEEDLS-KTTCTL--FK-T-TPS-----------DR-----
+SSG-Y-----------------IRFVHAQLQM----------------------------
+---------
+>UniRef50_A0A1E5WMX1 Uncharacterized protein n=1 Tax=Dichanthelium oligosanthes TaxID=888268 RepID=A0A1E5WMX1_9POAL
+--------LALR-S-KLN---GKYVRY---MPEHEE------GKVLQ---V-S----GK-
+-DAIS-P--YTRFQV--EPSKKH-E------GHIHLRCCYNSKYWVAR----QLPGA---
+---------W---------------------L--IH------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A1E5V1A8 Uncharacterized protein n=4 Tax=PACMAD clade TaxID=147370 RepID=A0A1E5V1A8_9POAL
+--SSLPTCAAFR-S-KSN---GKYLRSSAEDGEGAN-----GGQLLQ---L-T----GD-
+-DAEN-L--LTRFFV--ETSSKH-D------GLVHIR-CYNNKYLVAE----RHHGD-D-
+---------WWIAGSAD-KPEEDLS-QESSTL--FQLK-PVE-----------GD-----
+PMT-------------------IRFYHARLGKFFGIFSNSNGADEISEAFMHVI------
+---------
+>UniRef50_K3Y6I0 Uncharacterized protein n=2 Tax=Poaceae TaxID=4479 RepID=K3Y6I0_SETIT
+----LPSCIALR-S-KSN---GKFLRY---VHEHGEE----KYRQLE---L-S----GE-
+-DALN-L--FTRFDV--EPSRLH-D------GLVHIRCRYNRKYWVAR----QHGDD---
+-------DGWIVVAGAD-EPEEDLS-KPSCTL--IK---AVP------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A287SIA6 Uncharacterized protein n=1 Tax=Hordeum vulgare subsp. vulgare TaxID=112509 RepID=A0A287SIA6_HORVV
+----LPSCIALR-S-QSN---GCYLRY---VHEHGE-----TYRQLQ---L-N----GK-
+-DTIN-P--YTRYDV--QVSRKH-N------GLVHIRCRYNRKYWVAR----RRGDA---
+---------WCIAADAD-EPEEDLT-NPNCTL--IK-P----------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A287SIF1 Uncharacterized protein n=2 Tax=Hordeum vulgare subsp. vulgare TaxID=112509 RepID=A0A287SIF1_HORVV
+----LPSCIALR-S-QSN---GCYLRY---VHEHGE-----TYRQLQ---L-N----GK-
+-DTIN-P--YTRYDV--QVSRKHN-------GLVHIRCRYNRKYWVAR----RRGDA---
+---------WCIAADAD-EPEEDLT-NPNCTL--IK-P----------------------
+------------------------------------------------------------
+---------
+>UniRef50_F2CYR6 Predicted protein n=4 Tax=Poaceae TaxID=4479 RepID=F2CYR6_HORVV
+----LPCCFALK-S-ERH---ENYLRY---VHEDTDET---TYGQLQ---L-N----GE-
+-DAVN-P--FTRFDS--EPSQLH-E------GLVHIRCRYNRKYWVPR----QRGGG---
+---------WWIVADAH-EPEEDLD-SPNCTL--IK-P----------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A1E5UIQ7 Uncharacterized protein n=1 Tax=Dichanthelium oligosanthes TaxID=888268 RepID=A0A1E5UIQ7_9POAL
+---------------------------------------------------------GE-
+-DAVN-P--YTRFQV--QRSALH-E------ALVHIRCCYNHKYWVPR----RRGDG---
+---------WWLAADAD-EPEEDLS-KPSCTLIELV-PVVTT-----------NE-----
+DGHAPTS---------------VRFRHAQLG-----------------------------
+---------
+>UniRef50_UPI00051175C3 uncharacterized protein LOC103946987 n=3 Tax=Maleae TaxID=721813 RepID=UPI00051175C3
+----------------DR---QKLLRI---INQNIGK----YHGVVQ---F-S----GD-
+-DVKS-S--QAGFQV--ERADGN-G------ELVHVKCTTNGKYLRRG----DERE----
+---------WWIVAAGD-EPEEDQS-HWTCTL--FE-P-QVV-----------HK-----
+HNKAV-----------------IRLLHVQLGRYVRLYTANQGTAFI--------------
+---------
+>UniRef50_UPI00051171B2 uncharacterized protein LOC103935239 n=2 Tax=Maleae TaxID=721813 RepID=UPI00051171B2
+----LPRYFALK-S-NNN---RKCLRY---IDQVVEN----LHGVLQ---F------SE-
+-EDFNSP--YARFEM--ETANNGDG------SYVHIKSRWNNKYLRRA----DDQHW---
+---------W-IVAGAD-EPEESEN-LWSCTL--FK-PVAVH------------------
+AHNNLVL---------------LRLQHVQLGHYVKLFSAN----AFRSCLFAHQPNPDH-
+QMMDAYTVI
+>UniRef50_UPI000498EFD8 uncharacterized protein LOC103431268 n=1 Tax=Malus domestica TaxID=3750 RepID=UPI000498EFD8
+----LPRSFALK-S-NNN---KKYLRY---IHQRIEN----LDGLVQ---L-S----EE-
+-DVKS-E--YARFQM--EPADSG-YG-----GLVHIKCCFNNKYLRRA----SDHQY---
+---------W-IVAGAN-EPEEDKK-HWSCTL--FE-P-VVV-----------HS-----
+DNKAV-----------------FRLLHVQLGHFVTSFTVN----DFNQCLFAERNTPNLH
+NDMDVYTVV
+>UniRef50_UPI0004993055 uncharacterized protein LOC103455732 n=2 Tax=Maleae TaxID=721813 RepID=UPI0004993055
+-----PRSFALK-S-NDN---QKYLRY---IHERIEN----LDGLVQ---L------SEH
+-NVQS-E--YAKFQM--EPADSGNG------GLVHIKCCFNNRYLRRA----NHRQY---
+---------W-IVAGAS-EREEDTS-QWSCTL--FK-PDFVH------------------
+SDQEAV----------------IRLIHVQLRHYVTSYTVN----DFNQCLFAGFPTPNPG
+NAIDVYTVV
+>UniRef50_UPI0004993055 uncharacterized protein LOC103455732 n=2 Tax=Maleae TaxID=721813 RepID=UPI0004993055
+----LPRSFALK-S-NDN---KKYLRY---IHRRVEN----LAGLVQ---L------SE-
+-ENVKSE--YAKFQT--EPADSGNG------GLVHIKCCFNNRYLRRA----NXRQY---
+---------W-IVAGAS-EPEEDTS-QWSCTL--FE-PEVVH------------------
+SDKEAV----------------IRLIHVQLRHYVSSFTVN----DFNQCLFAGTKNPKPG
+---------
+>UniRef50_B9SC09 Uncharacterized protein n=2 Tax=Euphorbiaceae TaxID=3977 RepID=B9SC09_RICCO
+----LPKSVAIR-S-EFS---RGYAYY---MAENEA-----VRGFIR---C-E----GE-
+-NILN-P--YVKIEV--ETAQID-S------KFVHLRFSHTNKYWGRS----GPGFT-QD
+DY-------W-VSATSD-QPEEDTS-KWSCTL--FE-P-IFD------------------
+HGF-------------------LFLRHVQT------------------------------
+---------
+>UniRef50_UPI000B77F028 uncharacterized protein LOC110659837 n=1 Tax=Hevea brasiliensis TaxID=3981 RepID=UPI000B77F028
+---ALPKFVVLK-S-VLS---NRYAYY---MTESEA-----LRGYVR---C------QEE
+-EVFS-P--FAKIEV--ETAKIN-T------RFVHLRFCSNNKYWARL----GADRN-DI
+---------W-IVAKAD-QPEEDMS-KWSCTL--FE-P-TLG-----------ND-----
+GF--------------------LYFRHVQTGKRVRTNGV---------------------
+---------
+>UniRef50_UPI000B77C690 uncharacterized protein LOC110635319 n=1 Tax=Hevea brasiliensis TaxID=3981 RepID=UPI000B77C690
+-------------V------------------------------------F-S-------
+------P--LVKIEV--ETAKIN-S------KYVHLRFCHSNRYWAKT-----------A
+NDV------W-MIASSK-QPVEDTT-NRSCTL--FE-P-SIG------------------
+KDG-H-----------------HYLRHVQTG-----------------------------
+---------
+>UniRef50_UPI0005400828 uncharacterized protein LOC104887218 n=7 Tax=Chenopodiaceae TaxID=1804623 RepID=UPI0005400828
+--AILPRFITLMHN-------SWFFQY---ETETGQ-----HHAVVR-----A----RSN
+-TIIS-ENNFTKFEV--VSSSVR--------GMVHIRTCYNNRYWQLK----STGNH---
+-----------LYAIAD-EPEEDRS-KRSCTL--FR-F-VIS-----------GDRVTFF
+HQFSNT----------------ERHVVVYEGGFVGPLW----------------------
+---------
+>UniRef50_UPI0005C91E96 uncharacterized protein LOC105351804 n=1 Tax=Fragaria vesca subsp. vesca TaxID=101020 RepID=UPI0005C91E96
+--SSIPRYFSLSSSGQND---RRYLEY---VHDDEA-----GSGLFINQGY---------
+-EFLS-A--LTKLEL--VNAGN---------GRVHIRCCYNNKYLAIR----SEDDH---
+---------R-VSAVAD-EPVEDQS-SWSCTM--FE-L-TMS-----------NP-----
+SGGLQR----------------VRFTHVNIG-----------------------------
+---------
+>UniRef50_A0A2P6RDE4 Putative clostridium epsilon toxin ETX/ mosquitocidal toxin MTX2, Agglutinin n=3 Tax=Rosoideae TaxID=171638 RepID=A0A2P6RDE4_ROSCH
+----LPVSMTLR---PFG---NKLLQY---VHEDVE-----AHGLLI---A-D----GD-
+-DVMS-P--LSKLEV--LQARSG-N------GRVHIRCSYNNKFLAVR----REGDS---
+---------V-VAAVAE-EPVEDES-AWSCTM--FL-P---------------ANIPGYS
+NNN-------------------IQLLHVQL------------------------------
+---------
+>UniRef50_A0A0J8B264 Uncharacterized protein n=3 Tax=Chenopodiaceae TaxID=1804623 RepID=A0A0J8B264_BETVU
+----LPTYVALK-A-THGDAPFQFLGV--E-----------DDGSVA---Y------STA
+-KVVS-D--QAKFAI--EFTAT---------GLAHIRSCFNNKYWVRS----SESSF---
+---------W-IVAGSD-DPVEDES-LWNCTL--FR-P-LVN-----------QE-----
+EKT-------------------VSFVHIQL------------------------------
+---------
+>UniRef50_UPI000B8B3ADE uncharacterized protein LOC110774957 n=1 Tax=Spinacia oleracea TaxID=3562 RepID=UPI000B8B3ADE
+----LPTYVALQ-A-THGVAPFKYMGV---VDDGSE-----YQDYVA---Y------STS
+-KVVS-Q--QAKFAV--EFTTN---------GNAHIRSCYNNKYWVRS----SATEN---
+---------W-IVAKAT-EPVEDLT-AWNCTL--FK-T-VVS-----------GD-----
+GNS-------------------VTFVHVQL------------------------------
+---------
+>UniRef50_A0A0K9QIX6 Uncharacterized protein n=3 Tax=Chenopodioideae TaxID=1307796 RepID=A0A0K9QIX6_SPIOL
+----LPTYVALQ-A-THGVAPFKYMGV---IDDGSE-----YQDYVA---Y------STS
+-KVVS-Q--QAKFAV--EFTTN---------GNAHIRSCYNNKYWVRS----SATEN---
+---------W-IVAKAT-EPVEDLT-AWNCTL--FK-T-VVS-----------GD-----
+GNS-------------------VTFVHVQL------------------------------
+---------
+>UniRef50_A0A2P6QKP7 Putative aerolysin, Agglutinin domain, aerolysin-like toxin, beta complex domain-containing protein n=13 Tax=Rosoideae TaxID=171638 RepID=A0A2P6QKP7_ROSCH
+----LPPTIAIKTGWGNA---NVYMNY--NDDSNSQ-----TRGFLK---F-N----GG-
+-NVFS-P--LAKFEV--VAANTG-I------GMVHLRCSHNKKFLRVR----AQGGG---
+---------Y-ISPDAD-EPEEDQS-KWSCTL--FQ-P-RPV------------------
+DGNPDR----------------VRLFHVQLQK----------------------------
+---------
+>UniRef50_A0A2P6Q4Y1 Putative clostridium epsilon toxin ETX/ mosquitocidal toxin MTX2, Agglutinin n=3 Tax=Rosa chinensis TaxID=74649 RepID=A0A2P6Q4Y1_ROSCH
+------------------------------------------------------------
+-------------------------------GLVHIRCSQNRKFLRTR----IEGDV---
+---------Y-LSPEAD-EPEEDQS-KWSCTL--FE-P-QAA-----------VD-----
+GNPDK-----------------ARLFHVQAKRYATVLDDGG---------VRFFKLDDGQ
+SDQGIFDIT
+>UniRef50_UPI0005C927DE uncharacterized protein LOC105353374 n=1 Tax=Fragaria vesca subsp. vesca TaxID=101020 RepID=UPI0005C927DE
+----LPSIFALS-SPWFD---NYYLNYSNDSDSEAL-------GFLK---F-N----GT-
+-DALS-S--LAKFEV--VKASTG-T------GLVHIRCSHNRKFLRTR-----------I
+KGDPN------LSPEAD-EPEEDQS-KWSCTL--FE-A-QAA-----------ED-----
+GNPDK-----------------VHLFHVGEKQYAVAWNE---------------------
+---------
+>UniRef50_UPI0005C927DE uncharacterized protein LOC105353374 n=1 Tax=Fragaria vesca subsp. vesca TaxID=101020 RepID=UPI0005C927DE
+----LPSIFALS-SPWFD---NYYLNY---SNDSDAE----TLGFIK---F-N----GT-
+-DATS-S--LAKFEA--VKASAGT-------RLVHIRCSHNGKFLRTR----SKGDP---
+---------N-LSPEAD-EPEEDQS-KWSCTL--FE-A-KAA-----------ED-----
+GSPNK-----------------VHLFHVGEKQYAVAWNE---------------------
+---------
+>UniRef50_A0A0A0KAP4 Uncharacterized protein n=3 Tax=Cucurbitaceae TaxID=3650 RepID=A0A0A0KAP4_CUCSA
+-------------H-------ESYLEF------NGE------HGLLH-------------
+------P--FSKFES--EISDSNP-------KLIHIRCTGINKYWVRK----SSDSN---
+---------H-IVPIAT-KKEDNVS-KSSCTL--FE-P--IY------------------
+DAKYKA----------------YRFRHVQLG-----------------------------
+---------
+>UniRef50_UPI000B77BD1E uncharacterized protein LOC110692268 n=1 Tax=Chenopodium quinoa TaxID=63459 RepID=UPI000B77BD1E
+-------YVVIE-TTEGN-----------------------RQGCLV---L-S----ETA
+-SVFD-S--FARFAV--EPASD---------GLVHIKSRYNNMYLCRK----SEESE---
+---------L-IAAAAS-ERKENIA-KWSCTL--F-------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A0K9R223 Uncharacterized protein n=2 Tax=Spinacia oleracea TaxID=3562 RepID=A0A0K9R223_SPIOL
+------------------------------------------------------------
+--------------------------------MVHLRCFHNNRYLVRE----SETSH---
+---------W-INADAN-EVEEDTS-RWSCTL--FAVE-NLT------------------
+PGDPNLPLWTTTR---------LRFRHVQSGAFLYGYLHQGSGTSR--------------
+---------
+>UniRef50_UPI000B8CB26E uncharacterized protein LOC110809137 n=1 Tax=Carica papaya TaxID=3649 RepID=UPI000B8CB26E
+---------------------------------------------------------ME-
+------A----------EEANSG-H------GLVHLKCSYNNKYWVRS----SKEEL---
+---------W-IIAKAD-QPNEDQS-KWSCTL--FK-P--IF-----------ET-----
+GNHYGQ----------------VKFLHVQLGHYVCHSKETE---PYNSCLLAESEDPRN-
+DLSDIFNYT
+>UniRef50_A0A067L0K3 Uncharacterized protein n=1 Tax=Jatropha curcas TaxID=180498 RepID=A0A067L0K3_JATCU
+----------------------KYVRF---LHEDGD-----LHGFLR---A-D----GD-
+-EIVT-P--YTKFEL--EKAESG-D------DSYHIRNCYNNKYLVIK----EGTM----
+---------W-YIGGAD-EPEEDAS-KSNCTV----------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A1S3C8I1 uncharacterized protein LOC103497997 n=1 Tax=Cucumis melo TaxID=3656 RepID=A0A1S3C8I1_CUCME
+----VPRFAGFR-S-SKN---QKYMNV---VKSDDEK----IPNFVQ---Y-S----SDN
+-LATS----TTKFSFVASHDTAK--------NLYHIVCIYNQKYLRAE----SSSSR---
+---------W-ICATAL-EPNEDQS-DWGCTL--F-------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A0K9R7W1 Uncharacterized protein n=7 Tax=Chenopodiaceae TaxID=1804623 RepID=A0A0K9R7W1_SPIOL
+----LPRFIVLGRP-TGG---VTYLRY---VVERGA-----QHRRLH---L------SSP
+-EVIS-ERNFTKLEVVRAPPTIGR-------DMVHIRSCYNNKFLVLE----SEGSN---
+---------V-FVAEAD-EPEVDRS-IWSCTL--FR---VTY------------------
+------------------------------------------------------------
+---------
+>UniRef50_UPI00053FE298 uncharacterized protein LOC104897201 n=2 Tax=Beta vulgaris subsp. vulgaris TaxID=3555 RepID=UPI00053FE298
+----------------------KYLEC---VVGGGD-----SNGLIQ---L-S----GE-
+-DVLS-P--KARIEV--EKALSS-D------ELVHLKCCYTNKYLRRG----SESDD---
+---------S-IAAVAT-EQEEDQS-KWSCTL----------------------------
+------------------------------------------------------------
+---------
+>UniRef50_A0A097PIA7 Amaranthin-like lectin n=1 Tax=Linum usitatissimum TaxID=4006 RepID=A0A097PIA7_LINUS
+----------------------------------------------------E-------
+-GIWN-P--YAKLEA--EAAGIG-G------GMVHLKSSYTQKYLCRA----SEDPN-NP
+S----------IEAAAD-EHEEDIS-KWSCTL--F-------------------------
+------------------------------------------------------------
+---------
+>UniRef50_UPI000B932FF1 uncharacterized protein LOC111014653 n=1 Tax=Momordica charantia TaxID=3673 RepID=UPI000B932FF1
+----------------DN-----------------------CEGGLQ---F-S----AD-
+-AVMS-P--FTKFEL--ETSKND-K------KFVHIKCCYNNKYWITF----SPNLK---
+---------S-IQPLAD-EPDEDRS-EWSCTL--FE-F--IY------------------
+DADLQA----------------YRIRHVKLGCYLIPHTGP----IAATYTLYAGVDTPDA
+DHHDVFTVT
+>UniRef50_UPI000B92FC4A uncharacterized protein LOC111014651 n=1 Tax=Momordica charantia TaxID=3673 RepID=UPI000B92FC4A
+---------------------------------------------------------TD-
+------------------------------------------------------------
+------------------EPDEDRS-KWSCTL--FE-L--IY------------------
+DAD-LQV---------------YRIRHVKLGYFLIPHTGP----IAADYTIYAGTATPDP
+NNWDVFAAI
