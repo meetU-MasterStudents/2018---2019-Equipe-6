@@ -1,4 +1,4 @@
-In this folder, you will find an extract of the data obtained when the pipeline is launched over the benchmark.
+In this folder, you will find extraction(s) of the data obtained when the pipeline is launched over the benchmark.
 
 - A fasta file (for Agglutinin only)
 - An output .npy that contains all the results in a dictionnary form on Python (for the whole benchmark)
