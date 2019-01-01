@@ -1,0 +1,7 @@
+Evalue: 1e-4
+Comparison method: DotProduct
+mu = 0.03316
+sigma = 0.06867
+gapPenalty = 12
+misMatchPenalty = 3
+gapExtension = 1
