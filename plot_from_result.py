@@ -66,75 +66,81 @@ def Affichage_Accuracy(List_Benchmark_Fold,  List_Benchmark_SF, Results, thresho
     
     return acc
 
-def Accuracy_according_to_Fold_and_SF(List_Benchmark_Fold,  List_Benchmark_SF, Results, threshold):
-        #stocke les accuracy
-    accSF=[0]*threshold
-    accF=[0]*threshold
+def Accuracy_according_to_Fold_and_SF(List_Benchmark_Fold,  List_Benchmark_SF, List_Results, threshold, List_name):
     
+    #stocke les accuracy
+    Color=['cyan','darkblue','darkorchid', 'deeppink']
+            #plot     
+    fig=plt.figure() 
     
-    for query in Results.keys():
-        r=Results.get(query)
-        rank_query=sorted(r, key=r.__getitem__) #Range les resultats du plus petit au plus grand
-        rank_query.reverse() #list type
-        if threshold>len(rank_query):
-            threshold=len(rank_query)
-            print("Pas assez de resultats possibles pour afficher le threshold demande dans le cas de "+query)
-        accuracy_SF = 0  
-        accuracy_Fold = 0
-        for i in range(threshold):     
-            f=rank_query[i]
-            #Fold (accorder un poids)
-            if (f==List_Benchmark_Fold.get(query)) and (f!= None) and (List_Benchmark_Fold.get(query)!= None):
-                accuracy_Fold+=1
-            #SF (accorder un poids)
-            if (f==List_Benchmark_SF.get(query)) and (f!= None) and (List_Benchmark_SF.get(query)!= None):
-                accuracy_SF+=1  
-            accSF[i]=accSF[i]+accuracy_SF
-            accF[i]=accF[i]+accuracy_Fold
-
+    for i in range(len(List_Results)):
+        name=List_name[i]
+        color=Color[i]
+        Results=List_Results[i]
+        accSF=[0]*threshold
+        accF=[0]*threshold
+        for query in Results.keys():
+            r=Results.get(query)
+            rank_query=sorted(r, key=r.__getitem__) #Range les resultats du plus petit au plus grand
+            rank_query.reverse() #list type
+            if threshold>len(rank_query):
+                threshold=len(rank_query)
+                print("Pas assez de resultats possibles pour afficher le threshold demande dans le cas de "+query)
+            accuracy_SF = 0  
+            accuracy_Fold = 0
+            for i in range(threshold):     
+                f=rank_query[i]
+                #Fold (accorder un poids)
+                if (f==List_Benchmark_Fold.get(query)) and (f!= None) and (List_Benchmark_Fold.get(query)!= None):
+                    accuracy_Fold+=1
+                #SF (accorder un poids)
+                if (f==List_Benchmark_SF.get(query)) and (f!= None) and (List_Benchmark_SF.get(query)!= None):
+                    accuracy_SF+=1  
+                accSF[i]=accSF[i]+accuracy_SF
+                accF[i]=accF[i]+accuracy_Fold
     
-    nb_queries_Fold=len(List_Benchmark_Fold.keys()) 
-    nb_queries_SF=len(List_Benchmark_SF.keys())   
-    for k in range(len(accSF)):
-        accSF[k]=accSF[k]/nb_queries_SF
-    for k in range(len(accF)):       
-        accF[k]=accF[k]/nb_queries_Fold
+        
+        nb_queries_Fold=len(List_Benchmark_Fold.keys()) 
+        nb_queries_SF=len(List_Benchmark_SF.keys())   
+        for k in range(len(accSF)):
+            accSF[k]=accSF[k]/nb_queries_SF
+        for k in range(len(accF)):       
+            accF[k]=accF[k]/nb_queries_Fold
         
 
-    #plot     
-    fig=plt.figure()  
-    plt.subplot(1, 2, 1)
-   
-    #Area under curve
-    AireSF=np.trapz(accSF,range(threshold), dx=1)
-    AireSF=round(AireSF/threshold,2)
-         
-    lw = 2
-    plt.plot(range(threshold), accSF, color='darkorange',
-         lw=lw, label='Semi-ROC curve area '+str(AireSF),linewidth=3)
-    y = np.linspace(0, 1, threshold, endpoint=False)
-    plt.plot(range(threshold),y, linestyle='--')
+ 
+        plt.subplot(1, 2, 1)
+       
+        #Area under curve
+        AireSF=np.trapz(accSF,range(threshold), dx=1)
+        AireSF=round(AireSF/threshold,2)
+             
+        lw = 2
+        plt.plot(range(threshold), accSF, color=color,
+             lw=lw, label=name+' - Area :'+str(AireSF))
+        y = np.linspace(0, 1, threshold, endpoint=False)
+        plt.plot(range(threshold),y, linestyle='--')
+        plt.ylim((-0.01,1.01))
+        plt.xlim((-1,405))
+        plt.xlabel("Threshold")
+        plt.ylabel("Enrichment")
+        plt.title("Super-Family", fontsize=15)
+        plt.legend(loc="lower right")
+    
+        plt.subplot(1, 2, 2)
+        #Area under curve
+        AireF=np.trapz(accF,range(threshold), dx=1)
+        AireF=round(AireF/threshold,2)
+             
+        lw = 2
+        plt.plot(range(threshold), accF, color=color,
+             lw=lw, label=name+' - Area :'+str(AireF))
+        y = np.linspace(0, 1, threshold, endpoint=False)
+        plt.plot(range(threshold),y, linestyle='--')
     plt.ylim((-0.01,1.01))
     plt.xlim((-1,405))
     plt.xlabel("Threshold")
-    plt.ylabel("Number of positives")
-    plt.title("Super-Family", fontsize=15)
-    plt.legend(loc="lower right")
-
-    plt.subplot(1, 2, 2)
-    #Area under curve
-    AireF=np.trapz(accF,range(threshold), dx=1)
-    AireF=round(AireF/threshold,2)
-         
-    lw = 2
-    plt.plot(range(threshold), accF, color='darkorange',
-         lw=lw, label='Semi-ROC curve area '+str(AireF),linewidth=3)
-    y = np.linspace(0, 1, threshold, endpoint=False)
-    plt.plot(range(threshold),y, linestyle='--')
-    plt.ylim((-0.01,1.01))
-    plt.xlim((-1,405))
-    plt.xlabel("Threshold")
-    plt.ylabel("Number of positives")
+    plt.ylabel("Enrichment")
     plt.title("Fold", fontsize=15)
     plt.legend(loc="lower right")
     
@@ -146,7 +152,8 @@ def Accuracy_according_to_Fold_and_SF(List_Benchmark_Fold,  List_Benchmark_SF, R
     return
 
 import seaborn as sns
-def plot_score(List_Benchmark_Fold,  List_Benchmark_SF, Results):
+def plot_score(List_Benchmark_Fold,  List_Benchmark_SF, Results,name):
+    del Results["RRF"]
     list_query=Results.keys()
     nombre_abscisse=len(list_query)
 
@@ -159,7 +166,7 @@ def plot_score(List_Benchmark_Fold,  List_Benchmark_SF, Results):
             if res==List_Benchmark_Fold.get(query) or List_Benchmark_SF.get(query)==res: 
                 Top_one.append(results_for_the_query[res])
         
-    fig=plt.figure()
+    fig=plt.figure(figsize=(4, 8), dpi=100)
     plt.plot(x, Top_one, '.', color='r', marker='s')
     
     compteur=0
@@ -173,7 +180,9 @@ def plot_score(List_Benchmark_Fold,  List_Benchmark_SF, Results):
         print(np.std(not_matched))
         plt.scatter([compteur]*len(not_matched), not_matched, alpha=0.6, marker='.', color=c)
         compteur=compteur+1
-    plt.xticks(x, list_query, rotation='vertical')
+    plt.xticks(x, list_query, rotation=90, fontsize=6)
+    plt.title(name)
+    plt.ylim((5,175))
     plt.show()
     fig.savefig("details_on_each_query")
     
@@ -299,8 +308,107 @@ def full_plot(Results, List_Full, name="Enrichment with more than one possible p
     return 
 
 
-r1=np.load("eucli4.npy").item()
+
+
+
+#Plot
+def Multi_plot(List_Benchmark_Fold,  List_Benchmark_SF, Results_list, name_list, threshold=405):
+    
+    
+    fig=plt.figure()   
+    Color=['cyan', 'darkblue','deeppink', "gold"]
+    for i in range(len(Results_list)):
+        Results=Results_list[i]
+        name=name_list[i]
+        #plot    
+
+        color=Color[i]
+        
+        
+        #stocke les accuracy
+        acc=[0]*threshold
+    
+    
+        for query in Results.keys():
+            r=Results.get(query)
+            rank_query=sorted(r, key=r.__getitem__) #Range les resultats du plus petit au plus grand
+            rank_query.reverse() #list type
+            if threshold>len(rank_query):
+                threshold=len(rank_query)
+                print("Pas assez de resultats possibles pour afficher le threshold demande dans le cas de "+query)
+            accuracy_inter = 0  
+            for i in range(threshold):     
+                f=rank_query[i]
+                #Fold (accorder un poids)
+                if (f==List_Benchmark_Fold.get(query)) and (f!= None) and (List_Benchmark_Fold.get(query)!= None):
+                    accuracy_inter+=1
+                #SF (accorder un poids)
+                if (f==List_Benchmark_SF.get(query)) and (f!= None) and (List_Benchmark_SF.get(query)!= None):
+                    accuracy_inter+=1  
+                acc[i]=acc[i]+accuracy_inter
+    
+        
+        nb_queries=len(Results.keys())        
+        for k in range(len(acc)):
+            acc[k]=acc[k]/nb_queries
+        
+        
+        #Area under curve
+        Aire=np.trapz(acc,range(threshold), dx=1)
+        Aire=round(Aire/threshold,2)
+        
+        #plt.plot(range(threshold), acc, 'ro')
+        lw = 2
+        plt.plot(range(threshold), acc, color=color,
+                 lw=lw, label=name+" - area : "+str(Aire),linewidth=3)
+    
+    
+    y = np.linspace(0, 1, threshold, endpoint=False)
+    plt.plot(range(threshold),y, linestyle='--')
+    plt.grid()
+    plt.ylim((-0.01,1.01))
+    plt.xlim((-1,405))       
+    plt.legend(loc="lower right")
+    plt.xlabel("Threshold")
+    plt.ylabel("Enrichment")
+    fig.savefig("output.png")
+    plt.show()
+    
+    return acc
+
+def Mixture(List_Benchmark_Fold,  List_Benchmark_SF,Result_dot,Result_cor):
+    mixture={}
+    for query in Result_dot.keys():
+       if List_Benchmark_Fold.get(query)!= None:
+           mixture[query]=Result_dot[query]
+       elif List_Benchmark_SF.get(query)!= None:
+             mixture[query]=Result_cor[query]
+    return mixture
+
+
+
+
+
+
+
+
+
+
+
+rcor=np.load("Cor_E5_Aff.npy").item()
+rdot=np.load("Dot_E5_Aff.npy").item()
+rcor_control=np.load("2.npy").item()
+rdot_control=np.load("check8.npy").item()
 #Affichage_Accuracy(Benchmark_Fold, Benchmark_SF, r1, 405, "Global")
 #Accuracy_according_to_Fold_and_SF(Benchmark_Fold, Benchmark_SF, r1, 405)
-#plot_score(Benchmark_Fold, Benchmark_SF, r1)
-full_plot(r1, List_Full)
+#Accuracy_according_to_Fold_and_SF(Benchmark_Fold, Benchmark_SF, [r1,r2], 405, ["Corr.", "Corr. Control"])
+#plot_score(Benchmark_Fold, Benchmark_SF, r1, "correlation")
+#plot_score(Benchmark_Fold, Benchmark_SF, r2, "dotproduct")
+#full_plot(r2, List_Full, name="Enrichment with more than one possible positive per query", threshold=405)
+
+
+mixture=Mixture(Benchmark_Fold, Benchmark_SF, rdot,rcor)
+mixture_control=Mixture(Benchmark_Fold, Benchmark_SF, rdot_control,rcor_control)
+
+Multi_plot(Benchmark_Fold, Benchmark_SF, [rcor,rdot,mixture, mixture_control], ["E-value e-5 - Correlation","E-value e-5 - Dot Product", "Mixture", "Mixture on control"], threshold=405)
+
