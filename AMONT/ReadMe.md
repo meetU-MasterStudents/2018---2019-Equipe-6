@@ -69,7 +69,7 @@ sudo apt-get install muscle
 |**2018---2019-Equipe-6-master**          |Clone the repository available on github <br/> https://github.com/meetU-MasterStudents/2018---2019-Equipe-6                 |All the repository of team 6 |
 |   **blastdb**                        |Create new folder            |Database used to generate the MSA  |
 |   **ncbi-blast-2.7.1+**                 |Download it from <br/> https://www.ncbi.nlm.nih.gov/books/NBK52640/                     |BLAST+ (version 2.7.1+) program to make database and generate PSSM    |
-|**partage-master_new**: <br/> 1) Homstrad <br/> 2) test_dataset                 |   Download those folders from the shared Meet-U repository : <br/> 1) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/HOMSTRAD <br/> 2) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/test_dataset   | 1) Homstrad sequences directories and files <br/>  2) Query directories and files |
+|**partage-master_new**: <br/> 1) HOMSTRAD <br/> 2) test_dataset                 |   Download those folders from the shared Meet-U repository : <br/> 1) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/HOMSTRAD <br/> 2) https://github.com/meetU-MasterStudents/2018---2019-partage/tree/master/Data/test_dataset   | 1) HOMSTRAD sequences directories and files <br/>  2) Query directories and files |
 
 ## 2) Run command lines
 
@@ -87,8 +87,8 @@ makeblastdb -in uniprot_sprot.fasta -parse_seqids -dbtype prot
 python Benchmark.py -g configureProf
 ```
 *Note 1* : 
-- ConfigureProf contains the options for Benchmark.py to perform alignements and create profiles.
-- In configureProf file, the « prochoms» option (= process homstrad) may be removed after the first run because the profiles homstrad would have been already built).
+- ConfigureProf contains the options for Benchmark.py to create profiles.
+- In configureProf file, the «prochoms» option (= process homstrad) may be removed after the first run because the profiles of HOMSTRAD would have been already built). Also «recomp» option (= recompile packages) can be removed after the first run. 
 
 ### Compare profiles
 
@@ -96,14 +96,13 @@ python Benchmark.py -g configureProf
 python Benchmark.py -g configureComp
 ```
 *Note 2* : 
-ConfigureComp contains to compare query profiles against Homstrad profiles
+ConfigureComp contains the options to compare query profiles against HOMSTRAD profiles
 
 *Note 3*
 ```bash
 Benchmark.py
 ```
-These command launches the analysis on the benchmark data. Therefore you should upload the test-dataset from the common folder of Meet-U and gives the absolute path to the Benchmark.py.
-Then differents parameters are possible, you can access them with the command:
+This command launches the analysis on the benchmark or mysterious query sequences. Therefore, you should download the test_dataset from the common folder of Meet-U and gives the path to the Benchmark.py («qpath» option). This program can be executed with various parameters and options. you can access them with the command:
 ```bash
 python Benchmark.py --help
 Usage: Benchmark.py 
@@ -127,7 +126,7 @@ Options:
 ```
 # Plot results
 
-Output is a foldrec and a dictionary ranking saved in a .npy file. To plot the results of the benchmark, it is possible to use the plot_from_result.py script to plot the results. 
+Output is a foldrec and a dictionary ranking saved in a .npy file. To plot the results of the benchmark, you can use the plot_from_result.py script. 
 Warning : it is useful mostly for the benchmark results.
 
 # Useful links 
